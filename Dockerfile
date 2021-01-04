@@ -60,7 +60,7 @@ RUN \
       build-dependencies && \
    echo "**** cleanup ****" && \
    rm -rf \
-      /tmp/* \
+      /tmp/*
 
 # add local files
 COPY root/ /
