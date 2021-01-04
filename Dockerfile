@@ -52,7 +52,7 @@ RUN \
    curl --silent -o \
       /tmp/cacert.pem -L \
       "https://curl.haxx.se/ca/cacert.pem" && \
-   cert-sync /tmp/cacert.pem
+   cert-sync /tmp/cacert.pem && \
    echo "**** cleanup ****" && \
    rm -rf \
       /tmp/*
