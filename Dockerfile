@@ -15,6 +15,9 @@ ENV \
    MODULE=ADS
 
 RUN \
+   echo "**** install build packages ****" && \
+   apk add --no-cache --virtual=build-dependencies \
+      ca-certificates-mono && \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
       curl \
@@ -36,23 +39,21 @@ RUN \
    usermod -G users abc && \
    mkdir -p \
       /app/amp/ && \
-   echo "**** downloading ampinstmgr.zip ****" && \
+   echo "**** download ampinstmgr.zip ****" && \
    curl --silent -o \
       /tmp/ampinstmgr.zip -L \
       "http://cubecoders.com/Downloads/ampinstmgr.zip" && \
-   echo "**** unziping ampinstmgr and making symlinks ****" && \
+   echo "**** unzip ampinstmgr and make symlinks ****" && \
    unzip -q \
       /tmp/ampinstmgr.zip -d \
       /app/amp/ && \
-   echo "**** downloading AMPCache-${VERSION//.}.zip ****" && \
+   ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
+   echo "**** download AMPCache-${VERSION//.}.zip ****" && \
    curl --silent -o \
       /app/amp/AMPCache-${VERSION//.}.zip -L \
       "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
-   ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
-   curl --silent -o \
-      /tmp/cacert.pem -L \
-      "https://curl.haxx.se/ca/cacert.pem" && \
-   cert-sync /tmp/cacert.pem && \
+   apk del --purge \
+      build-dependencies && \
    echo "**** cleanup ****" && \
    rm -rf \
       /tmp/*
