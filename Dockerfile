@@ -8,7 +8,7 @@ LABEL maintainer="Alex Hyde"
 
 # environment settings
 ENV \
-   AMP_VERSION=$VERSION
+   AMP_VERSION=$VERSION \
    HOME=/home/abc \
    USERNAME=admin \
    PASSWORD=password \
