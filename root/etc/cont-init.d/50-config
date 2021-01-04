@@ -18,13 +18,13 @@ chown -R abc:abc \
 
 # ensure a license was set
 if [ -z ${LICENCE} ]; then
-	echo "Error: no Licence specified. You need to have a valid AMP licence from cubecoders.com specified in the LICENCE environment variable"
+	echo "Error: No licence specified. You need to have a valid AMP licence from cubecoders.com specified in the LICENCE environment variable"
 	sleep infinity
 fi
 
 # create main instance if not exists
 if [ ! -d /config/instances/Main ]; then
-	echo "Creating Main instance... (This can take a while)"
+	echo "Creating main instance"
 	s6-setuidgid abc ampinstmgr CreateInstance ${MODULE} Main 0.0.0.0 8080 ${LICENCE} ${USERNAME} ${PASSWORD}
 	FIRSTBOOT="true"
 fi
@@ -32,14 +32,14 @@ fi
 # set instances to mainline or nightly
 if [ ! -z "$NIGHTLY" ]; then
 	# nightly
-	echo "Setting all instances to use Nightly updates..."
+	echo "Setting all instances to use nightly updates"
 	s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | while read -r INSTANCE_NAME; do
 		echo "> ${INSTANCE_NAME}:"
 		s6-setuidgid abc ampinstmgr Switch ${INSTANCE_NAME} Nightly
 	done
 else
 	# mainline
-	echo "Setting all instances to use Mainline updates..."
+	echo "Setting all instances to use mainline updates"
 	s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | while read -r INSTANCE_NAME; do
 		echo "> ${INSTANCE_NAME}:"
 		s6-setuidgid abc ampinstmgr Switch ${INSTANCE_NAME} MainLine True
@@ -48,13 +48,13 @@ fi
 
 # upgrade instances
 if [ ! $(cat /config/instances/Main/AMPVersion) = "${AMP_VERSION}" ]; then
-	echo "Upgrading Instances..."
+	echo "Upgrading instances"
 	s6-setuidgid abc ampinstmgr UpgradeAll
 fi
 
 # set main instance to start on boot if not already.
 if [ "$FIRSTBOOT" = "true" ]; then
-	echo "Ensuring Main Instance will Start on Boot..."
+	echo "Ensuring main instance will start on boot"
 	s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && ampinstmgr SetStartBoot Main || true
 fi
 

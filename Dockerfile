@@ -21,19 +21,23 @@ RUN \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
       curl \
-      # Dependencies for AMP:
-      tmux \
+      # dependencies for amp:
       git \
-      socat \
-      unzip \
       iputils \
       procps \
-      # Dependencies for Minecraft:
+      socat \
+      unzip \
+      tmux \
+      # dependencies for minecraft:
       openjdk11-jre-headless \
-      # Most dependencies for srcds (TF2, GMod, ...)
-      libcurl \
+      # dependencies for srcds
+      bzip2 \
       gcc \
-      libstdc++6 && \
+      libcurl \
+      libstdc++6 \
+      ncurses5-libs \
+      sdl2 \
+      zlib && \
    userdel -rf abc || true && \
    useradd -u 911 -U -d /home/abc -m -s /bin/bash abc && \
    usermod -G users abc && \
@@ -56,7 +60,7 @@ RUN \
       build-dependencies && \
    echo "**** cleanup ****" && \
    rm -rf \
-      /tmp/*
+      /tmp/* \
 
 # add local files
 COPY root/ /

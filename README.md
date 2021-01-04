@@ -23,19 +23,20 @@ docker run -d \
   --restart unless-stopped \
   vcxpz/amp
 ```
-See [here](https://github.com/MitchTalmadge/AMP-dockerized#environment-variables) for help setting the `LICENCE` and `MODULE` variables. To easily generate a mac address for the `mac-address` variable, you can use:
+See [here](https://github.com/MitchTalmadge/AMP-dockerized#environment-variables) for help setting the `LICENCE` and `MODULE` environment variables. To easily generate a MAC address for the `mac-address` variable, you can use:
 
 **Linux**
 
-    echo $FQDN|md5sum|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/'
+    echo $RANDOM | md5sum | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/'
 
 **MacOS**
 
-    echo $FQDN|md5|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/'
+    echo $RANDOM | md5 | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/'
 
 **Windows**
 
     Get a new OS (https://miniwebtool.com/mac-address-generator)
 
 ## Todo
-* Fix s6 overlay restarting AMP, possibly caused by `ampinstmgr StartBoot` starting another process then self terminating, causing s6 overlay to restart it again
+* Test if AMP works properly on Alpine
+* Test if srcds remotely works on Alpine
