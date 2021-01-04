@@ -16,17 +16,17 @@ ln -sf /app/amp/AMPCache-*.zip /config/instances/
 chown -R abc:abc \
 	/config/
 
-# ensure a Licence was set
-if [ ${LICENCE} = "notset" ]; then
+# ensure a license was set
+if [ -z ${LICENCE} ]; then
 	echo "Error: no Licence specified. You need to have a valid AMP licence from cubecoders.com specified in the LICENCE environment variable"
 	sleep infinity
 fi
 
 # create main instance if not exists
-echo "Making sure Main instance exists..."
-if [ ! $(s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | grep "Main") ]; then
+if [ ! -d /config/instances/Main ]; then
 	echo "Creating Main instance... (This can take a while)"
 	s6-setuidgid abc ampinstmgr CreateInstance ${MODULE} Main 0.0.0.0 8080 ${LICENCE} ${USERNAME} ${PASSWORD}
+	FIRSTBOOT="true"
 fi
 
 # set instances to mainline or nightly
@@ -47,12 +47,16 @@ else
 fi
 
 # upgrade instances
-echo "Upgrading Instances..."
-s6-setuidgid abc ampinstmgr UpgradeAll
+if [ ! $(cat /config/instances/Main/AMPVersion) = "${AMP_VERSION}" ]; then
+	echo "Upgrading Instances..."
+	s6-setuidgid abc ampinstmgr UpgradeAll
+fi
 
 # set main instance to start on boot if not already.
-echo "Ensuring Main Instance will Start on Boot..."
-s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && ampinstmgr SetStartBoot Main || true
+if [ "$FIRSTBOOT" = "true" ]; then
+	echo "Ensuring Main Instance will Start on Boot..."
+	s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && ampinstmgr SetStartBoot Main || true
+fi
 
 # permissions
 chown -R abc:abc \

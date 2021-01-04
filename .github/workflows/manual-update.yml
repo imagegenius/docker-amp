@@ -10,7 +10,7 @@ on:
       - "root/**"
 
 jobs:
-  amd64:
+  latest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

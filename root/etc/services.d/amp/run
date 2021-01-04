@@ -11,6 +11,8 @@ _term() {
 
 trap _term SIGTERM
 
-while kill -0 $(pgrep tmux) 2>/dev/null; do
+PID=$(pgrep tmux)
+
+while kill -0 $PID 2>/dev/null; do
 	sleep 1
 done

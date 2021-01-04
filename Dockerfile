@@ -8,10 +8,10 @@ LABEL maintainer="Alex Hyde"
 
 # environment settings
 ENV \
+   AMP_VERSION=$VERSION
    HOME=/home/abc \
    USERNAME=admin \
    PASSWORD=password \
-   LICENCE=notset \
    MODULE=ADS \
 # allow amp 30 seconds to do a graceful shutdown before s6 sends TERM/KILL
    S6_KILL_FINISH_MAXTIME=30000 \
