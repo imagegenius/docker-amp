@@ -1,0 +1,59 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p /config/instances/
+
+# setup symlinks
+[[ -d /home/abc/.ampdata ]] &&
+	rm -rf /home/abc/.ampdata
+[[ ! -L /home/abc/.ampdata ]] &&
+	ln -sf /config/ /home/abc/.ampdata
+
+# copy the pre-cached AMPCache from the image
+rm -f /config/instances/AMPCache-*.zip
+ln -sf /app/amp/AMPCache-*.zip /config/instances/
+
+# set permissions so amp can write to directories
+chown -R abc:abc \
+	/config/
+
+# ensure a Licence was set
+if [ ${LICENCE} = "notset" ]; then
+	echo "Error: no Licence specified. You need to have a valid AMP licence from cubecoders.com specified in the LICENCE environment variable"
+	sleep infinity
+fi
+
+# create main instance if not exists
+echo "Making sure Main instance exists..."
+if [ ! $(s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | grep "Main") ]; then
+	echo "Creating Main instance... (This can take a while)"
+	s6-setuidgid abc ampinstmgr CreateInstance ${MODULE} Main 0.0.0.0 8080 ${LICENCE} ${USERNAME} ${PASSWORD}
+fi
+
+# set instances to mainline or nightly
+if [ ! -z "$NIGHTLY" ]; then
+	# nightly
+	echo "Setting all instances to use Nightly updates..."
+	s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | while read -r INSTANCE_NAME; do
+		echo "> ${INSTANCE_NAME}:"
+		s6-setuidgid abc ampinstmgr Switch ${INSTANCE_NAME} Nightly
+	done
+else
+	# mainline
+	echo "Setting all instances to use Mainline updates..."
+	s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | while read -r INSTANCE_NAME; do
+		echo "> ${INSTANCE_NAME}:"
+		s6-setuidgid abc ampinstmgr Switch ${INSTANCE_NAME} MainLine True
+	done
+fi
+
+# upgrade instances
+echo "Upgrading Instances..."
+s6-setuidgid abc ampinstmgr UpgradeAll
+
+# set main instance to start on boot if not already.
+echo "Ensuring Main Instance will Start on Boot..."
+s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && ampinstmgr SetStartBoot Main || true
+
+# permissions
+chown -R abc:abc \
+	/config
