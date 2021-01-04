@@ -12,16 +12,11 @@ ENV \
    HOME=/home/abc \
    USERNAME=admin \
    PASSWORD=password \
-   MODULE=ADS \
-# allow amp 30 seconds to do a graceful shutdown before s6 sends TERM/KILL
-   S6_KILL_FINISH_MAXTIME=30000 \
-   S6_SERVICES_GRACETIME=30000 \
-   S6_KILL_GRACETIME=30000
+   MODULE=ADS
 
 RUN \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
-      ca-certificates-mono \
       curl \
       # Dependencies for AMP:
       tmux \
@@ -54,6 +49,10 @@ RUN \
       /app/amp/AMPCache-${VERSION//.}.zip -L \
       "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
    ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
+   curl --silent -o \
+      /tmp/cacert.pem -L \
+      "https://curl.haxx.se/ca/cacert.pem" && \
+   cert-sync /tmp/cacert.pem
    echo "**** cleanup ****" && \
    rm -rf \
       /tmp/*
