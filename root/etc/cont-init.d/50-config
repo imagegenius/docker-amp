@@ -29,26 +29,11 @@ if [ ! -d /config/instances/Main ]; then
 	FIRSTBOOT="true"
 fi
 
-# set instances to mainline or nightly
-if [ ! -z "$NIGHTLY" ]; then
-	# nightly
-	echo "Setting all instances to use nightly updates"
-	s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | while read -r INSTANCE_NAME; do
-		echo "> ${INSTANCE_NAME}:"
-		s6-setuidgid abc ampinstmgr Switch ${INSTANCE_NAME} Nightly
-	done
-else
-	# mainline
-	echo "Setting all instances to use mainline updates"
-	s6-setuidgid abc ampinstmgr ShowInstancesList | grep "Instance Name" | awk '{ print $4 }' | while read -r INSTANCE_NAME; do
-		echo "> ${INSTANCE_NAME}:"
-		s6-setuidgid abc ampinstmgr Switch ${INSTANCE_NAME} MainLine True
-	done
-fi
-
 # upgrade instances
-if [ ! $(cat /config/instances/Main/AMPVersion) = "${AMP_VERSION}" ]; then
-	echo "Upgrading instances"
+OLD=$(cat /config/instances/Main/AMPVersion)
+
+if [ "${AMP_VERSION//./}" -gt "${OLD//./}" ]; then
+	echo "Upgrading all instances from $OLD to $NEW"
 	s6-setuidgid abc ampinstmgr UpgradeAll
 fi
 
