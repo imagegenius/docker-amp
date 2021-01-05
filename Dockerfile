@@ -1,3 +1,25 @@
+# build jackett for musl
+FROM steamcmd/steamcmd:ubuntu-18 as builder
+
+# Install prerequisites
+RUN apt-get update && \
+   apt-get install -y --no-install-recommends \
+      curl \
+      tar && \
+   curl --silent -o \
+      /tmp/steamcmd.tar.gz -L \
+      "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" && \
+   tar xzf \
+      /tmp/steamcmd.tar.gz -C \
+      /tmp/ && \
+   mkdir -p \
+      /out/lib/ && \
+   cp /lib/i386-linux-gnu/* /out/lib/ && \
+   cp /tmp/linux32/libstdc++.so.6 /out/lib/
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# runtime stage
 FROM vcxpz/baseimage-glibc
 
 # set version label
@@ -29,15 +51,7 @@ RUN \
       unzip \
       tmux \
       # dependencies for minecraft:
-      openjdk11-jre-headless \
-      # dependencies for srcds
-      bzip2 \
-      gcc \
-      libcurl \
-      libstdc++6 \
-      ncurses5-libs \
-      sdl2 \
-      zlib && \
+      openjdk11-jre-headless && \
    userdel -rf abc || true && \
    useradd -u 911 -U -d /home/abc -m -s /bin/bash abc && \
    usermod -G users abc && \
@@ -61,6 +75,9 @@ RUN \
    echo "**** cleanup ****" && \
    rm -rf \
       /tmp/*
+
+# copy files from builder
+COPY --from=builder /out /
 
 # add local files
 COPY root/ /
