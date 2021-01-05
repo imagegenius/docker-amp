@@ -1,8 +1,13 @@
-name: Cron Update CI
+name: Manual Builder CI
 
 on:
-  schedule:
-    - cron: "10 11 * * 0"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/Dockerfile"
+      - "root/**"
 
 jobs:
   latest:
@@ -67,7 +72,6 @@ jobs:
           git push
 
       - name: Tag And Push Docker Image
-        if: steps.readme.outputs.OLD_MD5 != steps.readme.outputs.NEW_MD5 || steps.packages.outputs.OLD_MD5 != steps.packages.outputs.NEW_MD5
         env:
           DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
           DOCKERIMAGE_TAG: ${{ steps.variables.outputs.DOCKERIMAGE_TAG }}

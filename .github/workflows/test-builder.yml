@@ -1,0 +1,46 @@
+name: Test Update CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/Dockerfile"
+      - "root/**"
+
+jobs:
+  latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Enviroment Variables
+        id: variables
+        env:
+          DOCKERHUB_IMAGE: vcxpz/amp
+          DOCKERIMAGE_TAG: testing
+        run: |
+          echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
+          echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
+          echo "::set-output name=VERSION::$(curl -sX GET "https://cubecoders.com/AMPVersions.json" | jq -r .AMPCore)"
+
+      - name: Docker Login
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo $DOCKER_PASSWORD | docker login -u vcxpz --password-stdin
+
+      - name: Build The Docker Image
+        env:
+          VERSION: ${{ steps.variables.outputs.VERSION }}
+          DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
+        run: |
+          docker build --no-cache --pull . --file Dockerfile --build-arg VERSION="$VERSION" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+
+      - name: Tag And Push Docker Image
+        env:
+          DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
+          DOCKERIMAGE_TAG: ${{ steps.variables.outputs.DOCKERIMAGE_TAG }}
+        run: |
+          docker tag "$DOCKERHUB_IMAGE":cibuild "$DOCKERHUB_IMAGE":"$DOCKERIMAGE_TAG"
+          docker push "$DOCKERHUB_IMAGE":"$DOCKERIMAGE_TAG"

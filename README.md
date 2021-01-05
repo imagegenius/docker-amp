@@ -23,9 +23,9 @@ docker run -d \
   --restart unless-stopped \
   vcxpz/amp
 ```
-On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/redis.xml)
+On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/amp.xml)
 
-See [here](https://github.com/MitchTalmadge/AMP-dockerized#environment-variables) for help setting the `LICENCE` and `MODULE` environment variables. To easily generate a MAC address for the `mac-address` variable, you can use:
+To easily generate a random MAC address for the `mac-address` variable, you can use:
 
 **Linux**
 
@@ -39,7 +39,8 @@ See [here](https://github.com/MitchTalmadge/AMP-dockerized#environment-variables
 
     Get a new OS (https://miniwebtool.com/mac-address-generator)
 
+See [here](https://github.com/MitchTalmadge/AMP-dockerized#environment-variables) for help setting the `LICENCE` and `MODULE` environment variables.
+
 ## Todo
 * test steamcmd
-* [create an apk containing i386 libs](https://github.com/hydazz/alpine-packages/blob/edge/steamcmd)
 * add option to select jre version
