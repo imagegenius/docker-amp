@@ -19,8 +19,8 @@ docker run -d \
   -e LICENCE= `#see below` \
   -e MODULE= `#see below` \
   -v <path to appdata>:/config \
-  _mac-address=xx:xx:xx:xx:xx:xx `#see below` \
-  _restart unless-stopped \
+  --mac-address=xx:xx:xx:xx:xx:xx `#see below` \
+  --restart unless-stopped \
   vcxpz/amp
 ```
 On Unraid? There's a [template](https://github.com/hydazz/docker-templates/blob/main/hydaz/redis.xml)
@@ -42,3 +42,4 @@ See [here](https://github.com/MitchTalmadge/AMP-dockerized#environment-variables
 ## Todo
 * test steamcmd
 * [create an apk containing i386 libs](https://github.com/hydazz/alpine-packages/blob/edge/steamcmd)
+* add option to select jre version
