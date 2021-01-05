@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p /config/instances/
+mkdir -p \
+	/config/{instances,Steam,.steam}/
 
 # setup symlinks
 [[ ! -L /home/abc/.ampdata ]] &&

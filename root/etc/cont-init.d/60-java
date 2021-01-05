@@ -25,5 +25,3 @@ if [ -n "${JDK_VERSIONS}" ]; then
 else
 	echo "Warning: No OpenJDK version(s) is specified. Skipping installation"
 fi # end 1.
-
-rm -rf /tmp
