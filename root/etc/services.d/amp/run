@@ -1,8 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-s6-setuidgid abc \
-	ampinstmgr StartBoot
-
 _term() {
 	echo "Caught SIGTERM signal!"
 	s6-setuidgid abc \
@@ -11,8 +8,11 @@ _term() {
 
 trap _term SIGTERM
 
+s6-setuidgid abc \
+	ampinstmgr StartBoot
+
 PID=$(pgrep tmux)
 
-while kill -0 $PID 2>/dev/null; do
+while kill -0 "$PID" 2>/dev/null; do
 	sleep 1
 done

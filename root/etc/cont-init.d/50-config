@@ -3,10 +3,12 @@
 mkdir -p /config/instances/
 
 # setup symlinks
-[[ -d /home/abc/.ampdata ]] &&
-	rm -rf /home/abc/.ampdata
 [[ ! -L /home/abc/.ampdata ]] &&
 	ln -sf /config/ /home/abc/.ampdata
+[[ ! -L /home/abc/.steam ]] &&
+	ln -sf /config/.steam /home/abc/.steam
+[[ ! -L /home/abc/Steam ]] &&
+	ln -sf /config/Steam /home/abc/Steam
 
 # copy the pre-cached AMPCache from the image
 rm -f /config/instances/AMPCache-*.zip
@@ -17,7 +19,7 @@ chown -R abc:abc \
 	/config/
 
 # ensure a license was set
-if [ -z ${LICENCE} ]; then
+if [ -z "${LICENCE}" ]; then
 	echo "Error: No licence specified. You need to have a valid AMP licence from cubecoders.com specified in the LICENCE environment variable"
 	sleep infinity
 fi
@@ -25,7 +27,7 @@ fi
 # create main instance if not exists
 if [ ! -d /config/instances/Main ]; then
 	echo "Creating main instance"
-	s6-setuidgid abc ampinstmgr CreateInstance ${MODULE} Main 0.0.0.0 8080 ${LICENCE} ${USERNAME} ${PASSWORD}
+	s6-setuidgid abc ampinstmgr CreateInstance "${MODULE}" Main 0.0.0.0 8080 "${LICENCE}" "${USERNAME}" "${PASSWORD}"
 	FIRSTBOOT="true"
 fi
 

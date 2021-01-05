@@ -43,15 +43,12 @@ RUN \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
       curl \
-      # dependencies for amp:
       git \
       iputils \
       procps \
       socat \
-      unzip \
       tmux \
-      # dependencies for minecraft:
-      openjdk11-jre-headless && \
+      unzip && \
    userdel -rf abc || true && \
    useradd -u 911 -U -d /home/abc -m -s /bin/bash abc && \
    usermod -G users abc && \
