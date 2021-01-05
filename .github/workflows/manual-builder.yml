@@ -2,12 +2,6 @@ name: Manual Builder CI
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "**/Dockerfile"
-      - "root/**"
 
 jobs:
   latest:
