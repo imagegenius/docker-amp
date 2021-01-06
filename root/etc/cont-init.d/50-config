@@ -11,6 +11,10 @@ mkdir -p \
 [[ ! -L /home/abc/Steam ]] &&
 	ln -sf /config/Steam /home/abc/Steam
 
+# Copy my custom files
+[[ ! -f /usr/sbin/amp ]] &&
+	cp /defaults/amp /usr/sbin/amp && chmod +x /usr/sbin/amp
+
 # copy the pre-cached AMPCache from the image
 rm -f /config/instances/AMPCache-*.zip
 ln -sf /app/amp/AMPCache-*.zip /config/instances/
