@@ -38,7 +38,7 @@ ENV \
 
 # allow more time for amp to do a clean shutdown before s6 kills
 ENV \
-   S6_SERVICES_GRACETIME=10000
+   S6_SERVICES_GRACETIME=10000 \
    S6_KILL_GRACETIME=10000
 
 
