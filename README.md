@@ -113,7 +113,7 @@ Just a quick note about ports: some games use TCP, some games use UDP. Make sure
 | `JDK_VERSIONS` | Space separated list OpenJDK Versions to be installed. OpenJDK is required by Minecraft. If you plan to not use Minecraft then leave this blank. Supported versions: `9`, `10`, `11`, `12`, `13`, `14`, `15` | No Default. Leaving this blank will not install OpenJDK |
 
 **Example:**
-- If you need  OpenJDK 9, 11 and 13 installed, set `JDK_VERSIONS="9 11 13"`
+- If you need OpenJDK 9, 11 and 13 installed, set `JDK_VERSIONS="9 11 13"`
 
 ### Licence
 
@@ -195,7 +195,7 @@ Or, just put [CloudFlare](https://www.cloudflare.com/) and its free SSL cert in 
 
 # Upgrading AMP
 
-To upgrade, all you have to do is pull our latest Docker image! We automatically check for AMP updates every hour. When a new version is released, we build and publish an image both as a standalone tag and on `:latest`.
+To upgrade, all you have to do is pull our latest Docker image! We automatically check for AMP updates weekly.
 
 # Contributing
 

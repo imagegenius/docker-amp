@@ -14,5 +14,5 @@ s6-setuidgid abc \
 PID=$(pgrep tmux)
 
 while kill -0 "$PID" 2>/dev/null; do
-	sleep 1
+	sleep 0.5
 done

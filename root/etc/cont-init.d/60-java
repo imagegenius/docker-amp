@@ -14,8 +14,9 @@ if [ -n "${JDK_VERSIONS}" ]; then
 			# 3. check if jdk is already installed, if so skip installation
 			if [ ! "$(apk info | grep -E "openjdk$version-jre-headless" | sed 's/[^0-9]*//g')" = "$version" ]; then
 				echo "Installing openjdk$version-jre-headless"
-				apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing -q \
-					"openjdk$version-jre-headless"
+				apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+					"openjdk$version-jre-headless" >/dev/null 2>&1 # hide symbolic link error messages
+				echo ""
 			fi # end 3.
 		else
 			echo "Error: openjdk$version-jre-headless is not supported. See below for supported JDK Versions"
