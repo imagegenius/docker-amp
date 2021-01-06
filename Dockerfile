@@ -5,6 +5,7 @@ FROM steamcmd/steamcmd:ubuntu-18 as builder
 RUN apt-get update && \
    apt-get install -y --no-install-recommends \
       curl \
+      libtcmalloc-minimal4:i386 \
       tar && \
    curl --silent -o \
       /tmp/steamcmd.tar.gz -L \
