@@ -4,7 +4,7 @@ apk-tools-2.12.0-r4
 bash-5.1.0-r0
 bearssl-0.6-r0
 brotli-libs-1.0.9-r3
-busybox-1.32.0-r8
+busybox-1.32.1-r0
 ca-certificates-20191127-r5
 ca-certificates-bundle-20191127-r5
 coreutils-8.32-r1
@@ -33,7 +33,7 @@ musl-1.2.2_pre7-r0
 musl-utils-1.2.2_pre7-r0
 ncurses-libs-6.2_p20210102-r0
 ncurses-terminfo-base-6.2_p20210102-r0
-nghttp2-libs-1.42.0-r0
+nghttp2-libs-1.42.0-r1
 pcre2-10.36-r0
 procps-3.3.16-r0
 readline-8.1.0-r0
@@ -49,8 +49,8 @@ s6-rc-0.5.2.0-r0
 scanelf-1.2.8-r0
 shadow-4.8.1-r0
 skalibs-2.9.3.0-r1
-socat-1.7.3.4-r1
-ssl_client-1.32.0-r8
+socat-1.7.4.0-r0
+ssl_client-1.32.1-r0
 tmux-3.1c-r0
 tzdata-2020f-r0
 unzip-6.0-r8
