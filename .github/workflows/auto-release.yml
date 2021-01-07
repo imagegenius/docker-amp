@@ -34,4 +34,4 @@ jobs:
                "draft": false,
                "prerelease": false
           }' >releasebody.json
-          curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/hydazz/docker-akaunting/releases -d @releasebody.json
+          curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/hydazz/docker-amp/releases -d @releasebody.json
