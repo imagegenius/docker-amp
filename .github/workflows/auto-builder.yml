@@ -44,21 +44,15 @@ jobs:
           docker build --no-cache --pull . --file Dockerfile --build-arg VERSION="${VERSION}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
 
       - name: Get New Package Versions From Image
-        id: packages
         run: |
-          echo "::set-output name=OLD_MD5::$(md5sum package_versions.txt | awk '{ print $1 }')"
           docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild -c '\
             apk info -v | sort >/tmp/package_versions.txt'
-          echo "::set-output name=NEW_MD5::$(md5sum package_versions.txt | awk '{ print $1 }')"
 
       - name: Update README.md
         env:
           AMP_RELEASE: ${{ steps.variables.outputs.VERSION }}
-        id: readme
         run: |
-          echo "::set-output name=OLD_MD5::$(md5sum README.md | awk '{ print $1 }')"
           chmod +x update_version_info.sh && ./update_version_info.sh
-          echo "::set-output name=NEW_MD5::$(md5sum README.md | awk '{ print $1 }')"
 
       - name: Commit And Push Changes To Github
         run: |

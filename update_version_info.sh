@@ -6,9 +6,9 @@ OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
 OLD_AMP_RELEASE=$(cat version_info.json | jq -r .amp_version)
 
 sed -i \
-  -e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
-  -e "s/${OLD_AMP_RELEASE}/${AMP_RELEASE}/g" \
-  README.md
+	-e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
+	-e "s/${OLD_AMP_RELEASE}/${AMP_RELEASE}/g" \
+	README.md
 
 NEW_VERSION_INFO="overlay_version|amp_version
 ${OVERLAY_VERSION}|${AMP_RELEASE}"
