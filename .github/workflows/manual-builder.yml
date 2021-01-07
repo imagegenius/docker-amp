@@ -12,22 +12,23 @@ jobs:
       - name: Set Enviroment Variables
         id: variables
         env:
-          DOCKERHUB_IMAGE: vcxpz/amp
+          DOCKERHUB_USER: vcxpz
+          DOCKERHUB_IMAGE: amp
           DOCKERIMAGE_TAG: latest
         run: |
-          echo "::set-output name=DOCKERHUB_IMAGE::$DOCKERHUB_IMAGE"
-          echo "::set-output name=DOCKERIMAGE_TAG::$DOCKERIMAGE_TAG"
+          echo "DOCKERHUB_IMAGE=${DOCKERHUB_IMAGE}" >>$GITHUB_ENV
+          echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
+          echo "DOCKERIMAGE_TAG=${DOCKERIMAGE_TAG}" >>$GITHUB_ENV
           echo "::set-output name=VERSION::$(curl -sX GET "https://cubecoders.com/AMPVersions.json" | jq -r .AMPCore)"
+          echo "::set-output name=USER_IMAGE::${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}"
 
       - name: Docker Login
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          echo $DOCKER_PASSWORD | docker login -u vcxpz --password-stdin
+          echo ${DOCKER_PASSWORD} | docker login -u ${DOCKERHUB_USER} --password-stdin
 
       - name: Github Login
-        env:
-          GIT_USER: ${{ steps.variables.outputs.GIT_USER }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
@@ -35,47 +36,44 @@ jobs:
       - name: Build The Docker Image
         env:
           VERSION: ${{ steps.variables.outputs.VERSION }}
-          DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg VERSION="$VERSION" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag "$DOCKERHUB_IMAGE":cibuild
+          docker build --no-cache --pull . --file Dockerfile --build-arg VERSION="${VERSION}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
 
       - name: Get New Package Versions From Image
         id: packages
-        env:
-          DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
         run: |
           echo "::set-output name=OLD_MD5::$(md5sum package_versions.txt | awk '{ print $1 }')"
-          docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp "$DOCKERHUB_IMAGE":cibuild -c '\
+          docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild -c '\
             apk info -v | sort >/tmp/package_versions.txt'
           echo "::set-output name=NEW_MD5::$(md5sum package_versions.txt | awk '{ print $1 }')"
 
       - name: Update README.md
-        id: readme
         env:
-          AMP_VERSION: ${{ steps.variables.outputs.VERSION }}
+          AMP_RELEASE: ${{ steps.variables.outputs.VERSION }}
+        id: readme
         run: |
           echo "::set-output name=OLD_MD5::$(md5sum README.md | awk '{ print $1 }')"
           chmod +x update_version_info.sh && ./update_version_info.sh
           echo "::set-output name=NEW_MD5::$(md5sum README.md | awk '{ print $1 }')"
 
       - name: Commit And Push Changes To Github
-        if: steps.readme.outputs.OLD_MD5 != steps.readme.outputs.NEW_MD5 || steps.packages.outputs.OLD_MD5 != steps.packages.outputs.NEW_MD5
         run: |
           git add -A
-          git commit -m 'Bot Updating Files'
-          git push
+          git commit -m 'Bot Updating Files' || echo "No Changes"
+          git push || echo "No Changes"
 
       - name: Tag And Push Docker Image
         env:
-          DOCKERHUB_IMAGE: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
-          DOCKERIMAGE_TAG: ${{ steps.variables.outputs.DOCKERIMAGE_TAG }}
+          VERSION: ${{ steps.variables.outputs.VERSION }}
         run: |
-          docker tag "$DOCKERHUB_IMAGE":cibuild "$DOCKERHUB_IMAGE":"$DOCKERIMAGE_TAG"
-          docker push "$DOCKERHUB_IMAGE":"$DOCKERIMAGE_TAG"
+          docker tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG}
+          docker tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${VERSION}
+          docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG}
+          docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${VERSION}
 
       - name: Push README.md To Docker Hub
         uses: peter-evans/dockerhub-description@v2
         with:
           username: vcxpz
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ steps.variables.outputs.DOCKERHUB_IMAGE }}
+          repository: ${{ steps.variables.outputs.USER_IMAGE }}

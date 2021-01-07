@@ -1,0 +1,37 @@
+name: Auto Release CI
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 0 * * 1-6"
+
+jobs:
+  check-for-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Enviroment Variables
+        id: variables
+        run: |
+          echo "::set-output name=OLD_VERSION::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name)"
+          echo "::set-output name=VERSION::$(curl -sX GET "https://cubecoders.com/AMPVersions.json" | jq -r .AMPCore)"
+
+      - name: Create Tag
+        if: steps.variables.outputs.OLD_VERSION != steps.variables.outputs.VERSION
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OLD_VERSION: ${{ steps.variables.outputs.OLD_VERSION }}
+          VERSION: ${{ steps.variables.outputs.VERSION }}
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+          printf '{
+               "tag_name": "'$VERSION'",
+               "target_commitish": "'$main'",
+               "name": "'$VERSION'",
+               "body": "Upgrading AMP '$OLD_VERSION' to '$VERSION'",
+               "draft": false,
+               "prerelease": false
+          }' >releasebody.json
+          curl -H "Authorization: token $GITHUB_TOKEN" -X POST https://api.github.com/repos/hydazz/docker-akaunting/releases -d @releasebody.json
