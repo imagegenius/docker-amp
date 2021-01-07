@@ -10,7 +10,7 @@ RUN \
       /out/lib/ \
       /out/usr/lib/ && \
    cp /lib/i386-linux-gnu/* /out/lib/ && \
-   cp /usr/lib/i386-linux-gnu/*.so /out/usr/lib/
+   cp -r /usr/lib/i386-linux-gnu/* /out/usr/lib/
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
