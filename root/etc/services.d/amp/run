@@ -1,14 +1,22 @@
 #!/usr/bin/with-contenv bash
 
+redirect_cmd() {
+	if [[ "${DEBUG}" == "true" ]]; then
+		"$@"
+	else
+		"$@" >/dev/null 2>&1
+	fi
+}
+
 _term() {
 	echo "Caught SIGTERM signal!"
-	s6-setuidgid abc \
+	redirect_cmd s6-setuidgid abc \
 		ampinstmgr StopAll
 }
 
 trap _term SIGTERM
 
-s6-setuidgid abc \
+redirect_cmd s6-setuidgid abc \
 	ampinstmgr StartBoot
 
 PID=$(pgrep tmux)

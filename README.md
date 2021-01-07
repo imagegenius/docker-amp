@@ -1,3 +1,5 @@
+
+
 ## docker-amp
 [![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/repository/docker/vcxpz/amp) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/amp?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-amp/actions?query=workflow%3A"Auto+Builder+CI")
 
@@ -36,9 +38,15 @@ As it takes more than 10 seconds (the default timeout for Docker) for AMP to do 
 ## Supported Modules
 **Tested and Working:**
 - Minecraft Java Edition
+- Minecraft Bedrock Edition
 
 **Untested:**
 - [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
+
+From what i've tested srcds does not work.  I get this error message:
+
+    segfault at 0 ip 0000000029af3e13 sp 00000000ff8e8a80 error 6 in engine_srv.so[2992b000+2d3000]
+so if anyone knows how to fix this open a issue!
 
 If you are able to get an untested module working, please make an issue about it so we can add it to the tested list and create an example
 
@@ -114,13 +122,17 @@ Just a quick note about ports: some games use TCP, some games use UDP. Make sure
 **Example:**
 - If you need OpenJDK 9, 11 and 13 installed, set `JDK_VERSIONS="9 11 13"`
 
+### Debug
+| Name | Description | Default Value|
+|-|-|-|
+| `DEBUG` | Set `true` to show AMP startup output in the docker log | `false` |
+
 ### Licence
 | Name | Description | Default Value |
 |-|-|-|
 | `LICENCE` | The licence key for CubeCoders AMP. You can retrieve or buy this on [their website.](https://manage.cubecoders.com/) | No Default. AMP will not boot without a real licence. |
 
 **Important Details:**
-- _Americans:_ This is spelled licenCe not licenSe. Got me a few times.
 - When a McMyAdmin licence is provided, the one and only instance will be a Minecraft instance. This cannot be overridden;
  you must buy a new license to use AMP with other/multiple games.
 
