@@ -3,7 +3,7 @@ name: Auto Release CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 0 * * 1-6" # L3 image
+    - cron: "10 0 * * 1-6" # L3 image
 
 jobs:
   check-for-updates:
