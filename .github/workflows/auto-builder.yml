@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "15 0 * * 0"
   release:
-    types: [released]
+    types: [published]
 
 jobs:
   latest:
