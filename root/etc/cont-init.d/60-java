@@ -3,9 +3,6 @@
 # supported JDK versions:
 # https://pkgs.alpinelinux.org/packages?name=openjdk*-jre-headless&branch=edge&arch=x86_64
 
-# update to hide errors
-apk update -q
-
 # 1. check if jdk version(s) is specified.
 if [ -n "${JDK_VERSIONS}" ]; then
 	for version in ${JDK_VERSIONS}; do
@@ -19,8 +16,8 @@ if [ -n "${JDK_VERSIONS}" ]; then
 				echo ""
 			fi # end 3.
 		else
-			echo "Error: openjdk$version-jre-headless is not supported. See below for supported JDK Versions"
-			echo "https://pkgs.alpinelinux.org/packages?name=openjdk*-jre-headless&branch=edge&arch=x86_64"
+			echo "Error: openjdk$version-jre-headless is not supported. See below for supported JDK Versions
+			      https://pkgs.alpinelinux.org/packages?name=openjdk*-jre-headless&branch=edge&arch=x86_64"
 		fi # end 2.
 	done
 else

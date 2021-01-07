@@ -5,7 +5,7 @@ on:
     - cron: "15 0 * * 0"
   release:
     types:
-      - created
+      - released
 
 jobs:
   latest:

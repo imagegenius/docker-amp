@@ -1,22 +1,16 @@
-# build jackett for musl
+# get required libraries from ubuntu
 FROM steamcmd/steamcmd:ubuntu-18 as builder
 
-# Install prerequisites
-RUN apt-get update && \
+RUN \
+   apt-get update && \
    apt-get install -y --no-install-recommends \
-      curl \
-      libtcmalloc-minimal4:i386 \
-      tar && \
-   curl --silent -o \
-      /tmp/steamcmd.tar.gz -L \
-      "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" && \
-   tar xzf \
-      /tmp/steamcmd.tar.gz -C \
-      /tmp/ && \
+      libncurses5:i386 \
+      libtcmalloc-minimal4:i386 && \
    mkdir -p \
-      /out/lib/ && \
+      /out/lib/ \
+      /out/usr/lib/ && \
    cp /lib/i386-linux-gnu/* /out/lib/ && \
-   cp /tmp/linux32/libstdc++.so.6 /out/lib/
+   cp /usr/lib/i386-linux-gnu/*.so /out/usr/lib/
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
