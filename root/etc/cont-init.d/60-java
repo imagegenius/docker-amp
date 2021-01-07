@@ -3,6 +3,8 @@
 # supported JDK versions:
 # https://pkgs.alpinelinux.org/packages?name=openjdk*-jre-headless&branch=edge&arch=x86_64
 
+apk update -q # hide APKINDEX errors
+
 # 1. check if jdk version(s) is specified.
 if [ -n "${JDK_VERSIONS}" ]; then
 	for version in ${JDK_VERSIONS}; do

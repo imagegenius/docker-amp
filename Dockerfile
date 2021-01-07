@@ -21,11 +21,11 @@ FROM vcxpz/baseimage-glibc
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="AMP version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="Alex Hyde"
+LABEL maintainer="hydaz"
 
 # environment settings
 ENV \
-   AMP_VERSION=$VERSION \
+   AMP_VERSION=${VERSION} \
    HOME=/home/abc \
    USERNAME=admin \
    PASSWORD=password \
