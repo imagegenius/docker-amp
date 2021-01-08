@@ -49,7 +49,8 @@ jobs:
           AMPLICENCE: ${{ secrets.AMPLICENCE }}
           MACADDR: ${{ secrets.MACADDR }}
         run: |
-          RUN_ARGS="-e LICENCE=${AMPLICENCE} -e DEBUG=true --mac-address=${MACADDR}"
+          RUN_ARGS="-e LICENCE=${AMPLICENCE} -e DEBUG=true"
+          CONT_ARGS="--mac-address=${MACADDR}"
           curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
 
       - name: Get New Package Versions From Image
