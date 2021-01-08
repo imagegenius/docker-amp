@@ -1,7 +1,7 @@
 # get required libraries from ubuntu
 FROM steamcmd/steamcmd:ubuntu-18 as builder
 
-RUN \
+RUN set -x && \
    apt-get update && \
    apt-get install -y --no-install-recommends \
       libncurses5:i386 \
@@ -10,7 +10,8 @@ RUN \
       /out/lib/ \
       /out/usr/lib/ && \
    cp /lib/i386-linux-gnu/* /out/lib/ && \
-   cp -r /usr/lib/i386-linux-gnu/* /out/usr/lib/
+   cp -r /usr/lib/i386-linux-gnu/* /out/usr/lib/ && \
+   echo "**** done preparing libraries ****" && \
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -31,7 +32,7 @@ ENV \
    PASSWORD=password \
    MODULE=ADS
 
-RUN \
+RUN set -x && \
    echo "**** install build packages ****" && \
    apk add --no-cache --virtual=build-dependencies \
       ca-certificates-mono && \
