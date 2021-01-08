@@ -11,7 +11,7 @@ RUN set -x && \
       /out/usr/lib/ && \
    cp /lib/i386-linux-gnu/* /out/lib/ && \
    cp -r /usr/lib/i386-linux-gnu/* /out/usr/lib/ && \
-   echo "**** done preparing libraries ****" && \
+   echo "**** done preparing libraries ****"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
