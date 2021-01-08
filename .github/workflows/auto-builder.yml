@@ -45,12 +45,8 @@ jobs:
           docker build --no-cache --pull . --file Dockerfile --build-arg VERSION="${VERSION}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
 
       - name: Test The Docker Image
-        env:
-          AMPLICENCE: ${{ secrets.AMPLICENCE }}
-          MACADDR: ${{ secrets.MACADDR }}
         run: |
-          export RUN_ARGS="-e LICENCE=${AMPLICENCE} -e DEBUG=true"
-          export CONT_ARGS="--mac-address=${MACADDR}"
+          export RUN_ARGS="-e DEBUG=true -e TESTRUN=true"
           curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
 
       - name: Get New Package Versions From Image
