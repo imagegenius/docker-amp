@@ -46,7 +46,8 @@ As it takes more than 10 seconds (the default timeout for Docker) for AMP to do 
 From what i've tested srcds does not work.  I get this error message:
 
     segfault at 0 ip 0000000029af3e13 sp 00000000ff8e8a80 error 6 in engine_srv.so[2992b000+2d3000]
-so if anyone knows how to fix this open a issue!
+
+so if anyone knows how to fix this open an issue!
 
 If you are able to get an untested module working, please make an issue about it so we can add it to the tested list and create an example
 
@@ -115,7 +116,7 @@ Just a quick note about ports: some games use TCP, some games use UDP. Make sure
 
 ## Environment Variables
 ### JDK Versions
-| Name | Description | Default Value|
+| Name | Description | Default Value |
 |-|-|-|
 | `JDK_VERSIONS` | Space separated list OpenJDK Versions to be installed. OpenJDK is required by Minecraft. If you plan to not use Minecraft then leave this blank. Supported versions: `9`, `10`, `11`, `12`, `13`, `14`, `15` | No Default. Leaving this blank will not install OpenJDK |
 
@@ -123,18 +124,9 @@ Just a quick note about ports: some games use TCP, some games use UDP. Make sure
 - If you need OpenJDK 9, 11 and 13 installed, set `JDK_VERSIONS="9 11 13"`
 
 ### Debug
-| Name | Description | Default Value|
-|-|-|-|
-| `DEBUG` | Set `true` to show AMP startup output in the docker log | `false` |
-
-### Licence
 | Name | Description | Default Value |
 |-|-|-|
-| `LICENCE` | The licence key for CubeCoders AMP. You can retrieve or buy this on [their website.](https://manage.cubecoders.com/) | No Default. AMP will not boot without a real licence. |
-
-**Important Details:**
-- When a McMyAdmin licence is provided, the one and only instance will be a Minecraft instance. This cannot be overridden;
- you must buy a new license to use AMP with other/multiple games.
+| `DEBUG` | Set `true` to show AMP startup output in the docker log | `false` |
 
 ### Module
 | Name | Description | Default Value |
@@ -164,39 +156,12 @@ Here are the accepted values for the `MODULE` variable:
 | `srcds` | Source-based games like TF2, GMod, etc. [Full List](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility#applications-running-under-the-srcds-module) |
 | `StarBound` |  |
 
-### Timezone
-| Name | Description | Default Value |
-|-|-|-|
-| `TZ` | The timezone to use in the container. Pick from the "TZ database name" column on [this page](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) | `Etc/UTC` |
-
-Example: `TZ=Australia/Melbourne`
-
-### User/Group
-| Name | Description | Default Value |
-|-|-|-|
-| `UID` | The ID of the user (on the host) who will own the ampdata volume. | `1000` |
-| `GID` | The ID of the group for the user above. | `1000` |
-
-When not specified, these both default to ID `1000`; i.e. the first non-system user on the host.
-
-### Web UI
-| Name | Description | Default Value |
-|-|-|-|
-| `PORT` | The port of the Web UI for the main instance. Since you can map this to any port on the host, there's hardly a reason to change it. | `8080` |
-| `USERNAME` | The username of the admin user created on first boot. | `admin` |
-| `PASSWORD` | The password of the admin user. This value is only used when creating the new user. If you use the default value, please change it after first sign-in. | `password` |
-
 ## Volumes
 | Mount Point | Description |
 |-|-|
 | `/config` | **Required!** This volume contains everything AMP needs to run. This includes all your instances, all their game files, the web ui sign-in info, etc. Essentially, without creating this volume, AMP will be wiped on every boot. |
 
-## HTTPS / SSL / TLS
-Setting up HTTPS is independent of the Docker image. Just follow this [official guide](https://github.com/CubeCoders/AMP/wiki/Setting-up-HTTPS-with-AMP)
-and when it tells you to access `/home/AMP/.ampdata`, access the volume you mapped on the host instead. It has the same contents.
-To restart the AMP instances, just restart the Docker container.
-
-Or, just put [CloudFlare](https://www.cloudflare.com/) and its free SSL cert in front of your web UI and save yourself hours of pain.
+**See other variables on the official [README](https://github.com/MitchTalmadge/AMP-dockerized/)**
 
 ## Upgrading AMP
 To upgrade, all you have to do is pull our latest Docker image. We automatically check for AMP updates daily so there may be some delay when an update is released to when the image is updated. To do a force upgrade, open a console to the container and executing `amp upgrade`. This will upgrade all modules to the latest version available.
