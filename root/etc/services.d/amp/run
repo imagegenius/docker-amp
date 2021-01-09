@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 redirect_cmd() {
-	if [ "${DEBUG}" = "true" ]; then
+	if [[ "${DEBUG}" == "true" ]]; then
 		"$@"
 	else
 		"$@" >/dev/null 2>&1

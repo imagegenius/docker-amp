@@ -54,7 +54,7 @@ jobs:
           docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild -c '\
             apk info -v | sort >/tmp/package_versions.txt'
 
-      - name: Update README.md
+      - name: Update README
         env:
           AMP_RELEASE: ${{ steps.variables.outputs.VERSION }}
         run: |
@@ -75,7 +75,7 @@ jobs:
           docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG}
           docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${VERSION}
 
-      - name: Push README.md To Docker Hub
+      - name: Sync README With Docker Hub
         uses: peter-evans/dockerhub-description@v2
         with:
           username: vcxpz
