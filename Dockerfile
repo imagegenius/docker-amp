@@ -16,7 +16,7 @@ RUN set -x && \
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # runtime stage
-FROM vcxpz/baseimage-glibc
+FROM vcxpz/baseimage-alpine-glibc
 
 # set version label
 ARG BUILD_DATE
@@ -30,7 +30,8 @@ ENV \
    HOME=/home/abc \
    USERNAME=admin \
    PASSWORD=password \
-   MODULE=ADS
+   MODULE=ADS \
+   S6_SERVICES_GRACETIME=60000
 
 RUN set -x && \
    echo "**** install build packages ****" && \
