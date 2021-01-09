@@ -1,4 +1,4 @@
-
+JRE
 
 ## docker-amp
 [![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/repository/docker/vcxpz/amp) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/amp?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-amp/actions?query=workflow%3A"Auto+Builder+CI")
@@ -115,13 +115,13 @@ Here's a rough (and potentially incorrect) list of default ports for the various
 Just a quick note about ports: some games use TCP, some games use UDP. Make sure you are using the right protocol. Don't fall into the trap of accidentally mapping a TCP port for a UDP game -- you won't be able to connect.
 
 ## Environment Variables
-### JDK Versions
+### JRE Versions
 | Name | Description | Default Value |
 |-|-|-|
-| `JDK_VERSIONS` | Space separated list OpenJDK Versions to be installed. OpenJDK is required by Minecraft. If you plan to not use Minecraft then leave this blank. Supported versions: `9`, `10`, `11`, `12`, `13`, `14`, `15` | No Default. Leaving this blank will not install OpenJDK |
+| `JRE_VERSIONS` | Space separated list JRE Versions to be installed. JRE is required by Minecraft. If you plan to not use Minecraft then leave this blank. Supported versions: `9`, `10`, `11`, `12`, `13`, `14`, `15` | No Default. Leaving this blank will not install JRE |
 
 **Example:**
-- If you need OpenJDK 9, 11 and 13 installed, set `JDK_VERSIONS="9 11 13"`
+- If you need JRE 9, 11 and 13 installed, set `JRE_VERSIONS="9 11 13"`
 
 ### Debug
 | Name | Description | Default Value |
