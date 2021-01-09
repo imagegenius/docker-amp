@@ -46,7 +46,7 @@ jobs:
 
       - name: Test The Docker Image
         run: |
-          export RUN_ARGS="-e DEBUG=true -e TESTRUN=true"
+          export RUN_ARGS="-e DEBUG=true -e TEST_RUN=true"
           curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
 
       - name: Get New Package Versions From Image
