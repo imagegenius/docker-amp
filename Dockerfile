@@ -46,9 +46,7 @@ RUN set -x && \
       socat \
       tmux \
       unzip && \
-   userdel -rf abc || true && \
-   useradd -u 911 -U -d /home/abc -m -s /bin/bash abc && \
-   usermod -G users abc && \
+   usermod -d /home/abc -m -s /bin/bash abc && \
    mkdir -p \
       /app/amp/ && \
    echo "**** download ampinstmgr.zip ****" && \
@@ -64,9 +62,9 @@ RUN set -x && \
    curl -o \
       /app/amp/AMPCache-${VERSION//.}.zip -L \
       "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
+   echo "**** cleanup ****" && \
    apk del --purge \
       build-dependencies && \
-   echo "**** cleanup ****" && \
    rm -rf \
       /tmp/*
 
