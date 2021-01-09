@@ -48,7 +48,9 @@ RUN set -x && \
       unzip && \
    usermod -d /home/abc -m -s /bin/bash abc && \
    mkdir -p \
-      /app/amp/ && \
+      /app/amp/ \
+      /home/abc && \
+   chown abc:abc /home/abc && \
    echo "**** download ampinstmgr.zip ****" && \
    curl -o \
       /tmp/ampinstmgr.zip -L \
