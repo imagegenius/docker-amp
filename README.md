@@ -30,7 +30,7 @@ docker run -d \
   --restart unless-stopped \
   vcxpz/amp
 ```
-[![auto build](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/amp.xml)
+[![template](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/amp.xml)
 
 ## Please Note
 As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container. The easiest way to do a graceful shutdown is to open a console to the container and executing `amp stop`. This command basically does `s6-svc -to /var/run/s6/services/amp`. Which sends a SIGTERM to AMP then tells `s6` not to restart AMP after the service it is terminated.
