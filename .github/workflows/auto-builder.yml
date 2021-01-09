@@ -71,6 +71,6 @@ jobs:
           VERSION: ${{ steps.variables.outputs.VERSION }}
         run: |
           docker tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG}
-          docker tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${VERSION}
+          docker tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:alpine-${VERSION}
           docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG}
           docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:alpine-${VERSION}
