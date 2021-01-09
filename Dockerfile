@@ -46,6 +46,7 @@ RUN set -x && \
       socat \
       tmux \
       unzip && \
+   echo "**** ensure abc has a shell ****" && \
    usermod -d /home/abc -m -s /bin/bash abc && \
    mkdir -p \
       /app/amp/ \
