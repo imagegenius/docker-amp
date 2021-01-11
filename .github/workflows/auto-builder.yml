@@ -12,7 +12,11 @@ jobs:
   latest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: alpine
+          fetch-depth: 0
 
       - name: Set Enviroment Variables
         id: variables
