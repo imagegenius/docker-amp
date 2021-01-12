@@ -67,7 +67,7 @@ jobs:
       - name: Test The Docker Image
         run: |
           export IMAGE="${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild"
-          export RUN_ARGS=""
+          export RUN_ARGS="-e DEBUG=true -e TEST_RUN=true"
           curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
 
       - name: Build And Push The Docker Image
