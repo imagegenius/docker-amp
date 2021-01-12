@@ -24,7 +24,6 @@ docker run -d \
   -e PASSWORD= `#webui password` \
   -e LICENCE= `#see below` \
   -e MODULE= `#see below` \
-  -e JDK_VERSIONS= `#see below` \
   -v <path to appdata>:/config \
   --mac-address=xx:xx:xx:xx:xx:xx `#see below` \
   --restart unless-stopped \
@@ -94,14 +93,6 @@ Here's a rough (and potentially incorrect) list of default ports for the various
 Just a quick note about ports: some games use TCP, some games use UDP. Make sure you are using the right protocol. Don't fall into the trap of accidentally mapping a TCP port for a UDP game -- you won't be able to connect.
 
 ## Environment Variables
-### JRE Versions
-| Name | Description | Default Value |
-|-|-|-|
-| `JRE_VERSIONS` | Space separated list JRE Versions to be installed. JRE is required by Minecraft. If you plan to not use Minecraft then leave this blank. Supported versions: `9`, `10`, `11`, `12`, `13`, `14`, `15` | No Default. Leaving this blank will not install JRE |
-
-**Example:**
-- If you need JRE 9, 11 and 13 installed, set `JRE_VERSIONS="9 11 13"`
-
 ### Debug
 | Name | Description | Default Value |
 |-|-|-|

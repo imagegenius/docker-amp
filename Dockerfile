@@ -26,6 +26,7 @@ RUN set -x && \
       iputils \
       procps \
       socat \
+      openjdk11-jre-headless \
       tmux \
       unzip && \
    echo "**** ensure abc has a shell ****" && \
