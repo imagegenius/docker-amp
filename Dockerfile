@@ -1,32 +1,14 @@
-# get required libraries from ubuntu
-FROM steamcmd/steamcmd:ubuntu-18 as builder
-
-RUN set -x && \
-   apt-get update && \
-   apt-get install -y --no-install-recommends \
-      libncurses5:i386 \
-      libtcmalloc-minimal4:i386 && \
-   mkdir -p \
-      /out/lib/ \
-      /out/usr/lib/ && \
-   cp /lib/i386-linux-gnu/* /out/lib/ && \
-   cp -r /usr/lib/i386-linux-gnu/* /out/usr/lib/ && \
-   echo "**** done preparing libraries ****"
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# runtime stage
 FROM vcxpz/baseimage-alpine-glibc
 
 # set version label
 ARG BUILD_DATE
-ARG VERSION
-LABEL build_version="AMP version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+ARG AMP_RELEASE
+LABEL build_version="AMP version:- ${AMP_RELEASE} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
 ENV \
-   AMP_VERSION=${VERSION} \
+   AMP_RELEASE=${AMP_RELEASE} \
    HOME=/home/abc \
    USERNAME=admin \
    PASSWORD=password \
@@ -61,18 +43,15 @@ RUN set -x && \
       /tmp/ampinstmgr.zip -d \
       /app/amp/ && \
    ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
-   echo "**** download AMPCache-${VERSION//.}.zip ****" && \
+   echo "**** download AMPCache-${AMP_RELEASE//.}.zip ****" && \
    curl -o \
-      /app/amp/AMPCache-${VERSION//.}.zip -L \
+      /app/amp/AMPCache-${AMP_RELEASE//.}.zip -L \
       "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
    echo "**** cleanup ****" && \
    apk del --purge \
       build-dependencies && \
    rm -rf \
       /tmp/*
-
-# copy files from builder
-COPY --from=builder /out /
 
 # add local files
 COPY root/ /

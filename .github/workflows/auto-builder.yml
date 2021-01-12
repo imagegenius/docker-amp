@@ -18,40 +18,69 @@ jobs:
           ref: alpine
           fetch-depth: 0
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        id: buildx
+        with:
+          install: true
+
       - name: Set Enviroment Variables
         id: variables
         env:
           DOCKERHUB_USER: vcxpz
           DOCKERHUB_IMAGE: amp
           DOCKERIMAGE_TAG: alpine
+          PLATFORMS: linux/amd64,linux/arm64,linux/arm/v7
         run: |
           echo "DOCKERHUB_IMAGE=${DOCKERHUB_IMAGE}" >>$GITHUB_ENV
           echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
           echo "DOCKERIMAGE_TAG=${DOCKERIMAGE_TAG}" >>$GITHUB_ENV
-          echo "::set-output name=VERSION::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-${DOCKERHUB_IMAGE}/releases/latest" | jq -r .tag_name)"
+          echo "::set-output name=AMP_RELEASE::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-${DOCKERHUB_IMAGE}/releases/latest" | jq -r .tag_name)"
           echo "::set-output name=USER_IMAGE::${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}"
+          echo "PLATFORMS=${PLATFORMS}" >>$GITHUB_ENV
 
       - name: Docker Login
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo ${DOCKER_PASSWORD} | docker login -u ${DOCKERHUB_USER} --password-stdin
+        uses: docker/login-action@v1
+        with:
+          username: vcxpz
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Github Login
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
 
-      - name: Build The Docker Image
+      - name: Build And Push The Docker Image (CI Build)
         env:
-          VERSION: ${{ steps.variables.outputs.VERSION }}
+          AMP_RELEASE: ${{ steps.variables.outputs.AMP_RELEASE }}
         run: |
-          docker build --no-cache --pull . --file Dockerfile --build-arg VERSION="${VERSION}" --build-arg BUILD_DATE="$(date +%Y-%m-%d)" --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild
+          docker build \
+            --platform=${PLATFORMS} \
+            --output "type=image,push=true" \
+            --build-arg AMP_RELEASE=${AMP_RELEASE} \
+            --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild \
+            --file Dockerfile .
 
       - name: Test The Docker Image
         run: |
-          export RUN_ARGS="-e DEBUG=true -e TEST_RUN=true"
+          export IMAGE="${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild"
+          export RUN_ARGS=""
           curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
+
+      - name: Build And Push The Docker Image
+        env:
+          AMP_RELEASE: ${{ steps.variables.outputs.AMP_RELEASE }}
+        run: |
+          docker build \
+            --platform=${PLATFORMS} \
+            --output "type=image,push=true" \
+            --build-arg AMP_RELEASE=${AMP_RELEASE} \
+            --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG} \
+            --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${AMP_RELEASE} \
+            --file Dockerfile .
 
       - name: Get New Package Versions From Image
         run: |
@@ -60,7 +89,7 @@ jobs:
 
       - name: Update README
         env:
-          AMP_RELEASE: ${{ steps.variables.outputs.VERSION }}
+          AMP_RELEASE: ${{ steps.variables.outputs.AMP_RELEASE }}
         run: |
           chmod +x update_version_info.sh && ./update_version_info.sh
 
@@ -70,11 +99,9 @@ jobs:
           git commit -m 'Bot Updating Files' || echo "No Changes"
           git push || echo "No Changes"
 
-      - name: Tag And Push Docker Image
-        env:
-          VERSION: ${{ steps.variables.outputs.VERSION }}
-        run: |
-          docker tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG}
-          docker tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:alpine-${VERSION}
-          docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG}
-          docker push ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:alpine-${VERSION}
+      - name: Sync README With Docker Hub
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: vcxpz
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ steps.variables.outputs.USER_IMAGE }}

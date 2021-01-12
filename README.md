@@ -1,11 +1,11 @@
-JRE
-
 ## docker-amp
 [![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/amp) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/amp?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-amp/actions?query=workflow%3A"Auto+Builder+CI")
 
 Fork of [MitchTalmadge/AMP-dockerized](https://github.com/MitchTalmadge/AMP-dockerized/)
 
 [AMP](https://cubecoders.com/AMP) is short for Application Management Panel. It's CubeCoders next-generation server administration software built for both users, and service providers. It supports both Windows and Linux based servers and allows you to manage all your game servers from a single web interface.
+
+**The :alpine branch does not support Steam servers**
 
 ## Version Information
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![amp](https://img.shields.io/badge/amp-2.0.9.0-blue?style=for-the-badge)
@@ -36,22 +36,11 @@ docker run -d \
 As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container. The easiest way to do a graceful shutdown is to open a console to the container and executing `amp stop`. This command basically does `s6-svc -to /var/run/s6/services/amp`. Which sends a SIGTERM to AMP then tells `s6` not to restart AMP after the service it is terminated.
 
 ## Supported Modules
-**Tested and Working:**
-- Minecraft Java Edition
-- Minecraft Bedrock Edition
+**Will Work:**
+- Java applications such as Minecraft Java, Minecraft Bedrock + others
 
-**Untested:**
+**Won't Work:**
 - [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
-
-From what i've tested srcds does not work.  I get this error message:
-
-    segfault at 0 ip 0000000029af3e13 sp 00000000ff8e8a80 error 6 in engine_srv.so[2992b000+2d3000]
-
-so if anyone knows how to fix this open an issue!
-
-If you are able to get an untested module working, please make an issue about it so we can add it to the tested list and create an example
-
-If you are *not* able to get a module working, make an issue and we can work together to figure out a solution!
 
 ## MAC Address (Important)
 AMP is designed to detect hardware changes and will de-activate all instances when something significant changes.
@@ -99,18 +88,8 @@ Here's a rough (and potentially incorrect) list of default ports for the various
 | Module Name | Default Ports |
 |-|-|
 | `ADS` | No additional ports. |
-| `ARK` | UDP 27015 & UDP 7777 & UDP 7778 ([Guide](https://ark.gamepedia.com/Dedicated_Server_Setup)) |
-| `Arma3` | UDP 2302 to UDP 2306 ([Guide](https://community.bistudio.com/wiki/Arma_3_Dedicated_Server)) |
-| `Factorio` | UDP 34197 ([Guide](https://wiki.factorio.com/Multiplayer)) |
-| `FiveM` | UDP 30120 & TCP 30120 ([Guide](https://docs.fivem.net/docs/server-manual/setting-up-a-server/)) |
-| `Generic` | Completely depends on what you do with it. |
-| `JC2MP` | UDP 27015 & UDP 7777 & UDP 7778 (Unconfirmed!) |
 | `McMyAdmin` | TCP 25565 |
 | `Minecraft` | TCP 25565 (Java) or UDP 19132 (Bedrock) |
-| `Rust` | UDP 28015 ([Guide](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)) |
-| `SevenDays` | UDP 26900 to UDP 26902 & TCP 26900 ([Guide](https://developer.valvesoftware.com/wiki/7_Days_to_Die_Dedicated_Server)) |
-| `srcds` | Depends on the game. Usually UDP 27015. ([List of games under srcds](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility#applications-running-under-the-srcds-module)) |
-| `StarBound` | TCP 21025 ([Guide](https://starbounder.org/Guide:Setting_Up_Multiplayer)) |
 
 Just a quick note about ports: some games use TCP, some games use UDP. Make sure you are using the right protocol. Don't fall into the trap of accidentally mapping a TCP port for a UDP game -- you won't be able to connect.
 
@@ -143,18 +122,8 @@ Here are the accepted values for the `MODULE` variable:
 | Module Name | Description |
 |-|-|
 | `ADS` | Application Deployment Service. Used to manage multiple modules. Need multiple game servers? Pick this. |
-| `ARK` |  |
-| `Arma3` |  |
-| `Factorio` |  |
-| `FiveM` |  |
-| `Generic` | For advanced users. You can craft your own module for any other game using this. You're on your own here. |
-| `JC2MP` | Just Cause 2 |
 | `McMyAdmin` | If you have a McMyAdmin Licence, this will be picked for you no matter what. It is equivalent to `Minecraft`. |
 | `Minecraft` | Includes Java (Spigot, Bukkit, Paper, etc.) and Bedrock servers. |
-| `Rust` |  |
-| `SevenDays` | 7-Days To Die |
-| `srcds` | Source-based games like TF2, GMod, etc. [Full List](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility#applications-running-under-the-srcds-module) |
-| `StarBound` |  |
 
 ## Volumes
 | Mount Point | Description |
