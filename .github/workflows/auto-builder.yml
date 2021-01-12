@@ -33,7 +33,7 @@ jobs:
           DOCKERHUB_USER: vcxpz
           DOCKERHUB_IMAGE: amp
           DOCKERIMAGE_TAG: alpine
-          PLATFORMS: linux/amd64,linux/arm64,linux/arm/v7
+          PLATFORMS: linux/amd64
         run: |
           echo "DOCKERHUB_IMAGE=${DOCKERHUB_IMAGE}" >>$GITHUB_ENV
           echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
