@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OVERLAY_VERSION=$(cat package_versions.txt | grep -E "s6-overlay.*?-" | sed -n 1p | cut -c 12- | sed -E 's/-r.*//g')
+OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-alpine-glibc/main/version_info.json" | jq -r .overlay_version)
 
 OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
 OLD_AMP_RELEASE=$(cat version_info.json | jq -r .amp_release)
