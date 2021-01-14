@@ -53,23 +53,6 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
 
-      - name: Build And Push The Docker Image (CI Build)
-        env:
-          AMP_RELEASE: ${{ steps.variables.outputs.AMP_RELEASE }}
-        run: |
-          docker build \
-            --platform=${PLATFORMS} \
-            --output "type=image,push=true" \
-            --build-arg AMP_RELEASE=${AMP_RELEASE} \
-            --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild \
-            --file Dockerfile .
-
-      - name: Test The Docker Image
-        run: |
-          export IMAGE="${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:cibuild"
-          export RUN_ARGS="-e DEBUG=true -e TEST_RUN=true"
-          curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
-
       - name: Build And Push The Docker Image
         env:
           AMP_RELEASE: ${{ steps.variables.outputs.AMP_RELEASE }}
