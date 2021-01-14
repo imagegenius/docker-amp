@@ -1,4 +1,5 @@
 ## docker-amp
+
 [![docker hub](https://img.shields.io/badge/docker_hub-link-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/vcxpz/amp) ![docker image size](https://img.shields.io/docker/image-size/vcxpz/amp?style=for-the-badge&logo=docker) [![auto build](https://img.shields.io/badge/docker_builds-automated-blue?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-amp/actions?query=workflow%3A"Auto+Builder+CI")
 
 Fork of [MitchTalmadge/AMP-dockerized](https://github.com/MitchTalmadge/AMP-dockerized/)
@@ -8,40 +9,46 @@ Fork of [MitchTalmadge/AMP-dockerized](https://github.com/MitchTalmadge/AMP-dock
 **The :alpine branch does not support Steam servers**
 
 ## Version Information
+
 ![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![amp](https://img.shields.io/badge/amp-2.0.9.0-blue?style=for-the-badge)
 
 **[See here for a list of packages](https://github.com/hydazz/docker-amp/blob/main/package_versions.txt)**
 
 ## Usage
-```
-docker run -d \
-  --name=amp \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=Australia/Melbourne \
-  -p 8080:8080 \
-  -e USERNAME= `#webui username` \
-  -e PASSWORD= `#webui password` \
-  -e LICENCE= `#see below` \
-  -e MODULE= `#see below` \
-  -v <path to appdata>:/config \
-  --mac-address=xx:xx:xx:xx:xx:xx `#see below` \
-  --restart unless-stopped \
-  vcxpz/amp
-```
+
+    docker run -d \
+      --name=amp \
+      -e PUID=1000 \
+      -e PGID=1000 \
+      -e TZ=Australia/Melbourne \
+      -p 8080:8080 \
+      -e USERNAME= `#webui username` \
+      -e PASSWORD= `#webui password` \
+      -e LICENCE= `#see below` \
+      -e MODULE= `#see below` \
+      -v :/config \
+      --mac-address=xx:xx:xx:xx:xx:xx `#see below` \
+      --restart unless-stopped \
+      vcxpz/amp
+
 [![template](https://img.shields.io/badge/unraid_template-ff8c2f?style=for-the-badge&logo=docker?color=d1aa67)](https://github.com/hydazz/docker-templates/blob/main/hydaz/amp.xml)
 
 ## Please Note
+
 As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container. The easiest way to do a graceful shutdown is to open a console to the container and executing `amp stop`. This command basically does `s6-svc -to /var/run/s6/services/amp`. Which sends a SIGTERM to AMP then tells `s6` not to restart AMP after the service it is terminated.
 
 ## Supported Modules
+
 **Will Work:**
-- Java applications such as Minecraft Java, Minecraft Bedrock + others
+
+-   Java applications such as Minecraft Java, Minecraft Bedrock + others
 
 **Won't Work:**
-- [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
+
+-   [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
 
 ## MAC Address (Important)
+
 AMP is designed to detect hardware changes and will de-activate all instances when something significant changes.
 This is to stop people from sharing pre-activated instances and bypassing the licencing server. One way of detecting
 changes is to look at the MAC address of the host's network card. A change here will de-activate instances.
@@ -62,46 +69,52 @@ The instructions to do so are as follows:
 
 **Windows**
 
-- Visit this page: https://miniwebtool.com/mac-address-generator/
-- Put `02:42:AC` in as the prefix
-- Choose the format with colons `:`
-- Generate
+-   Visit this page:
+-   Put `02:42:AC` in as the prefix
+-   Choose the format with colons `:`
+-   Generate
 
 ###
 
-- Copy the generated MAC and use it when starting the container.
-  - For `docker run`, use the following flag: (Substitute your generated MAC)
+-   Copy the generated MAC and use it when starting the container.
 
-    `--mac-address="02:42:AC:XX:XX:XX"`
-  - For Docker Compose, use the following key next to `image`:
+    -   For `docker run`, use the following flag: (Substitute your generated MAC)
 
-    `mac_address: 02:42:AC:XX:XX:XX`
+        `--mac-address="02:42:AC:XX:XX:XX"`
+
+    -   For Docker Compose, use the following key next to `image`:
+
+        `mac_address: 02:42:AC:XX:XX:XX`
 
 If you have a unique network situation, a random MAC may not work for you. In that case you will need to come up with your own solution to prevent address conflicts.
 
 If you need help with any of this, please make an issue.
 
 ## Ports
+
 Here's a rough (and potentially incorrect) list of default ports for the various modules. Each module also exposes port 8080 for the Web UI (can be changed with environment variables). If you find an inaccuracy, open an issue!
 
-| Module Name | Default Ports |
-|-|-|
-| `ADS` | No additional ports. |
-| `McMyAdmin` | TCP 25565 |
+| Module Name | Default Ports                           |
+| ----------- | --------------------------------------- |
+| `ADS`       | No additional ports.                    |
+| `McMyAdmin` | TCP 25565                               |
 | `Minecraft` | TCP 25565 (Java) or UDP 19132 (Bedrock) |
 
 Just a quick note about ports: some games use TCP, some games use UDP. Make sure you are using the right protocol. Don't fall into the trap of accidentally mapping a TCP port for a UDP game -- you won't be able to connect.
 
 ## Environment Variables
+
 ### Debug
-| Name | Description | Default Value |
-|-|-|-|
-| `DEBUG` | Set `true` to show AMP startup output in the docker log | `false` |
+
+| Name    | Description                                             | Default Value |
+| ------- | ------------------------------------------------------- | ------------- |
+| `DEBUG` | Set `true` to show AMP startup output in the docker log | `false`       |
 
 ### Module
-| Name | Description | Default Value |
-|-|-|-|
-| `MODULE` | Which Module to use for the main instance created by this image. | `ADS` |
+
+| Name     | Description                                                      | Default Value |
+| -------- | ---------------------------------------------------------------- | ------------- |
+| `MODULE` | Which Module to use for the main instance created by this image. | `ADS`         |
 
 To run multiple game servers under this image, use the default value of `ADS` (Application Deployment Service) which allows you to create various modules from the web ui.
 
@@ -110,18 +123,20 @@ To be clear, this Docker image creates ONE instance by default. If you want to c
 
 Here are the accepted values for the `MODULE` variable:
 
-| Module Name | Description |
-|-|-|
-| `ADS` | Application Deployment Service. Used to manage multiple modules. Need multiple game servers? Pick this. |
+| Module Name | Description                                                                                                   |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| `ADS`       | Application Deployment Service. Used to manage multiple modules. Need multiple game servers? Pick this.       |
 | `McMyAdmin` | If you have a McMyAdmin Licence, this will be picked for you no matter what. It is equivalent to `Minecraft`. |
-| `Minecraft` | Includes Java (Spigot, Bukkit, Paper, etc.) and Bedrock servers. |
+| `Minecraft` | Includes Java (Spigot, Bukkit, Paper, etc.) and Bedrock servers.                                              |
 
 ## Volumes
-| Mount Point | Description |
-|-|-|
-| `/config` | **Required!** This volume contains everything AMP needs to run. This includes all your instances, all their game files, the web ui sign-in info, etc. Essentially, without creating this volume, AMP will be wiped on every boot. |
+
+| Mount Point | Description                                                                                                                                                                                                                       |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/config`   | **Required!** This volume contains everything AMP needs to run. This includes all your instances, all their game files, the web ui sign-in info, etc. Essentially, without creating this volume, AMP will be wiped on every boot. |
 
 **See other variables on the official [README](https://github.com/MitchTalmadge/AMP-dockerized/)**
 
 ## Upgrading AMP
+
 To upgrade, all you have to do is pull our latest Docker image. We automatically check for AMP updates daily so there may be some delay when an update is released to when the image is updated. To do a force upgrade, open a console to the container and executing `amp upgrade`. This will upgrade all modules to the latest version available.

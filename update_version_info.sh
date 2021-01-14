@@ -2,8 +2,8 @@
 
 OVERLAY_VERSION=$(curl -sX GET "https://raw.githubusercontent.com/hydazz/docker-baseimage-alpine-glibc/main/version_info.json" | jq -r .overlay_version)
 
-OLD_OVERLAY_VERSION=$(cat version_info.json | jq -r .overlay_version)
-OLD_AMP_RELEASE=$(cat version_info.json | jq -r .amp_release)
+OLD_OVERLAY_VERSION=$(jq <version_info.json -r .overlay_version)
+OLD_AMP_RELEASE=$(jq <version_info.json -r .amp_release)
 
 sed -i \
 	-e "s/${OLD_OVERLAY_VERSION}/${OVERLAY_VERSION}/g" \
