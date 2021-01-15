@@ -36,7 +36,7 @@ RUN set -x && \
       /home/abc && \
    chown abc:abc /home/abc && \
    echo "**** download ampinstmgr.zip ****" && \
-   curl -o \
+   curl --silent -o \
       /tmp/ampinstmgr.zip -L \
       "http://cubecoders.com/Downloads/ampinstmgr.zip" && \
    echo "**** unzip ampinstmgr and make symlinks ****" && \
@@ -45,7 +45,7 @@ RUN set -x && \
       /app/amp/ && \
    ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
    echo "**** download AMPCache-${AMP_RELEASE//.}.zip ****" && \
-   curl -o \
+   curl --silent -o \
       /app/amp/AMPCache-${AMP_RELEASE//.}.zip -L \
       "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
    echo "**** cleanup ****" && \
