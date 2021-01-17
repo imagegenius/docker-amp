@@ -81,3 +81,10 @@ jobs:
           git add -A
           git commit -m 'Bot Updating Files' || echo "No Changes"
           git push || echo "No Changes"
+
+      - name: Sync README With Docker Hub
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: vcxpz
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ steps.variables.outputs.USER_IMAGE }}
