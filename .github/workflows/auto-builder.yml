@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: alpine
+          ref: main
           fetch-depth: 0
 
       - name: Set up QEMU
@@ -32,8 +32,8 @@ jobs:
         env:
           DOCKERHUB_USER: vcxpz
           DOCKERHUB_IMAGE: amp
-          DOCKERIMAGE_TAG: alpine
-          PLATFORMS: linux/amd64
+          DOCKERIMAGE_TAG: latest
+          PLATFORMS: linux/amd64,linux/arm64
         run: |
           echo "DOCKERHUB_IMAGE=${DOCKERHUB_IMAGE}" >>$GITHUB_ENV
           echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
