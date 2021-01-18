@@ -43,6 +43,7 @@ jobs:
           docker build \
             --platform=linux/amd64,linux/arm64 \
             --output "type=image,push=true" \
+            --build-arg BUILD_DATE="$(date +%Y-%m-%d)"
             --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
             --tag vcxpz/amp:latest \
             --tag vcxpz/amp:$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
@@ -50,8 +51,8 @@ jobs:
 
       - name: Get New Package Versions From Image
         run: |
-          docker run --rm --entrypoint /bin/sh -v "$PWD":/tmp vcxpz/amp:latest -c "\
-            apk info -v | sort >/tmp/package_versions.txt"
+          docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/amp:latest -c '\
+            apk info -v | sort >/tmp/package_versions.txt'
 
       - name: Update README
         run: |
