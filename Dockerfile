@@ -40,7 +40,7 @@ RUN set -x && \
       /tmp/ampinstmgr.zip -L \
       "http://cubecoders.com/Downloads/ampinstmgr.zip" && \
    echo "**** unzip ampinstmgr and make symlinks ****" && \
-   unzip \
+   unzip -q \
       /tmp/ampinstmgr.zip -d \
       /app/amp/ && \
    ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
