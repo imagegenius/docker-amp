@@ -2,13 +2,13 @@ FROM vcxpz/baseimage-alpine-glibc:latest
 
 # set version label
 ARG BUILD_DATE
-ARG AMP_RELEASE
-LABEL build_version="AMP version:- ${AMP_RELEASE} Build-date:- ${BUILD_DATE}"
+ARG VERSION
+LABEL build_version="AMP version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
 ENV \
-   AMP_RELEASE=${AMP_RELEASE} \
+   VERSION=${VERSION} \
    HOME=/home/abc \
    USERNAME=admin \
    PASSWORD=password \
@@ -44,9 +44,9 @@ RUN set -x && \
       /tmp/ampinstmgr.zip -d \
       /app/amp/ && \
    ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
-   echo "**** download AMPCache-${AMP_RELEASE//.}.zip ****" && \
+   echo "**** download AMPCache-${VERSION//.}.zip ****" && \
    curl --silent -o \
-      /app/amp/AMPCache-${AMP_RELEASE//.}.zip -L \
+      /app/amp/AMPCache-${VERSION//.}.zip -L \
       "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
    echo "**** cleanup ****" && \
    apk del --purge \

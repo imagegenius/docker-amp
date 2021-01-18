@@ -3,7 +3,7 @@ name: Auto Builder CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: "10 0 * * 0" # L3 image
+    - cron: "10 0 * * 0"
   release:
     types:
       - released
@@ -27,21 +27,6 @@ jobs:
         with:
           install: true
 
-      - name: Set Enviroment Variables
-        id: variables
-        env:
-          DOCKERHUB_USER: vcxpz
-          DOCKERHUB_IMAGE: amp
-          DOCKERIMAGE_TAG: latest
-          PLATFORMS: linux/amd64,linux/arm64
-        run: |
-          echo "DOCKERHUB_IMAGE=${DOCKERHUB_IMAGE}" >>$GITHUB_ENV
-          echo "DOCKERHUB_USER=${DOCKERHUB_USER}" >>$GITHUB_ENV
-          echo "DOCKERIMAGE_TAG=${DOCKERIMAGE_TAG}" >>$GITHUB_ENV
-          echo "::set-output name=AMP_RELEASE::$(curl -sX GET "https://api.github.com/repos/hydazz/docker-${DOCKERHUB_IMAGE}/releases/latest" | jq -r .tag_name)"
-          echo "::set-output name=USER_IMAGE::${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}"
-          echo "PLATFORMS=${PLATFORMS}" >>$GITHUB_ENV
-
       - name: Docker Login
         uses: docker/login-action@v1
         with:
@@ -54,32 +39,29 @@ jobs:
           git config --global user.name "github-actions"
 
       - name: Build And Push The Docker Image
-        env:
-          AMP_RELEASE: ${{ steps.variables.outputs.AMP_RELEASE }}
         run: |
           docker build \
-            --platform=${PLATFORMS} \
+            --platform=linux/amd64,linux/arm64 \
             --output "type=image,push=true" \
-            --build-arg AMP_RELEASE=${AMP_RELEASE} \
-            --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG} \
-            --tag ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${AMP_RELEASE} \
+            --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
+            --tag vcxpz/amp:latest \
+            --tag vcxpz/amp:$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
             --file Dockerfile .
 
       - name: Get New Package Versions From Image
         run: |
-          docker run --rm --entrypoint '/bin/sh' -v "$PWD":/tmp ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG} -c '\
-            apk info -v | sort >/tmp/package_versions.txt'
+          docker run --rm --entrypoint /bin/sh -v "$PWD":/tmp ${DOCKERHUB_USER}/${DOCKERHUB_IMAGE}:${DOCKERIMAGE_TAG} -c "\
+            apk info -v | sort >/tmp/package_versions.txt"
 
       - name: Update README
-        env:
-          AMP_RELEASE: ${{ steps.variables.outputs.AMP_RELEASE }}
         run: |
+          export APP_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name)
           chmod +x update_version_info.sh && ./update_version_info.sh
 
       - name: Commit And Push Changes To Github
         run: |
           git add -A
-          git commit -m 'Bot Updating Files' || echo "No Changes"
+          git commit -m "Bot Updating Files" || echo "No Changes"
           git push || echo "No Changes"
 
       - name: Sync README With Docker Hub
@@ -87,4 +69,4 @@ jobs:
         with:
           username: vcxpz
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ steps.variables.outputs.USER_IMAGE }}
+          repository: vcxpz/amp
