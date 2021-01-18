@@ -18,41 +18,41 @@ ENV \
 RUN set -x && \
    echo "**** install build packages ****" && \
    apk add --no-cache --virtual=build-dependencies \
-      ca-certificates-mono && \
+     ca-certificates-mono && \
    echo "**** install runtime packages ****" && \
    apk add --no-cache --upgrade \
-      curl \
-      git \
-      iputils \
-      procps \
-      socat \
-      openjdk11-jre-headless \
-      tmux \
-      unzip && \
+     curl \
+     git \
+     iputils \
+     procps \
+     socat \
+     openjdk11-jre-headless \
+     tmux \
+     unzip && \
    echo "**** ensure abc has a shell ****" && \
    usermod -d /home/abc -m -s /bin/bash abc && \
    mkdir -p \
-      /app/amp/ \
-      /home/abc && \
+     /app/amp/ \
+     /home/abc && \
    chown abc:abc /home/abc && \
    echo "**** download ampinstmgr.zip ****" && \
    curl --silent -o \
-      /tmp/ampinstmgr.zip -L \
-      "http://cubecoders.com/Downloads/ampinstmgr.zip" && \
+     /tmp/ampinstmgr.zip -L \
+     "http://cubecoders.com/Downloads/ampinstmgr.zip" && \
    echo "**** unzip ampinstmgr and make symlinks ****" && \
    unzip -q \
-      /tmp/ampinstmgr.zip -d \
-      /app/amp/ && \
+     /tmp/ampinstmgr.zip -d \
+     /app/amp/ && \
    ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
    echo "**** download AMPCache-${VERSION//.}.zip ****" && \
    curl --silent -o \
-      /app/amp/AMPCache-${VERSION//.}.zip -L \
-      "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
+     /app/amp/AMPCache-${VERSION//.}.zip -L \
+     "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
    echo "**** cleanup ****" && \
    apk del --purge \
-      build-dependencies && \
+     build-dependencies && \
    rm -rf \
-      /tmp/*
+     /tmp/*
 
 # add local files
 COPY root/ /
