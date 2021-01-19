@@ -53,7 +53,7 @@ jobs:
 
       - name: Get New Package Versions From Image
         run: |
-          docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/ci-build:ci-build -c '\
+          docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/amp:latest -c '\
             apk info -v | sort >/tmp/package_versions.txt'
 
       - name: Update README
