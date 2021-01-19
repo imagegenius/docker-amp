@@ -65,13 +65,13 @@ jobs:
 
       - name: Get New Package Versions From Image
         run: |
-          docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/amp:latest -c '\
+          docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/ci-build:ci-build -c '\
             apk info -v | sort >/tmp/package_versions.txt'
 
       - name: Update README
         run: |
           export APP_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name)
-          chmod +x update_version_info.sh && ./update_version_info.sh
+          chmod +x .github/update_readme.sh && .github/update_readme.sh
 
       - name: Commit And Push Changes To Github
         run: |
