@@ -38,21 +38,6 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
 
-      - name: Build The Docker Image For Testing
-        run: |
-          docker build \
-            --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
-            --tag vcxpz/ci-build:ci-build \
-            --build-arg TAG=edge \
-            --file Dockerfile .
-
-      - name: Test The Docker Image
-        run: |
-          export IMAGE="vcxpz/ci-build:ci-build"
-          export TEST_SEARCH="\[services.d\] done."
-          export RUN_ARGS="-e DEBUG=true -e TEST_RUN=true"
-          curl -sSL https://raw.githubusercontent.com/hydazz/scripts/main/docker/docker-ci.sh | bash
-
       - name: Build And Push The Docker Image
         run: |
           docker buildx build \
