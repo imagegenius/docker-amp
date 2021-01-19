@@ -11,7 +11,7 @@ on:
       - released
 
 jobs:
-  latest:
+  edge:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,6 +43,7 @@ jobs:
           docker build \
             --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
             --tag vcxpz/ci-build:ci-build \
+            --build-arg TAG=edge \
             --file Dockerfile .
 
       - name: Test The Docker Image
@@ -57,10 +58,12 @@ jobs:
           docker buildx build \
             --platform=linux/amd64,linux/arm64 \
             --output "type=image,push=true" \
+            --build-arg TAG=edge \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
             --tag vcxpz/amp:latest \
             --tag vcxpz/amp:$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
+            --tag vcxpz/amp:edge \
             --file Dockerfile .
 
       - name: Get New Package Versions From Image
@@ -85,3 +88,4 @@ jobs:
           username: vcxpz
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: vcxpz/amp
+
