@@ -6,11 +6,9 @@ Fork of [MitchTalmadge/AMP-dockerized](https://github.com/MitchTalmadge/AMP-dock
 
 [AMP](https://cubecoders.com/AMP) is short for Application Management Panel. It's CubeCoders next-generation server administration software built for both users, and service providers. It supports both Windows and Linux based servers and allows you to manage all your game servers from a single web interface.
 
-**The :alpine branch does not support Steam servers**
-
 ## Version Information
 
-![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![s6 overlay](https://img.shields.io/badge/s6_overlay-2.1.0.2-blue?style=for-the-badge) ![amp](https://img.shields.io/badge/amp-2.0.9.0-blue?style=for-the-badge)
+![alpine](https://img.shields.io/badge/alpine-edge-0D597F?style=for-the-badge&logo=alpine-linux) ![amp](https://img.shields.io/badge/amp-2.0.9.0-blue?style=for-the-badge)
 
 See [package_versions.txt](package_versions.txt) for a full list of the packages and package versions used in this image
 
