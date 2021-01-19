@@ -11,7 +11,7 @@ on:
       - released
 
 jobs:
-  edge:
+  alpine-edge:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
