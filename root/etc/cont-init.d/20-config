@@ -1,10 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-# Echo init finish for test runs
-if [ -n "${TEST_RUN}" ]; then
-	echo '[services.d] done.'
-fi
-
 mkdir -p \
 	/config/{instances,Steam,.steam}/
 
