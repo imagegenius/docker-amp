@@ -8,13 +8,12 @@ LABEL build_version="AMP version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ENV \
-   VERSION=${VERSION} \
-   HOME=/home/abc \
-   USERNAME=admin \
-   PASSWORD=password \
-   MODULE=ADS \
-   S6_SERVICES_GRACETIME=60000
+ENV VERSION=${VERSION} \
+    HOME=/home/abc \
+    USERNAME=admin \
+    PASSWORD=password \
+    MODULE=ADS \
+    S6_SERVICES_GRACETIME=60000
 
 RUN set -x && \
    echo "**** install build packages ****" && \
