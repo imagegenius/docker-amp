@@ -26,7 +26,7 @@ See [package_versions.txt](package_versions.txt) for a full list of the packages
       -e PASSWORD= \`#webui password\` \\
       -e LICENCE= \`#see below\` \\
       -e MODULE= \`#see below\` \\
-      -v :/config \\
+      -v <path to appdata>:/config \\
       --mac-address=xx:xx:xx:xx:xx:xx \`#see below\` \\
       --restart unless-stopped \\
       vcxpz/amp
@@ -35,7 +35,7 @@ See [package_versions.txt](package_versions.txt) for a full list of the packages
 
 ## Please Note
 
-As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container. The easiest way to do a graceful shutdown is to open a console to the container and executing \`amp stop\`. This command basically does \`s6-svc -to /var/run/s6/services/amp\`. Which sends a SIGTERM to AMP then tells \`s6\` not to restart AMP after the service it is terminated.
+As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container. The easiest way to do a graceful shutdown is to open a console to the container and execute \`amp stop\`. This command basically does \`s6-svc -to /var/run/s6/services/amp\`. Which sends a SIGTERM to AMP then tells \`s6\` not to restart AMP after the service it is terminated.
 
 ## Supported Modules
 
@@ -103,12 +103,6 @@ Here's a rough (and potentially incorrect) list of default ports for the various
 Just a quick note about ports: some games use TCP, some games use UDP. Make sure you are using the right protocol. Don't fall into the trap of accidentally mapping a TCP port for a UDP game -- you won't be able to connect.
 
 ## Environment Variables
-
-### Debug
-
-| Name    | Description                                             | Default Value |
-| ------- | ------------------------------------------------------- | ------------- |
-| \`DEBUG\` | Set \`true\` to show AMP startup output in the docker log | \`false\`       |
 
 ### Module
 

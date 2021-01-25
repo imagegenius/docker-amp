@@ -44,9 +44,9 @@ RUN set -x && \
      /tmp/ampinstmgr.zip -d \
      /app/amp/ && \
    ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
-   echo "**** download AMPCache-${VERSION//.}.zip ****" && \
+   echo "**** download AMPCache-${VERSION//./}.zip ****" && \
    curl --silent -o \
-     /app/amp/AMPCache-${VERSION//.}.zip -L \
+     /app/amp/AMPCache-${VERSION//./}.zip -L \
      "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
    echo "**** cleanup ****" && \
    apk del --purge \
@@ -56,10 +56,6 @@ RUN set -x && \
 
 # add local files
 COPY root/ /
-
-# http healthcheck
-HEALTHCHECK --start-period=10s --timeout=5s \
-   CMD wget -qO /dev/null 'http://localhost' || exit 1
 
 # ports and volumes
 EXPOSE 8080
