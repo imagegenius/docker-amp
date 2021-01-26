@@ -133,4 +133,4 @@ Here are the accepted values for the \`MODULE\` variable:
 
 ## Upgrading AMP
 
-To upgrade, all you have to do is pull our latest Docker image. We automatically check for AMP updates daily so there may be some delay when an update is released to when the image is updated. To do a force upgrade, open a console to the container and executing \`amp upgrade\`. This will upgrade all modules to the latest version available." >README.md
+To upgrade, all you have to do is pull the latest Docker image. We automatically check for AMP updates daily so there may be some delay when an update is released to when the image is updated. To do a force upgrade, open a console to the container and executing \`amp upgrade\`. This will upgrade all modules to the latest version available." >README.md
