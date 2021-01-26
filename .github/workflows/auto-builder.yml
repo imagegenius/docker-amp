@@ -4,8 +4,7 @@ name: Auto Builder CI
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "20 0 * * 0"
+  repository_dispatch:
   release:
     types:
       - released
