@@ -55,11 +55,6 @@ jobs:
           docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/amp:latest -c '\
             apk info -v | sort >/tmp/package_versions.txt'
 
-      - name: Update README
-        run: |
-          export APP_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name)
-          chmod +x .github/update_readme.sh && .github/update_readme.sh
-
       - name: Commit And Push Changes To Github
         run: |
           git add -A
