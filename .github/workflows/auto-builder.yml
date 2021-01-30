@@ -10,7 +10,7 @@ on:
       - released
 
 jobs:
-  alpine-edge:
+  alpine-latest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,12 +42,11 @@ jobs:
           docker buildx build \
             --platform=linux/amd64,linux/arm64 \
             --output "type=image,push=true" \
-            --build-arg TAG=edge \
+            --build-arg TAG=latest \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
-            --tag vcxpz/amp:latest \
             --tag vcxpz/amp:$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
-            --tag vcxpz/amp:edge \
+            --tag vcxpz/amp:latest \
             --file Dockerfile .
 
       - name: Get New Package Versions From Image
@@ -58,10 +57,10 @@ jobs:
       - name: Commit And Push Changes To Github
         run: |
           git add -A
-          git commit -m "Bot Updating Files" || echo "No Changes"
-          git push || echo "No Changes"
+          git commit -m "Bot Updating Files" || true
+          git push || true
 
-      - name: Sync README With Docker Hub
+      - name: Sync README.md With Docker Hub
         uses: peter-evans/dockerhub-description@v2
         with:
           username: vcxpz
