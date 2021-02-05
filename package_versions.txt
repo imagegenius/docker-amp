@@ -7,7 +7,7 @@ busybox-1.33.0-r1
 ca-certificates-20191127-r5
 ca-certificates-bundle-20191127-r5
 coreutils-8.32-r2
-curl-7.74.0-r0
+curl-7.75.0-r0
 expat-2.2.10-r1
 git-2.30.0-r0
 glibc-2.32-r0
@@ -20,7 +20,7 @@ libattr-2.4.48-r0
 libc-utils-0.7.2-r3
 libcap-2.47-r0
 libcrypto1.1-1.1.1i-r0
-libcurl-7.74.0-r0
+libcurl-7.75.0-r0
 libevent-2.1.12-r1
 libffi-3.3-r2
 libgcc-10.2.1_pre1-r3
@@ -42,7 +42,7 @@ pcre2-10.36-r0
 procps-3.3.16-r0
 readline-8.1.0-r0
 s6-ipcserver-2.10.0.1-r0
-scanelf-1.2.8-r0
+scanelf-1.2.9-r0
 shadow-4.8.1-r0
 skalibs-2.10.0.1-r0
 socat-1.7.4.1-r0
