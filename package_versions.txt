@@ -18,7 +18,7 @@ java-common-0.3-r0
 libacl-2.2.53-r0
 libattr-2.4.48-r0
 libc-utils-0.7.2-r3
-libcap-2.47-r0
+libcap-2.48-r0
 libcrypto1.1-1.1.1i-r0
 libcurl-7.75.0-r0
 libevent-2.1.12-r1
