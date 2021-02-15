@@ -42,7 +42,6 @@ jobs:
           docker buildx build \
             --platform=linux/amd64,linux/arm64 \
             --output "type=image,push=true" \
-            --build-arg TAG=latest \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --build-arg VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
             --tag vcxpz/amp:$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name) \
