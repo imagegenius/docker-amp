@@ -19,8 +19,8 @@ jobs:
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
-          VERSION=$(curl -sX GET "https://cubecoders.com/AMPVersions.json" | jq -r .AMPCore)
-          OLD_VERSION=$(curl -sX GET "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r .tag_name)
+          VERSION=$(curl -sL "https://cubecoders.com/AMPVersions.json" | jq -r '.AMPCore')
+          OLD_VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name')
           printf '{
                "tag_name": "'${VERSION}'",
                "target_commitish": "'${main}'",
