@@ -98,7 +98,7 @@ Just a quick note about ports: some games use TCP, some games use UDP. Make sure
 
 ## Environment Variables
 
-#### Module
+### Module
 
 | Name     | Description                                                      | Default Value |
 | -------- | ---------------------------------------------------------------- | ------------- |
