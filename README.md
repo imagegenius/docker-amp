@@ -35,11 +35,11 @@ As it takes more than 10 seconds (the default timeout for Docker) for AMP to do 
 
 **Will Work:**
 
-- Java applications such as Minecraft Java, Minecraft Bedrock + others
+-   Java applications such as Minecraft Java, Minecraft Bedrock + others
 
 **Won't Work:**
 
-- [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
+-   [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
 
 ## MAC Address (Important)
 
@@ -63,22 +63,22 @@ echo $RANDOM | md5 | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5
 
 **Windows**
 
-- Visit this page:
-- Put `02:42:AC` in as the prefix
-- Choose the format with colons `:`
-- Generate
+-   Visit this page:
+-   Put `02:42:AC` in as the prefix
+-   Choose the format with colons `:`
+-   Generate
 
 ##
 
-- Copy the generated MAC and use it when starting the container.
+-   Copy the generated MAC and use it when starting the container.
 
-  - For `docker run`, use the following flag: (Substitute your generated MAC)
+    -   For `docker run`, use the following flag: (Substitute your generated MAC)
 
-    `--mac-address="02:42:AC:XX:XX:XX"`
+        `--mac-address="02:42:AC:XX:XX:XX"`
 
-  - For Docker Compose, use the following key next to `image`:
+    -   For Docker Compose, use the following key next to `image`:
 
-    `mac_address: 02:42:AC:XX:XX:XX`
+        `mac_address: 02:42:AC:XX:XX:XX`
 
 If you have a unique network situation, a random MAC may not work for you. In that case you will need to come up with your own solution to prevent address conflicts.
 
