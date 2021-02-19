@@ -37,6 +37,16 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
 
+      - name: Build The Docker Image Locally
+        run: |
+          docker buildx build \
+            --platform=amd64 \
+            --output "type=docker" \
+            --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
+            --build-arg VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name') \
+            --tag vcxpz/ci-build:ci-build \
+            --file Dockerfile .
+
       - name: Build And Push The Docker Image
         run: |
           docker buildx build \
@@ -50,7 +60,7 @@ jobs:
 
       - name: Get New Package Versions From Image
         run: |
-          docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/amp:latest -c '\
+          docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/ci-build:ci-build -c '\
             apk info -v | sort >/tmp/package_versions.txt'
 
       - name: Commit And Push Changes To Github
