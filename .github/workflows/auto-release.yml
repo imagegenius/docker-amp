@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create Tag
+      - name: Create Version
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
