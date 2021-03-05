@@ -37,23 +37,6 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
 
-      - name: Check For Updates
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VERSION=$(curl -sL "https://cubecoders.com/AMPVersions.json" | jq -r '.AMPCore')
-          OLD_VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name')
-          printf '{
-               "tag_name": "'${VERSION}'",
-               "target_commitish": "'${main}'",
-               "name": "'${VERSION}'",
-               "body": "Upgrading AMP '${OLD_VERSION}' to '${VERSION}'",
-               "draft": false,
-               "prerelease": false
-          }' >releasebody.json
-          curl -H "Authorization: token ${TOKEN}" -X POST https://api.github.com/repos/hydazz/docker-amp/releases -d @releasebody.json
-          rm releasebody.json
-
       - name: Build The Docker Image Locally
         run: |
           docker buildx build \
