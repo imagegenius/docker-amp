@@ -19,7 +19,7 @@ RUN \
 	apk add --no-cache --virtual=build-dependencies \
 		ca-certificates-mono && \
 	echo "**** install runtime packages ****" && \
-	apk add --no-cache --upgrade \
+	apk add --no-cache \
 		curl \
 		git \
 		iputils \
