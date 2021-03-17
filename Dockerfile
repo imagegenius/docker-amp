@@ -14,7 +14,7 @@ ENV VERSION=${VERSION} \
 	MODULE=ADS \
 	S6_SERVICES_GRACETIME=60000
 
-RUN \
+RUN set -xe && \
 	echo "**** install build packages ****" && \
 	apk add --no-cache --virtual=build-dependencies \
 		ca-certificates-mono && \
@@ -35,16 +35,16 @@ RUN \
 		/home/abc && \
 	chown abc:abc /home/abc && \
 	echo "**** download ampinstmgr.zip ****" && \
-	curl --silent -o \
+	curl -o \
 		/tmp/ampinstmgr.zip -L \
 		"http://cubecoders.com/Downloads/ampinstmgr.zip" && \
 	echo "**** unzip ampinstmgr and make symlinks ****" && \
-	unzip -q \
+	unzip \
 		/tmp/ampinstmgr.zip -d \
 		/app/amp/ && \
 	ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
 	echo "**** download AMPCache-${VERSION//./}.zip ****" && \
-	curl --silent -o \
+	curl -o \
 		/app/amp/AMPCache-${VERSION//./}.zip -L \
 		"http://cubecoders.com/Downloads/AMP_Latest.zip" && \
 	echo "**** cleanup ****" && \
