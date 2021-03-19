@@ -37,7 +37,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "github-actions"
 
-      - name: Build The Docker Image Locally (amd64)
+      - name: Build the Docker Image Locally (amd64)
         run: |
           docker buildx build \
             --platform=amd64 \
@@ -47,7 +47,7 @@ jobs:
             --tag vcxpz/ci-build:ci-build \
             --file Dockerfile .
 
-      - name: Build And Push The Docker Image
+      - name: Build and Push the Docker Image
         run: |
           docker buildx build \
             --platform=linux/amd64,linux/arm64 \
@@ -63,7 +63,7 @@ jobs:
           docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/ci-build:ci-build -c '\
             apk info -v | sort >/tmp/package_versions.txt'
 
-      - name: Commit And Push Changes To Github
+      - name: Commit and Push Changes to Github
         run: |
           git add -A
           git commit -m "Bot Updating Files" || true
