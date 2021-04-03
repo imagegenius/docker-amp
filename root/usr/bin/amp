@@ -1,19 +1,20 @@
 #!/usr/bin/with-contenv bash
 
-CMD=$2
+# ~~~~~~~~~~~~~~~~~~~~~~~
+# set colours
+# ~~~~~~~~~~~~~~~~~~~~~~~
 
-if [ "$CMD" = "stop" ]; then
-	echo "Stopping AMP"
-	s6-svc -to /var/run/s6/services/amp
-	# -t send a SIGTERM to AMP
-	# -o do not restart AMP when it dies
-	exit 0
-fi
-if [ "$CMD" = "upgrade" ]; then
-	echo "Updating AMP"
+red='\033[1;31m'   # red
+green='\033[1;32m' # Green
+bold='\033[1;37m'  # white bold
+nc='\033[0m'       # no colour
+
+action=$1
+
+if [ "${action}" = "upgrade" ]; then
+	echo -e "${green}>>> ${bold}Updating AMP${nc}"
 	s6-setuidgid abc ampinstmgr UpgradeAll
-	exit 0
+else
+	echo -e "${red}>>> ERROR: ${bold}Invalid usage, use 'amp upgrade'${nc}"
+	exit 1
 fi
-
-echo "Invalid usage, use 'amp <stop/upgrade>'"
-exit 1
