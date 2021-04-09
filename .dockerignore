@@ -1,4 +1,6 @@
-**
-
-!Dockerfile
-!entrypoint/**
+.git
+.gitignore
+.github
+.gitattributes
+READMETEMPLATE.md
+README.md
