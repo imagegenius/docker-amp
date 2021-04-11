@@ -23,7 +23,7 @@ libcrypto1.1-1.1.1k-r0
 libcurl-7.76.0-r0
 libevent-2.1.12-r2
 libffi-3.3-r2
-libgcc-10.2.1_git20210328-r0
+libgcc-10.3.1_git20210409-r0
 libintl-0.21-r0
 libproc-3.3.17-r0
 libssl1.1-1.1.1k-r0
