@@ -61,7 +61,7 @@ jobs:
       - name: Get New Package Versions From Image
         run: |
           docker run --rm --entrypoint /bin/sh -v ${PWD}:/tmp vcxpz/ci-build:ci-build -c '\
-            apk info -v | sort >/tmp/package_versions.txt'
+            wget -q -O - https://raw.githubusercontent.com/hydazz/docker-utils/main/docker/package_versioner.sh | bash'
 
       - name: Commit and Push Changes to Github
         run: |
