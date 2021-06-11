@@ -9,7 +9,7 @@ ca-certificates-bundle-20191127-r5
 coreutils-8.32-r2
 curl-7.77.0-r0
 expat-2.4.1-r0
-git-2.31.1-r1
+git-2.32.0-r0
 glibc-2.33-r0
 glibc-bin-2.33-r0
 iputils-20210202-r0
