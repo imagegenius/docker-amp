@@ -47,7 +47,7 @@ shadow-4.8.1-r0
 skalibs-2.10.0.3-r0
 socat-1.7.4.1-r1
 ssl_client-1.33.1-r2
-tmux-3.2-r0
+tmux-3.2a-r0
 tzdata-2021a-r0
 unzip-6.0-r8
 utmps-0.1.0.2-r0
