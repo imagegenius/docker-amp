@@ -35,7 +35,7 @@ fi
 # upgrade instances
 OLD=$(cat /config/instances/Main/AMPVersion)
 
-if [ "${VERSION//./}" -gt "${OLD//./}" ]; then
+if [[ "${VERSION//./}" -gt "${OLD//./}" ]]; then
 	echo "Upgrading all instances from ${OLD} to ${VERSION//./}"
 	s6-setuidgid abc ampinstmgr UpgradeAll
 fi
