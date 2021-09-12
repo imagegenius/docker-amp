@@ -2,7 +2,7 @@
 
 _term() {
 	echo "Caught SIGTERM signal!"
-	redirect_cmd s6-setuidgid abc \
+	s6-setuidgid abc \
 		ampinstmgr StopAll
 }
 
