@@ -10,7 +10,7 @@ on:
       - released
 
 jobs:
-  alpine-latest:
+  latest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -50,7 +50,7 @@ jobs:
       - name: Build and Push the Docker Image
         run: |
           docker buildx build \
-            --platform=linux/amd64,linux/arm64 \
+            --platform=linux/amd64 \
             --output "type=image,push=true" \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --build-arg VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name') \

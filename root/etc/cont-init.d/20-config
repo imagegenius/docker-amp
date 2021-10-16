@@ -1,7 +1,8 @@
 #!/usr/bin/with-contenv bash
 
 mkdir -p \
-	/config/{instances,Steam,.steam}/
+	/config/{instances,Steam,.steam}/ \
+	/app/amp
 
 # setup symlinks
 [[ ! -L /home/abc/.ampdata ]] &&
@@ -41,10 +42,7 @@ if [[ "${VERSION//./}" -gt "${OLD//./}" ]]; then
 fi
 
 # set main instance to start on boot if not already.
-if [ "$FIRSTBOOT" = "true" ]; then
-	echo "Ensuring main instance will start on boot"
-	s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && ampinstmgr SetStartBoot Main || true
-fi
+s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && ampinstmgr SetStartBoot Main || true
 
 # permissions
 chown -R abc:abc \
