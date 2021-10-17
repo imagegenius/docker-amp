@@ -8,7 +8,7 @@ LABEL maintainer="hydaz"
 
 # environment settings
 ENV VERSION=${VERSION} \
-	HOME=/home/abc \
+	HOME=/config \
 	USERNAME=admin \
 	PASSWORD=password \
 	MODULE=ADS \
@@ -27,6 +27,7 @@ RUN set -xe && \
 		ca-certificates-mono \
 		git \
 		iputils-ping \
+		jq \
 		lib32gcc1 \
 		lib32stdc++6 \
 		lib32z1 \
@@ -44,13 +45,12 @@ RUN set -xe && \
 		socat \
 		tmux \
 		unzip \
-		jq \
 		wget \
 		xz-utils && \
 	echo "**** configure default java version ****" && \
 	update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java && \
 	echo "**** ensure abc has a shell ****" && \
-	usermod -d /home/abc -m -s /bin/bash abc && \
+	usermod -d /config -m -s /bin/bash abc && \
 	echo "**** install ampinstmgr ****" && \
 	apt-get install -y --no-install-recommends --download-only \
 		ampinstmgr && \
