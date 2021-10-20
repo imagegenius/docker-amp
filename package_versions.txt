@@ -196,8 +196,8 @@ libpng16-161.6.37-2
 libprocps82:3.3.16-1ubuntu2.3
 libpsl50.21.0-1ubuntu1
 libpsl50.21.0-1ubuntu1
-libpulse01:13.99.1-1ubuntu3.11
-libpulse01:13.99.1-1ubuntu3.11
+libpulse01:13.99.1-1ubuntu3.12
+libpulse01:13.99.1-1ubuntu3.12
 libreadline88.0-4
 libroken18-heimdal7.7.0+dfsg-1ubuntu1
 libroken18-heimdal7.7.0+dfsg-1ubuntu1
