@@ -313,7 +313,7 @@ socat1.7.3.3-2
 sysvinit-utils2.96-2.1ubuntu1
 tar1.30+dfsg-7ubuntu0.20.04.1
 tmux3.0a-2ubuntu0.3
-tzdata2021a-2ubuntu0.20.04
+tzdata2021e-0ubuntu0.20.04
 ubuntu-keyring2020.02.11.4
 ucf3.0038+nmu1
 unzip6.0-25ubuntu1
