@@ -1,0 +1,19 @@
+# set the required java versions to `true`, versions set to `true` will be installed on container boot.
+
+# java 7-8 does not have headless packages, headless packages are the same without the GUI parts.
+# jre-headless versions are a tiny bit smaller than the equivilant non-headless versions
+
+# jre
+openjdk7-jre='false'
+openjdk8-jre='false'
+
+# jre-headless
+openjdk9-jre-headless='false'
+openjdk10-jre-headless='false'
+openjdk11-jre-headless='false'
+openjdk12-jre-headless='false'
+openjdk13-jre-headless='false'
+openjdk14-jre-headless='false'
+openjdk15-jre-headless='false'
+openjdk16-jre-headless='false'
+openjdk17-jre-headless='false'
