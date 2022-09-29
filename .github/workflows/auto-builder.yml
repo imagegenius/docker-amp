@@ -10,8 +10,8 @@ on:
       - released
 
 jobs:
-  alpine-latest:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,7 +40,7 @@ jobs:
       - name: Build the Docker Image Locally (amd64)
         run: |
           docker buildx build \
-            --platform=amd64 \
+            --platform=linux/amd64 \
             --output "type=docker" \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --build-arg VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name') \
@@ -50,12 +50,12 @@ jobs:
       - name: Build and Push the Docker Image
         run: |
           docker buildx build \
-            --platform=linux/amd64,linux/arm64 \
+            --platform=linux/amd64 \
             --output "type=image,push=true" \
             --build-arg BUILD_DATE="$(date +%Y-%m-%d)" \
             --build-arg VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name') \
-            --tag vcxpz/amp:$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name') \
             --tag vcxpz/amp:latest \
+            --tag vcxpz/amp:$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name') \
             --file Dockerfile .
 
       - name: Get New Package Versions From Image
