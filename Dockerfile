@@ -16,6 +16,10 @@ ENV VERSION=${VERSION} \
 
 RUN set -xe && \
 	echo "**** install runtime packages ****" && \
+	curl -o \
+		/etc/apk/keys/hydaz.rsa.pub \
+		"https://packages.hyde.services/hydaz.rsa.pub" && \
+	echo "https://packages.hyde.services/alpine/apk" >>/etc/apk/repositories && \
 	apk add --no-cache \
 		git \
 		iputils \
