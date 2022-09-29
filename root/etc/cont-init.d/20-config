@@ -1,16 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-# make folders
 mkdir -p \
 	/config/.ampdata/instances/
-
-if [ -d /config/instances ]; then
-	echo "Migrating from old folder structure"
-	mv /config/instances* /config/.ampdata
-	sed -i \
-		"s|/home/abc/|/config/|g" \
-		/config/.ampdata/instances.json
-fi
 
 # copy the pre-cached AMPCache from the image
 rm -f /config/.ampdata/instances/AMPCache-*.zip
@@ -30,6 +21,7 @@ fi
 if [ ! -d /config/.ampdata/instances/Main ]; then
 	echo "Creating main instance"
 	s6-setuidgid abc ampinstmgr CreateInstance "${MODULE}" Main 0.0.0.0 8080 "${LICENCE}" "${USERNAME}" "${PASSWORD}"
+	FIRSTBOOT="true"
 fi
 
 # upgrade instances
@@ -41,4 +33,11 @@ if [[ "${VERSION//./}" -gt "${OLD//./}" ]]; then
 fi
 
 # set main instance to start on boot if not already.
-s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && s6-setuidgid abc ampinstmgr SetStartBoot Main || true
+if [ "$FIRSTBOOT" = "true" ]; then
+	echo "Ensuring main instance will start on boot"
+	s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && s6-setuidgid abc ampinstmgr SetStartBoot Main yes || true
+fi
+
+# permissions
+chown -R abc:abc \
+	/config
