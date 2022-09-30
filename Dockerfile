@@ -12,7 +12,8 @@ ENV VERSION=${VERSION} \
 	USERNAME=admin \
 	PASSWORD=password \
 	MODULE=ADS \
-	S6_SERVICES_GRACETIME=60000
+	S6_SERVICES_GRACETIME=60000 \
+	S6_VERBOSITY=2
 
 RUN set -xe && \
 	echo "**** install runtime packages ****" && \
@@ -24,7 +25,6 @@ RUN set -xe && \
 		git \
 		iputils \
 		ca-certificates-mono \
-		openjdk11-jre-headless \
 		procps \
 		jq \
 		socat \

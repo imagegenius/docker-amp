@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+# make folders
+mkdir -p \
+	/config/.ampdata/instances/
+
+# copy the pre-cached AMPCache from the image
+ln -sf /app/amp/AMPCache-*.zip /config/.ampdata/instances/
+
+# permissions
+chown -R abc:abc \
+	/config
+
+# create main instance if it does not exist
+if [ ! -d /config/.ampdata/instances/Main ]; then
+	echo "Creating main instance"
+	s6-setuidgid abc ampinstmgr CreateInstance "${MODULE}" Main 0.0.0.0 8080 "${LICENCE}" "${USERNAME}" "${PASSWORD}"
+	s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && s6-setuidgid abc ampinstmgr SetStartBoot Main yes || true
+fi
