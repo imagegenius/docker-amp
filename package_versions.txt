@@ -16,8 +16,6 @@ glibc-2.35-r0
 glibc-bin-2.35-r0
 gmp-6.2.1-r2
 iputils-20211215-r0
-java-cacerts-1.0-r1
-java-common-0.5-r0
 jq-1.6-r1
 libacl-2.3.1-r0
 libattr-2.5.1-r1
@@ -27,12 +25,10 @@ libcap-2.64-r0
 libcrypto1.1-1.1.1q-r0
 libcurl-7.83.1-r3
 libevent-2.1.12-r4
-libffi-3.4.2-r1
 libgcc-11.2.1_git20220219-r2
 libintl-0.21-r2
 libproc-3.3.17-r1
 libssl1.1-1.1.1q-r0
-libtasn1-4.18.0-r0
 linux-pam-1.5.2-r0
 mono-reference-assemblies-6.12.0.182-r0
 mono-runtime-6.12.0.182-r0
@@ -42,9 +38,6 @@ ncurses-libs-6.3_p20220521-r0
 ncurses-terminfo-base-6.3_p20220521-r0
 nghttp2-libs-1.47.0-r0
 oniguruma-6.9.8-r0
-openjdk11-jre-headless-11.0.16.1_p1-r0
-p11-kit-0.24.1-r0
-p11-kit-trust-0.24.1-r0
 pcre2-10.40-r0
 procps-3.3.17-r1
 readline-8.1.2-r0
