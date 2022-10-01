@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# install java versions supplied in JAVA_VERSIONS variable
+if [ -n "${JAVA_VERSIONS}" ]; then
+	for i in ${JAVA_VERSIONS//,/ }; do
+		if [[ "$i" =~ ^([7-9]|1[0-7])$ ]]; then
+			TO_INSTALL="openjdk${i}-jre $TO_INSTALL"
+		else
+			echo "Can't find openjdk${i}-jre! Is it a supported java version?"
+		fi
+	done
+	apk add -q $TO_INSTALL
+else
+	echo "No Java Versions specified. Skipping..."
+fi
