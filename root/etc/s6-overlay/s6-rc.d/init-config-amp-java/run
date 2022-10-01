@@ -9,7 +9,8 @@ if [ -n "${JAVA_VERSIONS}" ]; then
 			echo "Can't find openjdk${i}-jre! Is it a supported java version?"
 		fi
 	done
-	apk add -q $TO_INSTALL
+	echo "Installing versions of java: $TO_INSTALL"
+	apk add "$TO_INSTALL" &>/dev/null
 else
-	echo "No Java Versions specified. Skipping..."
+	echo "No java versions are specified in the JAVA_VERSIONS variable."
 fi
