@@ -70,7 +70,7 @@ jobs:
           git push || true
 
       - name: Sync README.md With Docker Hub
-        uses: peter-evans/dockerhub-description@v2
+        uses: peter-evans/dockerhub-description@v3
         with:
           username: hydaz
           password: ${{ secrets.DOCKER_PASSWORD }}
