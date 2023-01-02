@@ -1,0 +1,123 @@
+---
+
+# project information
+project_name: amp
+project_url: "https://cubecoders.com/AMP"
+project_logo: "https://cubecoders.com/Content/images/LogoColor.png"
+project_blurb: |
+  [AMP (Application Management Panel)]({{ project_url }}) - a simple to use and easy to install control panel and management system for hosting game servers.
+project_github_repo_url: "https://github.com/hydazz/docker-{{ project_name }}"
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+
+# container parameters
+param_container_name: "{{ project_name }}"
+param_usage_include_mac_address: true
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Appdata Path" }
+
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "8080", internal_port: "8080", port_desc: "WebUI Port" }
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use, eg. Europe/London"}
+  - { env_var: "USERNAME", env_value: "admin", desc: "Specify a username for the webUI"}
+  - { env_var: "PASSWORD", env_value: "admin", desc: "Specify a password for the webUI"}
+  - { env_var: "LICENCE", env_value: "000-000-000-000", desc: "Specify a valid license for AMP"}   
+
+# optional env variables
+opt_param_usage_include_env: true
+  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "Supported java versions range from 7-17, you can have multiple versions specified, seperated by a comma."}  
+  - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image"} 
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  ## Please Note
+
+  As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
+
+  **Java is not installed by default, see [here](where?) for more information**
+
+  ## Supported Modules
+
+  **Will Work:**
+
+  - Java applications such as Minecraft Java, Minecraft Bedrock + others
+
+  **Won't Work:**
+
+  - [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
+
+  ## MAC Address (Important)
+
+  AMP is designed to detect hardware changes and will de-activate all instances when something significant changes. This is to stop people from sharing pre-activated instances and bypassing the licencing server. One way of detecting changes is to look at the MAC address of the host's network card. A change here will de-activate instances.
+
+  By default, Docker assigns a new MAC address to a container every time it is restarted. Therefore, unless you want to painstakingly re-activate all your instances on every server reboot, you need to assign a permanent MAC address.
+
+  For most people, this can be accomplished by generating a random MAC address in Docker's acceptable range. The instructions to do so are as follows:
+
+  - Visit this page: https://miniwebtool.com/mac-address-generator/
+  - Put `02:42:AC` in as the prefix
+  - Choose the format with colons `:`
+  - Generate
+
+  - Copy the generated MAC and use it when starting the container.
+
+    - For `docker run`, use the following flag: (Substitute your generated MAC)
+
+      `--mac-address="02:42:AC:XX:XX:XX"`
+
+    - For Docker Compose, use the following key next to `image`:
+
+      `mac_address: 02:42:AC:XX:XX:XX`
+
+  If you have a unique network situation, a random MAC may not work for you. In that case you will need to come up with your own solution to prevent address conflicts.
+
+  If you need help with any of this, please make an issue.
+
+  ## Ports
+
+  Here's a rough (and potentially incorrect) list of default ports for the various modules. Each module also exposes port 8080 for the Web UI (can be changed with environment variables). If you find an inaccuracy, open an issue!
+
+  | Module Name | Default Ports                           |
+  | ----------- | --------------------------------------- |
+  | `ADS`       | No additional ports.                    |
+  | `McMyAdmin` | TCP 25565                               |
+  | `Minecraft` | TCP 25565 (Java) or UDP 19132 (Bedrock) |
+
+  Just a quick note about ports: some games use TCP, some games use UDP. Make sure you are using the right protocol. Don't fall into the trap of accidentally mapping a TCP port for a UDP game -- you won't be able to connect.
+
+  ## Environment Variables
+
+  ###  Java Versions
+
+  | Name | Description | Default Value |
+  | -------- | ---------------------------------------------------------------- | ------------- |
+  | `JAVA_VERSIONS` | Set this to the java versions you need, java is not installed by default and must be set here. Supported java versions range from 7-17, you can have multiple versions specified, seperated by a comma. Example: `7,9,13`... | `None` |
+
+  ### Module
+
+  | Name     | Description                                                      | Default Value |
+  | -------- | ---------------------------------------------------------------- | ------------- |
+  | `MODULE` | Which Module to use for the main instance created by this image. | `ADS`         |
+
+  To run multiple game servers under this image, use the default value of `ADS` (Application Deployment Service) which allows you to create various modules from the web ui.
+
+  To be clear, this Docker image creates ONE instance by default. If you want to create more, use `ADS` as the first instance, and create the rest with the web UI. Otherwise, you can pick any other module from the list.
+
+  Here are the accepted values for the `MODULE` variable:
+
+  | Module Name | Description                                                                                                   |
+  | ----------- | ------------------------------------------------------------------------------------------------------------- |
+  | `ADS`       | Application Deployment Service. Used to manage multiple modules. Need multiple game servers? Pick this.       |
+  | `McMyAdmin` | If you have a McMyAdmin Licence, this will be picked for you no matter what. It is equivalent to `Minecraft`. |
+  | `Minecraft` | Includes Java (Spigot, Bukkit, Paper, etc.) and Bedrock servers.                                              |
+
+# changelog
+changelogs:
+  - { date: "1.02.23:", desc: "Initial Release." }
