@@ -15,6 +15,8 @@ available_architectures:
 # container parameters
 param_container_name: "{{ project_name }}"
 param_usage_include_mac_address: true
+param_mac_address: "00:00:00:00:00:00"
+param_mac_address_desc: "Set the mac_address for the license check."
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Appdata Path" }
@@ -24,15 +26,20 @@ param_ports:
   - { external_port: "8080", internal_port: "8080", port_desc: "WebUI Port" }
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use, eg. Europe/London"}
-  - { env_var: "USERNAME", env_value: "admin", desc: "Specify a username for the webUI"}
-  - { env_var: "PASSWORD", env_value: "admin", desc: "Specify a password for the webUI"}
-  - { env_var: "LICENCE", env_value: "000-000-000-000", desc: "Specify a valid license for AMP"}   
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use, eg. Europe/London" }
+  - { env_var: "USERNAME", env_value: "admin", desc: "Specify a username for the webUI" }
+  - { env_var: "PASSWORD", env_value: "admin", desc: "Specify a password for the webUI" }
+  - { env_var: "LICENCE", env_value: "000-000-000-000", desc: "Specify a valid license for AMP" }
 
 # optional env variables
 opt_param_usage_include_env: true
-  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "Supported java versions range from 7-17, you can have multiple versions specified, seperated by a comma."}  
-  - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image"} 
+opt_param_env_vars:
+  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "you can have multiple versions specified seperated by a comma" }
+  - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image" }
+
+opt_param_usage_include_ports: true
+opt_param_ports:
+  - { external_port: "25565", internal_port: "25565", port_desc: "placeholder minecraft port (add more as required)" }
 
 # application setup block
 app_setup_block_enabled: true
