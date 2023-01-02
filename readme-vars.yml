@@ -24,15 +24,15 @@ param_ports:
   - { external_port: "8080", internal_port: "8080", port_desc: "WebUI Port" }
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use, eg. Europe/London"}
-  - { env_var: "USERNAME", env_value: "admin", desc: "Specify a username for the webUI"}
-  - { env_var: "PASSWORD", env_value: "admin", desc: "Specify a password for the webUI"}
-  - { env_var: "LICENCE", env_value: "000-000-000-000", desc: "Specify a valid license for AMP"}
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use, eg. Europe/London" }
+  - { env_var: "USERNAME", env_value: "admin", desc: "Specify a username for the webUI" }
+  - { env_var: "PASSWORD", env_value: "admin", desc: "Specify a password for the webUI" }
+  - { env_var: "LICENCE", env_value: "000-000-000-000", desc: "Specify a valid license for AMP" }
 
 # optional env variables
 opt_param_usage_include_env: true
-  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "Supported java versions range from 7-17, you can have multiple versions specified, seperated by a comma."}
-  - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image"}
+  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "Supported java versions range from 7-17, you can have multiple versions specified, seperated by a comma." }
+  - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image" }
 
 # application setup block
 app_setup_block_enabled: true
