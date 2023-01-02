@@ -31,6 +31,7 @@ param_env_vars:
 
 # optional env variables
 opt_param_usage_include_env: true
+opt_param_env_vars:
   - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "Supported java versions range from 7-17, you can have multiple versions specified, seperated by a comma." }
   - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image" }
 
