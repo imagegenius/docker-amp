@@ -4,6 +4,7 @@
 project_name: docker-amp
 external_type: na
 custom_version_command: "curl -sL https://cubecoders.com/AMPVersions.json | jq -r '.AMPCore'"
+release_type: stable
 release_tag: ubuntu
 branch: ubuntu
 repo_vars:
