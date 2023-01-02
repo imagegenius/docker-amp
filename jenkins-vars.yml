@@ -1,0 +1,26 @@
+---
+
+# jenkins variables
+project_name: docker-amp
+external_type: na
+custom_version_command: "curl -sL "https://cubecoders.com/AMPVersions.json" | jq -r '.AMPCore'"
+release_tag: latest
+branch: main
+repo_vars:
+  - BUILD_VERSION_ARG = 'AMP_VERSION'
+  - USER = 'hydazz'
+  - REPO = 'docker-amp'
+  - CONTAINER_NAME = 'amp'
+  - DOCKERHUB_IMAGE = 'hydaz/amp'
+  - DEV_DOCKERHUB_IMAGE = 'dev/amp'
+  - PR_DOCKERHUB_IMAGE = 'pipepr/amp'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH = 'false'
+  - CI = 'false'
+  - CI_WEB = 'false'
+  - CI_PORT = '8080'
+  - CI_SSL = 'false'
+  - CI_DELAY = '120'
+  - CI_DOCKERENV = 'TZ=Europe/London'
+  - CI_AUTH = ''
+  - CI_WEBPATH = ''

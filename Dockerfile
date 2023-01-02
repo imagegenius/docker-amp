@@ -2,15 +2,16 @@ FROM hydaz/baseimage-alpine-glibc:latest
 
 # set version label
 ARG BUILD_DATE
+ARG AMP_VERSION
 ARG VERSION
 LABEL build_version="AMP version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ENV VERSION=${VERSION} \
+ENV AMP_VERSION=${AMP_VERSION} \
 	HOME=/config \ 
 	USERNAME=admin \
-	PASSWORD=password \
+	PASSWORD=admin \
 	MODULE=ADS \
 	S6_SERVICES_GRACETIME=60000
 
@@ -42,12 +43,12 @@ RUN set -xe && \
 	mv /tmp/cubecoders/amp /app/ && \
 	ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
 	echo "**** download AMPCache.zip ****" && \
-	if [ -z ${VERSION} ]; then \
-		VERSION=$(curl -sL https://cubecoders.com/AMPVersions.json | \
+	if [ -z ${AMP_VERSION} ]; then \
+		AMP_VERSION=$(curl -sL https://cubecoders.com/AMPVersions.json | \
 			jq -r '.AMPCore'); \
 	fi && \
 	curl -o \
-		/app/amp/AMPCache-${VERSION//./}.zip -L \
+		/app/amp/AMPCache-${AMP_VERSION//./}.zip -L \
 		"http://cubecoders.com/Downloads/AMP_Latest.zip" && \
 	echo "**** cleanup ****" && \
 	rm -rf \
