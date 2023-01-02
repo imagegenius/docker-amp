@@ -32,8 +32,11 @@ param_env_vars:
 # optional env variables
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "Supported java versions range from 7-17, you can have multiple versions specified, seperated by a comma." }
+  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "you can have multiple versions specified seperated by a comma" }
   - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image" }
+
+opt_param_ports:
+  - { external_port: "25565", internal_port: "25565", port_desc: "placeholder minecraft port (add more as required)" }
 
 # application setup block
 app_setup_block_enabled: true
