@@ -131,4 +131,5 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "1.03.23:", desc: "Update to s6v3." }
   - { date: "1.02.23:", desc: "Initial Release." }
