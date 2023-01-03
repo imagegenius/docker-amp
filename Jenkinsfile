@@ -13,7 +13,7 @@ pipeline {
   // Configuration for the variables used for this specific repo
   environment {
     BUILDS_DISCORD=credentials('build_webhook_url')
-    github_token=credentials('github_token')
+    GITHUB_TOKEN=credentials('github_token')
     BUILD_VERSION_ARG = 'AMP_VERSION'
     USER = 'hydazz'
     REPO = 'docker-amp'
@@ -231,7 +231,7 @@ pipeline {
                 cp ${TEMPDIR}/docker-${CONTAINER_NAME}/Jenkinsfile ${TEMPDIR}/repo/${REPO}/
                 git add Jenkinsfile
                 git commit -m 'Bot Updating Templated Files'
-                git push https://Jenkins-CI:${github_token}@github.com/${USER}/${REPO}.git --all
+                git push https://Jenkins-CI:${GITHUB_TOKEN}@github.com/${USER}/${REPO}.git --all
                 echo "true" > /tmp/${COMMIT_SHA}-${BUILD_NUMBER}
                 echo "Updating Jenkinsfile"
                 rm -Rf ${TEMPDIR}
@@ -258,7 +258,7 @@ pipeline {
                 fi
                 git add ${TEMPLATED_FILES}
                 git commit -m 'Bot Updating Templated Files'
-                git push https://Jenkins-CI:${github_token}@github.com/${USER}/${REPO}.git --all
+                git push https://Jenkins-CI:${GITHUB_TOKEN}@github.com/${USER}/${REPO}.git --all
                 echo "true" > /tmp/${COMMIT_SHA}-${BUILD_NUMBER}
               else
                 echo "false" > /tmp/${COMMIT_SHA}-${BUILD_NUMBER}
@@ -282,7 +282,7 @@ pipeline {
                   git add unraid/${CONTAINER_NAME}.xml
                   git commit -m 'Bot Updating Unraid Template'
                 fi
-                git push https://Jenkins-CI:${github_token}@github.com/hydazz/templates.git --all
+                git push https://Jenkins-CI:${GITHUB_TOKEN}@github.com/hydazz/templates.git --all
               fi
               rm -Rf ${TEMPDIR}'''
         script{
@@ -371,7 +371,7 @@ pipeline {
             echo "Running on node: ${NODE_NAME}"
             echo 'Logging into Github'
             sh '''#! /bin/bash
-                  echo $github_token | docker login ghcr.io -u Jenkins-CI --password-stdin
+                  echo $GITHUB_TOKEN | docker login ghcr.io -u Jenkins-CI --password-stdin
                '''
             sh "docker buildx build --platform=linux/arm/v7 --output \"type=docker\" \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
@@ -401,7 +401,7 @@ pipeline {
             echo "Running on node: ${NODE_NAME}"
             echo 'Logging into Github'
             sh '''#! /bin/bash
-                  echo $github_token | docker login ghcr.io -u Jenkins-CI --password-stdin
+                  echo $GITHUB_TOKEN | docker login ghcr.io -u Jenkins-CI --password-stdin
                '''
             sh "docker buildx build --platform=linux/arm64 --output \"type=docker\" \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
@@ -474,7 +474,7 @@ pipeline {
                 wait
                 git add package_versions.txt
                 git commit -m 'Bot Updating Package Versions'
-                git push https://Jenkins-CI:${github_token}@github.com/${USER}/${REPO}.git --all
+                git push https://Jenkins-CI:${GITHUB_TOKEN}@github.com/${USER}/${REPO}.git --all
                 echo "true" > /tmp/packages-${COMMIT_SHA}-${BUILD_NUMBER}
                 echo "Package tag updated, stopping build process"
               else
@@ -579,7 +579,7 @@ pipeline {
             sh '''#! /bin/bash
                   set -e
                   echo $DOCKERPASS | docker login -u $DOCKERUSER --password-stdin
-                  echo $github_token | docker login ghcr.io -u Jenkins-CI --password-stdin
+                  echo $GITHUB_TOKEN | docker login ghcr.io -u Jenkins-CI --password-stdin
                   for PUSHIMAGE in "${GITHUBIMAGE}" "${IMAGE}"; do
                     docker tag ${IMAGE}:${META_TAG} ${PUSHIMAGE}:${META_TAG}
                     docker tag ${PUSHIMAGE}:${META_TAG} ${PUSHIMAGE}:ubuntu
@@ -629,7 +629,7 @@ pipeline {
             sh '''#! /bin/bash
                   set -e
                   echo $DOCKERPASS | docker login -u $DOCKERUSER --password-stdin
-                  echo $github_token | docker login ghcr.io -u Jenkins-CI --password-stdin
+                  echo $GITHUB_TOKEN | docker login ghcr.io -u Jenkins-CI --password-stdin
                   if [ "${CI}" == "false" ]; then
                     docker pull ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
                     docker pull ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
@@ -730,7 +730,7 @@ pipeline {
       }
       steps {
         echo "Pushing New tag for current commit ${META_TAG}"
-        sh '''curl -H "Authorization: token ${github_token}" -X POST https://api.github.com/repos/${USER}/${REPO}/git/tags \
+        sh '''curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/${USER}/${REPO}/git/tags \
         -d '{"tag":"'${META_TAG}'",\
              "object": "'${COMMIT_SHA}'",\
              "message": "Tagging Release '${EXT_RELEASE_CLEAN}'-'${TAG_NUMBER}' to ubuntu",\
@@ -745,7 +745,7 @@ pipeline {
                      "body": "**Image Changes:**\\n\\n'${RELEASE_NOTES}'\\n\\n**Remote Changes:**\\n\\n' > start
               printf '","draft": false,"prerelease": false}' >> releasebody.json
               paste -d'\\0' start releasebody.json > releasebody.json.done
-              curl -H "Authorization: token ${github_token}" -X POST https://api.github.com/repos/${USER}/${REPO}/releases -d @releasebody.json.done'''
+              curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/${USER}/${REPO}/releases -d @releasebody.json.done'''
       }
     }
     // Use helper container to sync the current README on master to the dockerhub endpoint
@@ -789,7 +789,7 @@ pipeline {
         environment name: 'EXIT_STATUS', value: ''
       }
       steps {
-        sh '''curl -H "Authorization: token ${github_token}" -X POST https://api.github.com/repos/${USER}/${REPO}/issues/${PULL_REQUEST}/comments \
+        sh '''curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/${USER}/${REPO}/issues/${PULL_REQUEST}/comments \
         -d '{"body": "I am a bot, here are the test results for this PR: \\n'${CI_URL}' \\n'${SHELLCHECK_URL}'"}' '''
       }
     }
@@ -804,12 +804,12 @@ pipeline {
           sh 'echo "build aborted"'
         }
         else if (currentBuild.currentResult == "SUCCESS"){
-          sh ''' curl -X POST -H "Content-Type: application/json" --data '{"avatar_url": "https://wiki.jenkins-ci.org/download/attachments/2916393/headshot.png","embeds": [{"color": 1681177,\
+          sh ''' curl -X POST -H "Content-Type: application/json" --data '{"avatar_url": "https://wiki.jenkins.io/JENKINS/attachments/2916393/57409617.png","embeds": [{"color": 1681177,\
                  "description": "**Build:**  '${BUILD_NUMBER}'\\n**CI Results:**  '${CI_URL}'\\n**ShellCheck Results:**  '${SHELLCHECK_URL}'\\n**Status:**  Success\\n**Job:** '${RUN_DISPLAY_URL}'\\n**Change:** '${CODE_URL}'\\n**External Release:**: '${RELEASE_LINK}'\\n**DockerHub:** '${DOCKERHUB_LINK}'\\n"}],\
                  "username": "Jenkins"}' ${BUILDS_DISCORD} '''
         }
         else {
-          sh ''' curl -X POST -H "Content-Type: application/json" --data '{"avatar_url": "https://wiki.jenkins-ci.org/download/attachments/2916393/headshot.png","embeds": [{"color": 16711680,\
+          sh ''' curl -X POST -H "Content-Type: application/json" --data '{"avatar_url": "https://wiki.jenkins.io/JENKINS/attachments/2916393/57409617.png","embeds": [{"color": 16711680,\
                  "description": "**Build:**  '${BUILD_NUMBER}'\\n**CI Results:**  '${CI_URL}'\\n**ShellCheck Results:**  '${SHELLCHECK_URL}'\\n**Status:**  failure\\n**Job:** '${RUN_DISPLAY_URL}'\\n**Change:** '${CODE_URL}'\\n**External Release:**: '${RELEASE_LINK}'\\n**DockerHub:** '${DOCKERHUB_LINK}'\\n"}],\
                  "username": "Jenkins"}' ${BUILDS_DISCORD} '''
         }
