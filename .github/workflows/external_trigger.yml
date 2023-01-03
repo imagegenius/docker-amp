@@ -18,7 +18,7 @@ jobs:
           fi
           echo "**** External trigger running off of main branch. To disable this trigger, set a Github secret named \"PAUSE_EXTERNAL_TRIGGER_AMP_MAIN\". ****"
           echo "**** Retrieving external version ****"
-          EXT_RELEASE=$(curl -sL https://cubecoders.com/AMPVersions.json | jq -r '.AMPCore')
+          EXT_RELEASE=$(curl -s "https://cubecoders.com/AMPVersions.json" | jq -r '. | .AMPCore')
           if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
             echo "**** Can't retrieve external version, exiting ****"
             FAILURE_REASON="Can't retrieve external version for amp branch main"
