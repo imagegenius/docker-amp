@@ -25,9 +25,16 @@ The architectures supported by this image are:
 | arm64 | ❌ | |
 | armhf| ❌ | |
 
-## Application Setup
+## Version Tags
 
-## Please Note
+This image provides various versions that are available via tags. Please read the descriptions carefully and exercise caution when using unstable or development tags.
+
+| Tag | Available | Description |
+| :----: | :----: |--- |
+| latest | ✅ | alpine image with glibc, tiny image but only java servers will work! |
+| ubuntu | ✅ | ubuntu image (limited to java servers at this time) |
+
+## Application Setup
 
 As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
 
