@@ -3,11 +3,12 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
 # set version label
 ARG BUILD_DATE
 ARG VERSION
+ARG AMP_VERSION
 LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ENV VERSION=${VERSION} \
+ENV AMP_VERSION=${AMP_VERSION} \
 	HOME=/config \
 	USERNAME=admin \
 	PASSWORD=password \
@@ -56,14 +57,14 @@ RUN set -xe && \
 		ampinstmgr && \
 	dpkg-deb -x /var/cache/apt/archives/ampinstmgr_*.deb /tmp/ampinstmgr && \
 	mv /tmp/ampinstmgr/opt/cubecoders/amp/ampinstmgr /usr/bin/ampinstmgr && \
-	if [ -z ${VERSION} ]; then \
-		VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name'); \
+	if [ -z ${AMP_VERSION} ]; then \
+		AMP_VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name'); \
 	fi && \
-	CACHE_VERSION=$(echo $VERSION | tr -d .) && \
-	echo "**** download AMPCache-${CACHE_VERSION}.zip ****" && \
+	CACHE_AMP_VERSION=$(echo $AMP_VERSION | tr -d .) && \
+	echo "**** download AMPCache-${CACHE_AMP_VERSION}.zip ****" && \
 	mkdir -p /app/amp/ && \
 	curl -o \
-		/app/amp/AMPCache-${CACHE_VERSION}.zip -L \
+		/app/amp/AMPCache-${CACHE_AMP_VERSION}.zip -L \
 		"http://cubecoders.com/Downloads/AMP_Latest.zip" && \
 	echo "**** cleanup ****" && \
 	apt-get remove -y jq && \
