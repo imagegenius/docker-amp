@@ -12,6 +12,12 @@ project_github_repo_url: "https://github.com/hydazz/docker-{{ project_name }}"
 available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
 
+# development version
+development_versions: true
+development_versions_items:
+  - { tag: "latest", desc: "alpine image with glibc, tiny image but only java servers will work!" }
+  - { tag: "ubuntu", desc: "ubuntu image (limited to java servers at this time)" }
+
 # container parameters
 param_container_name: "{{ project_name }}"
 param_usage_include_mac_address: true
@@ -44,8 +50,6 @@ opt_param_ports:
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  ## Please Note
-
   As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
 
   **Java is not installed by default, see [here](where?) for more information**
