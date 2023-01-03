@@ -15,7 +15,7 @@ ENV AMP_VERSION=${AMP_VERSION} \
 	MODULE=ADS \
 	S6_SERVICES_GRACETIME=60000
 
-RUN set -xe && \
+RUN  \
 	echo "**** install runtime packages ****" && \
 	curl -o \
 		/etc/apk/keys/hydaz.rsa.pub \
