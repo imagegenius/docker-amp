@@ -6,7 +6,7 @@ project_url: "https://cubecoders.com/AMP"
 project_logo: "https://cubecoders.com/Content/images/LogoColor.png"
 project_blurb: |
   [AMP (Application Management Panel)]({{ project_url }}) - a simple to use and easy to install control panel and management system for hosting game servers.
-project_github_repo_url: "https://github.com/hydazz/docker-{{ project_name }}"
+project_github_repo_url: "https://github.com/imagegenius/docker-{{ project_name }}"
 
 # supported architectures
 available_architectures:
