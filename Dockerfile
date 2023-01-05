@@ -1,11 +1,11 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
+FROM ghcr.io/imagegenius/baseimage-ubuntu:latest
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 ARG AMP_VERSION
-LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="hydaz"
+LABEL build_version="ImageGenius Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="hydazz"
 
 # environment settings
 ENV AMP_VERSION=${AMP_VERSION} \
