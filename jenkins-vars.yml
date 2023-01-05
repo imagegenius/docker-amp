@@ -5,17 +5,17 @@ project_name: docker-amp
 external_type: custom_json
 release_type: stable
 release_tag: latest
-branch: main
+ig_branch: main
 repo_vars:
   - JSON_URL = 'https://cubecoders.com/AMPVersions.json'
   - JSON_PATH = '.AMPCore'
   - BUILD_VERSION_ARG = 'AMP_VERSION'
-  - USER = 'hydazz'
-  - REPO = 'docker-amp'
+  - IG_USER = 'imagegenius'
+  - IG_REPO = 'docker-amp'
   - CONTAINER_NAME = 'amp'
-  - DOCKERHUB_IMAGE = 'hydaz/amp'
-  - DEV_DOCKERHUB_IMAGE = 'dev/amp'
-  - PR_DOCKERHUB_IMAGE = 'pipepr/amp'
+  - DOCKERHUB_IMAGE = 'imagegenius/amp'
+  - DEV_DOCKERHUB_IMAGE = 'igdev/amp'
+  - PR_DOCKERHUB_IMAGE = 'igpipepr/amp'
   - DIST_IMAGE = 'alpine'
   - MULTIARCH = 'false'
   - CI = 'false'
