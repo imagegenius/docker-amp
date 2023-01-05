@@ -40,7 +40,7 @@ RUN set -xe && \
 		libsdl2-2.0-0:i386 \
 		libtinfo5:i386 \
 		openjdk-11-jre-headless \
-		openjdk-16-jre-headless \
+		openjdk-17-jdk-headless \
 		openjdk-8-jre-headless \
 		procps \
 		socat \
@@ -58,7 +58,8 @@ RUN set -xe && \
 	dpkg-deb -x /var/cache/apt/archives/ampinstmgr_*.deb /tmp/ampinstmgr && \
 	mv /tmp/ampinstmgr/opt/cubecoders/amp/ampinstmgr /usr/bin/ampinstmgr && \
 	if [ -z ${AMP_VERSION} ]; then \
-		AMP_VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | jq -r '.tag_name'); \
+		AMP_VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | \
+      jq -r '.tag_name'); \
 	fi && \
 	CACHE_AMP_VERSION=$(echo $AMP_VERSION | tr -d .) && \
 	echo "**** download AMPCache-${CACHE_AMP_VERSION}.zip ****" && \
