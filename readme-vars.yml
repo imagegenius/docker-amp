@@ -32,7 +32,7 @@ param_ports:
   - { external_port: "8080", internal_port: "8080", port_desc: "WebUI Port" }
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use, eg. Europe/London" }
+  - { env_var: "TZ", env_value: "Australia/Melbourne", desc: "Specify a timezone to use, eg. Australia/Melbourne" }
   - { env_var: "USERNAME", env_value: "admin", desc: "Specify a username for the webUI" }
   - { env_var: "PASSWORD", env_value: "admin", desc: "Specify a password for the webUI" }
   - { env_var: "LICENCE", env_value: "000-000-000-000", desc: "Specify a valid license for AMP" }
