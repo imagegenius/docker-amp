@@ -9,7 +9,7 @@ binutils-common2.38-4ubuntu2.1
 binutils-x86-64-linux-gnu2.38-4ubuntu2.1
 bsdutils1:2.37.2-4ubuntu3
 ca-certificates20211016ubuntu0.22.04.1
-ca-certificates-java20190909
+ca-certificates-java20190909ubuntu1.1
 ca-certificates-mono6.12.0.182-0xamarin1+ubuntu2004b1
 coreutils8.32-4.1ubuntu1
 curl7.81.0-1ubuntu1.7
@@ -25,8 +25,8 @@ fontconfig-config2.13.1-4.2ubuntu5
 fonts-dejavu-core2.37-2build1
 gcc-12-base12.1.0-2ubuntu1~22.04
 gcc-12-base12.1.0-2ubuntu1~22.04
-git1:2.34.1-1ubuntu1.5
-git-man1:2.34.1-1ubuntu1.5
+git1:2.34.1-1ubuntu1.6
+git-man1:2.34.1-1ubuntu1.6
 gnupg2.2.27-3ubuntu2.1
 gnupg-l10n2.2.27-3ubuntu2.1
 gnupg-utils2.2.27-3ubuntu2.1
