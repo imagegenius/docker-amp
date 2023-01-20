@@ -131,7 +131,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Australia/Melbourne
       - USERNAME=admin
       - PASSWORD=admin
       - LICENCE=000-000-000-000
@@ -153,7 +153,7 @@ docker run -d \
   --mac-address=00:00:00:00:00:00 \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Europe/London \
+  -e TZ=Australia/Melbourne \
   -e USERNAME=admin \
   -e PASSWORD=admin \
   -e LICENCE=000-000-000-000 \
@@ -177,7 +177,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 25565` | placeholder minecraft port (add more as required) |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Europe/London` | Specify a timezone to use, eg. Europe/London |
+| `-e TZ=Australia/Melbourne` | Specify a timezone to use, eg. Australia/Melbourne |
 | `-e USERNAME=admin` | Specify a username for the webUI |
 | `-e PASSWORD=admin` | Specify a password for the webUI |
 | `-e LICENCE=000-000-000-000` | Specify a valid license for AMP |
