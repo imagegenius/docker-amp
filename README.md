@@ -2,9 +2,9 @@
 
 # [imagegenius/amp](https://github.com/imagegenius/docker-amp)
 
-[![GitHub Release](https://img.shields.io/github/release/imagegenius/docker-amp.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/imagegenius/docker-amp/releases)
-[![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=imagegenius.io&message=GitHub%20Package&logo=github)](https://github.com/imagegenius/docker-amp/packages)
-![Image Size](https://img.shields.io/docker/image-size/imagegenius/amp.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=docker)
+[![GitHub Release](https://img.shields.io/github/release/imagegenius/docker-amp.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/imagegenius/docker-amp/releases)
+[![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=imagegenius.io&message=GitHub%20Package&logo=github)](https://github.com/imagegenius/docker-amp/packages)
+![Image Size](https://img.shields.io/docker/image-size/imagegenius/amp/ubuntu.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=docker)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.imagegenius.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-amp%2Fjob%2Fubuntu%2F&logo=jenkins)](https://ci.imagegenius.io/job/Docker-Pipeline-Builders/job/docker-amp/job/ubuntu/)
 
 [AMP (Application Management Panel)](https://cubecoders.com/AMP) - a simple to use and easy to install control panel and management system for hosting game servers.
