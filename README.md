@@ -269,4 +269,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **24.01.23:** - Fix services starting prematurely
 * **02.01.23:** - Initial Release.
