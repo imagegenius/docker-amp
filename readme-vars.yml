@@ -131,4 +131,5 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "24.01.23:", desc: "Fix services starting prematurely" }
   - { date: "02.01.23:", desc: "Initial Release." }
