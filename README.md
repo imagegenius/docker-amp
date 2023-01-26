@@ -30,8 +30,8 @@ This image provides various versions that are available via tags. Please read th
 
 | Tag | Available | Description |
 | :----: | :----: |--- |
-| latest | ✅ | alpine image with glibc, tiny image but only java servers will work! |
-| ubuntu | ✅ | ubuntu image (limited to java servers at this time) |
+| latest | ✅ | Latest AMP Release with an Alpine base, tiny image but only java servers will work |
+| ubuntu | ✅ | Latest AMP release with an Ubuntu Base, limited to java servers at this time |
 
 ## Application Setup
 
