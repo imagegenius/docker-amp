@@ -15,8 +15,8 @@ available_architectures:
 # development version
 development_versions: true
 development_versions_items:
-  - { tag: "latest", desc: "alpine image with glibc, tiny image but only java servers will work!" }
-  - { tag: "ubuntu", desc: "ubuntu image (limited to java servers at this time)" }
+  - { tag: "latest", desc: "Latest AMP Release with an Alpine base, tiny image but only java servers will work" }
+  - { tag: "ubuntu", desc: "Latest AMP release with an Ubuntu Base, limited to java servers at this time" }
 
 # container parameters
 param_container_name: "{{ project_name }}"
