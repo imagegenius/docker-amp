@@ -15,7 +15,15 @@ available_architectures:
 # development version
 development_versions: true
 development_versions_items:
-  - { tag: "latest", desc: "Latest AMP Release with an Alpine base, tiny image but only java servers will work" }
+  - tag: "latest"
+    desc: "Latest AMP Release with an Alpine base, tiny image but only java servers will work"
+    extra: |
+      <Environment>
+          <Variable>
+              <Name>JAVA_VERSIONS</Name>
+              <Value>7,9,13</Value>
+          </Variable>
+      </Environment>
   - { tag: "ubuntu", desc: "Latest AMP release with an Ubuntu Base, limited to java servers at this time" }
 
 # container parameters
@@ -40,7 +48,6 @@ param_env_vars:
 # optional env variables
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "you can have multiple versions specified seperated by a comma" }
   - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image" }
 
 opt_param_usage_include_ports: true
@@ -52,7 +59,7 @@ app_setup_block_enabled: true
 app_setup_block: |
   As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
 
-  **Java is not installed by default, see [here](where?) for more information**
+  **Java is not installed by default, see [here](https://github.com/imagegenius/docker-amp#java-versions) for more information**
 
   ## Supported Modules
 

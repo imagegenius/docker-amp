@@ -10,7 +10,7 @@ if [ -n "${JAVA_VERSIONS}" ]; then
 		fi
 	done
 	echo "Installing versions of java: $TO_INSTALL"
-	apk add "$TO_INSTALL" &>/dev/null
+	apk add $TO_INSTALL &>/dev/null
 else
 	echo "No java versions are specified in the JAVA_VERSIONS variable."
 fi
