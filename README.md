@@ -37,7 +37,7 @@ This image provides various versions that are available via tags. Please read th
 
 As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
 
-**Java is not installed by default, see [here](where?) for more information**
+**Java is not installed by default, see [here](https://github.com/imagegenius/docker-amp#java-versions) for more information**
 
 ## Supported Modules
 
@@ -181,7 +181,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e USERNAME=admin` | Specify a username for the webUI |
 | `-e PASSWORD=admin` | Specify a password for the webUI |
 | `-e LICENCE=000-000-000-000` | Specify a valid license for AMP |
-| `-e JAVA_VERSIONS=7,9,13` | you can have multiple versions specified seperated by a comma |
+| `-e JAVA_VERSIONS=7,9,13` | (Alpine only) you can have multiple versions specified seperated by a comma |
 | `-e MODULE=ADS` | Which Module to use for the main instance created by this image |
 | `-v /config` | Appdata Path |
 
