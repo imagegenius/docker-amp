@@ -28,7 +28,6 @@ RUN set -xe && \
     ca-certificates-mono \
     git \
     iputils-ping \
-    jq \
     lib32gcc-s1 \
     lib32stdc++6 \
     lib32z1 \
