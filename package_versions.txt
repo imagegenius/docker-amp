@@ -95,9 +95,9 @@ libdbus-1-31.12.20-2ubuntu4.1
 libdebconfclient00.261ubuntu1
 libdecor-0-00.1.0-3build1
 libdecor-0-00.1.0-3build1
-libdrm22.4.110-1ubuntu1
-libdrm22.4.110-1ubuntu1
-libdrm-common2.4.110-1ubuntu1
+libdrm22.4.113-2~ubuntu0.22.04.1
+libdrm22.4.113-2~ubuntu0.22.04.1
+libdrm-common2.4.113-2~ubuntu0.22.04.1
 liberror-perl0.17029-1
 libevent-core-2.1-72.1.12-stable-1build3
 libexpat12.4.7-1ubuntu0.2
@@ -109,8 +109,8 @@ libflac81.3.3-2ubuntu0.1
 libflac81.3.3-2ubuntu0.1
 libfontconfig12.13.1-4.2ubuntu5
 libfreetype62.11.1+dfsg-1ubuntu0.1
-libgbm122.0.5-0ubuntu0.3
-libgbm122.0.5-0ubuntu0.3
+libgbm122.2.5-0ubuntu0.1~22.04.1
+libgbm122.2.5-0ubuntu0.1~22.04.1
 libgcc-s112.1.0-2ubuntu1~22.04
 libgcc-s112.1.0-2ubuntu1~22.04
 libgcrypt201.9.4-3ubuntu3
@@ -217,7 +217,6 @@ libssh-40.9.6-2build1
 libssh-40.9.6-2build1
 libssl33.0.2-0ubuntu1.7
 libssl33.0.2-0ubuntu1.7
-libstdc++612.1.0-2ubuntu1~22.04
 libstdc++612.1.0-2ubuntu1~22.04
 libsystemd0249.11-0ubuntu3.6
 libsystemd0249.11-0ubuntu3.6
