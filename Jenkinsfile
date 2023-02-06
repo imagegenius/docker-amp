@@ -20,9 +20,6 @@ pipeline {
     IG_USER = 'imagegenius'
     IG_REPO = 'docker-amp'
     CONTAINER_NAME = 'amp'
-    DOCKERHUB_IMAGE = 'imagegenius/amp'
-    DEV_DOCKERHUB_IMAGE = 'igdev/amp'
-    PR_DOCKERHUB_IMAGE = 'igpipepr/amp'
     DIST_IMAGE = 'ubuntu'
     MULTIARCH = 'false'
     CI = 'false'
@@ -30,7 +27,7 @@ pipeline {
     CI_PORT = '8080'
     CI_SSL = 'false'
     CI_DELAY = '30'
-    CI_DOCKERENV = 'TZ=Australia/Melbourne'
+    CI_DOCKERENV = ''
     CI_AUTH = ''
     CI_WEBPATH = ''
   }
