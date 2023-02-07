@@ -312,7 +312,7 @@ sensible-utils0.0.17
 socat1.7.4.1-3ubuntu4
 sysvinit-utils3.01-1ubuntu1
 tar1.34+dfsg-1build3
-tmux3.2a-4ubuntu0.1
+tmux3.2a-4ubuntu0.2
 tzdata2022g-0ubuntu0.22.04.1
 ubuntu-keyring2021.03.26
 ucf3.0043
