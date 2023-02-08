@@ -324,7 +324,7 @@ pipeline {
           --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
           --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
           --label \"org.opencontainers.image.title=Amp\" \
-          --label \"org.opencontainers.image.description=[AMP (Application Management Panel)](https://cubecoders.com/AMP) - a simple to use and easy to install control panel and management system for hosting game servers.  \" \
+          --label \"org.opencontainers.image.description=AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers. It runs on both Windows and Linux and requires no command line knowledge to get started. Everything is taken care of by its clear and intuitive web interface, making it a breeze to use.\" \
           --no-cache --pull -t ${GITHUBIMAGE}:${META_TAG} \
           --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
       }
@@ -353,7 +353,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Amp\" \
-              --label \"org.opencontainers.image.description=[AMP (Application Management Panel)](https://cubecoders.com/AMP) - a simple to use and easy to install control panel and management system for hosting game servers.  \" \
+              --label \"org.opencontainers.image.description=AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers. It runs on both Windows and Linux and requires no command line knowledge to get started. Everything is taken care of by its clear and intuitive web interface, making it a breeze to use.\" \
               --no-cache --pull -t ${GITHUBIMAGE}:amd64-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
           }
@@ -379,7 +379,7 @@ pipeline {
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.title=Amp\" \
-              --label \"org.opencontainers.image.description=[AMP (Application Management Panel)](https://cubecoders.com/AMP) - a simple to use and easy to install control panel and management system for hosting game servers.  \" \
+              --label \"org.opencontainers.image.description=AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers. It runs on both Windows and Linux and requires no command line knowledge to get started. Everything is taken care of by its clear and intuitive web interface, making it a breeze to use.\" \
               --no-cache --pull -f Dockerfile.aarch64 -t ${GITHUBIMAGE}:arm64v8-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
             sh '''docker tag ${GITHUBIMAGE}:arm64v8-${META_TAG} ghcr.io/imagegenius/igdev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
