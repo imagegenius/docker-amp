@@ -22,6 +22,7 @@ This image supports the following architectures:
 | :----: | :----: | ---- |
 | x86-64 | ✅ | amd64-\<version tag\> |
 | arm64 | ❌ | |
+| armhf | ❌ | |
 
 ## Version Tags
 
@@ -31,7 +32,6 @@ This image offers different versions via tags. Be cautious when using unstable o
 | :----: | :----: |--- |
 | latest | ✅ | Latest AMP Release with an Alpine base, tiny image but only java servers will work |
 | ubuntu | ✅ | Latest AMP release with an Ubuntu Base, limited to java servers at this time |
-
 ## Application Setup
 
 As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
@@ -130,7 +130,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Australia/Melbourne
+      - TZ=Etc/UTC
       - USERNAME=admin
       - PASSWORD=admin
       - LICENCE=000-000-000-000
@@ -152,7 +152,7 @@ docker run -d \
   --mac-address=00:00:00:00:00:00 \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Australia/Melbourne \
+  -e TZ=Etc/UTC \
   -e USERNAME=admin \
   -e PASSWORD=admin \
   -e LICENCE=000-000-000-000 \
@@ -163,9 +163,10 @@ docker run -d \
   -v <path to data>:/config \
   --restart unless-stopped \
   ghcr.io/imagegenius/amp:ubuntu
+
 ```
 
-## Container Variables
+## Variables
 
 To configure the container, pass variables at runtime using the format `<external>:<internal>`. For instance, `-p 8080:80` exposes port `80` inside the container, making it accessible outside the container via the host's IP on port `8080`.
 
@@ -176,7 +177,7 @@ To configure the container, pass variables at runtime using the format `<externa
 | `-p 25565` | placeholder minecraft port (add more as required) |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Australia/Melbourne` | Specify a timezone to use, eg. Australia/Melbourne |
+| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e USERNAME=admin` | Specify a username for the webUI |
 | `-e PASSWORD=admin` | Specify a password for the webUI |
 | `-e LICENCE=000-000-000-000` | Specify a valid license for AMP |
