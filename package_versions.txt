@@ -298,7 +298,7 @@ openjdk-11-jre-headless11.0.17+8-1ubuntu2~22.04
 openjdk-17-jdk-headless17.0.5+8-2ubuntu1~22.04
 openjdk-17-jre-headless17.0.5+8-2ubuntu1~22.04
 openjdk-8-jre-headless8u352-ga-1~22.04
-openssl3.0.2-0ubuntu1.7
+openssl3.0.2-0ubuntu1.8
 passwd1:4.8.1-2ubuntu2.1
 perl5.34.0-3ubuntu1.1
 perl-base5.34.0-3ubuntu1.1
