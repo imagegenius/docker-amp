@@ -181,7 +181,7 @@ libss2                               1.46.5-2ubuntu1.1                        de
 libssh-4                             0.9.6-2build1                            deb           
 libssl3                              3.0.2-0ubuntu1.8                         deb           
 libstdc++6                           12.1.0-2ubuntu1~22.04                    deb           
-libsystemd0                          249.11-0ubuntu3.6                        deb           
+libsystemd0                          249.11-0ubuntu3.7                        deb           
 libtasn1-6                           4.18.0-4build1                           deb           
 libtinfo5                            6.3-2                                    deb           
 libtinfo6                            6.3-2                                    deb           
