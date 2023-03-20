@@ -125,7 +125,7 @@ libkrb5-3                            1.19.2-2ubuntu0.1                        de
 libkrb5support0                      1.19.2-2ubuntu0.1                        deb           
 libksba8                             1.6.0-2ubuntu0.2                         deb           
 liblcms2-2                           2.12~rc1-2build2                         deb           
-libldap-2.5-0                        2.5.13+dfsg-0ubuntu0.22.04.1             deb           
+libldap-2.5-0                        2.5.14+dfsg-0ubuntu0.22.04.1             deb           
 libldap-common                       2.5.13+dfsg-0ubuntu0.22.04.1             deb           
 liblz4-1                             1.9.3-2build2                            deb           
 liblzma5                             5.2.5-2ubuntu1                           deb           
