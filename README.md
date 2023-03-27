@@ -6,7 +6,7 @@
 [![GitHub Package Repository](https://shields.io/badge/GitHub%20Package-blue?logo=github&logoColor=ffffff&style=for-the-badge)](https://github.com/imagegenius/docker-amp/packages)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.imagegenius.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-amp%2Fjob%2Fubuntu%2F&logo=jenkins)](https://ci.imagegenius.io/job/Docker-Pipeline-Builders/job/docker-amp/job/ubuntu/)
 
-[Amp](https://cubecoders.com/AMP) - AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers. It runs on both Windows and Linux and requires no command line knowledge to get started. Everything is taken care of by its clear and intuitive web interface, making it a breeze to use.
+[AMP](https://cubecoders.com/AMP) (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers. It runs on both Windows and Linux and requires no command line knowledge to get started. Everything is taken care of by its clear and intuitive web interface, making it a breeze to use.
 
 [![amp](https://cubecoders.com/Content/images/LogoColor.png)](https://cubecoders.com/AMP)
 
