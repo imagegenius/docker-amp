@@ -175,9 +175,9 @@ To configure the container, pass variables at runtime using the format `<externa
 | `--mac-address=` | Set the mac_address for the license check. |
 | `-p 8080` | WebUI Port |
 | `-p 25565` | placeholder minecraft port (add more as required) |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
+| `-e PUID=1000` | UID for permissions - see below for explanation |
+| `-e PGID=1000` | GID for permissions - see below for explanation |
+| `-e TZ=Etc/UTC` | Specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e USERNAME=admin` | Specify a username for the webUI |
 | `-e PASSWORD=admin` | Specify a password for the webUI |
 | `-e LICENCE=000-000-000-000` | Specify a valid license for AMP |
