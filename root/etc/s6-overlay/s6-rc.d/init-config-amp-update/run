@@ -4,8 +4,8 @@
 OLD=$(cat /config/.ampdata/instances/Main/AMPVersion)
 
 if [[ "${AMP_VERSION//./}" -gt "${OLD//./}" ]]; then
-	echo "Upgrading all instances from ${OLD} to ${AMP_VERSION//./}"
-	s6-setuidgid abc ampinstmgr UpgradeAll
+    echo "Upgrading all instances from ${OLD} to ${AMP_VERSION//./}"
+    s6-setuidgid abc ampinstmgr UpgradeAll
 fi
 
 # cleanup after ourselves

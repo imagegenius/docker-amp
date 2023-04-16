@@ -9,6 +9,6 @@ chown -R abc:abc /config
 
 # create main instance if it does not exist
 if [ ! -d /config/.ampdata/instances/Main ]; then
-	s6-setuidgid abc ampinstmgr CreateInstance "${MODULE}" Main 0.0.0.0 8080 "${LICENCE}" "${USERNAME}" "${PASSWORD}"
-	s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && s6-setuidgid abc ampinstmgr SetStartBoot Main yes || true
+    s6-setuidgid abc ampinstmgr CreateInstance "${MODULE}" Main 0.0.0.0 8080 "${LICENCE}" "${USERNAME}" "${PASSWORD}"
+    s6-setuidgid abc ampinstmgr ShowInstanceInfo Main | grep "Start on Boot" | grep "No" && s6-setuidgid abc ampinstmgr SetStartBoot Main yes || true
 fi
