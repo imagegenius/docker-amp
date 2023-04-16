@@ -125,7 +125,7 @@ libkrb5-3                            1.19.2-2ubuntu0.1                        de
 libkrb5support0                      1.19.2-2ubuntu0.1                        deb           
 libksba8                             1.6.0-2ubuntu0.2                         deb           
 liblcms2-2                           2.12~rc1-2build2                         deb           
-libldap-2.5-0                        2.5.14+dfsg-0ubuntu0.22.04.1             deb           
+libldap-2.5-0                        2.5.14+dfsg-0ubuntu0.22.04.2             deb           
 libldap-common                       2.5.14+dfsg-0ubuntu0.22.04.1             deb           
 liblz4-1                             1.9.3-2build2                            deb           
 liblzma5                             5.2.5-2ubuntu1                           deb           
@@ -181,7 +181,7 @@ libss2                               1.46.5-2ubuntu1.1                        de
 libssh-4                             0.9.6-2build1                            deb           
 libssl3                              3.0.2-0ubuntu1.8                         deb           
 libstdc++6                           12.1.0-2ubuntu1~22.04                    deb           
-libsystemd0                          249.11-0ubuntu3.7                        deb           
+libsystemd0                          249.11-0ubuntu3.9                        deb           
 libtasn1-6                           4.18.0-4build1                           deb           
 libtinfo5                            6.3-2                                    deb           
 libtinfo6                            6.3-2                                    deb           
