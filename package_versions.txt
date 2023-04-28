@@ -108,7 +108,7 @@ libgcc-s1                            12.1.0-2ubuntu1~22.04                    de
 libgcrypt20                          1.9.4-3ubuntu3                           deb           
 libgdbm-compat4                      1.23-1                                   deb           
 libgdbm6                             1.23-1                                   deb           
-libglib2.0-0                         2.72.4-0ubuntu1                          deb           
+libglib2.0-0                         2.72.4-0ubuntu2                          deb           
 libgmp10                             2:6.2.1+dfsg-3ubuntu1                    deb           
 libgnutls30                          3.7.3-4ubuntu1.2                         deb           
 libgpg-error0                        1.43-3                                   deb           
