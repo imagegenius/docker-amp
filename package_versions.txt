@@ -1,8 +1,8 @@
 NAME                                 VERSION                                  TYPE         
 US_export_policy                                                              java-archive  
 adduser                              3.118ubuntu5                             deb           
-apt                                  2.4.8                                    deb           
-apt-utils                            2.4.8                                    deb           
+apt                                  2.4.9                                    deb           
+apt-utils                            2.4.9                                    deb           
 base-files                           12ubuntu4.3                              deb           
 base-passwd                          3.5.52build1                             deb           
 bash                                 5.1-6ubuntu1                             deb           
@@ -30,8 +30,8 @@ findutils                            4.8.0-1ubuntu3                           de
 fontconfig-config                    2.13.1-4.2ubuntu5                        deb           
 fonts-dejavu-core                    2.37-2build1                             deb           
 gcc-12-base                          12.1.0-2ubuntu1~22.04                    deb           
-git                                  1:2.34.1-1ubuntu1.8                      deb           
-git-man                              1:2.34.1-1ubuntu1.8                      deb           
+git                                  1:2.34.1-1ubuntu1.9                      deb           
+git-man                              1:2.34.1-1ubuntu1.9                      deb           
 gnupg                                2.2.27-3ubuntu2.1                        deb           
 gnupg-l10n                           2.2.27-3ubuntu2.1                        deb           
 gnupg-utils                          2.2.27-3ubuntu2.1                        deb           
@@ -60,7 +60,7 @@ lib32stdc++6                         12.1.0-2ubuntu1~22.04                    de
 lib32z1                              1:1.2.11.dfsg-2ubuntu9.2                 deb           
 libacl1                              2.3.1-1                                  deb           
 libapparmor1                         3.0.4-2ubuntu2.2                         deb           
-libapt-pkg6.0                        2.4.8                                    deb           
+libapt-pkg6.0                        2.4.9                                    deb           
 libasound2                           1.2.6.1-1ubuntu1                         deb           
 libasound2-data                      1.2.6.1-1ubuntu1                         deb           
 libassuan0                           2.5.5-1build1                            deb           
@@ -240,7 +240,7 @@ openjdk-11-jre-headless              11.0.18+10-0ubuntu1~22.04                de
 openjdk-17-jdk-headless              17.0.6+10-0ubuntu1~22.04                 deb           
 openjdk-17-jre-headless              17.0.6+10-0ubuntu1~22.04                 deb           
 openjdk-8-jre-headless               8u362-ga-0ubuntu1~22.04                  deb           
-openssl                              3.0.2-0ubuntu1.8                         deb           
+openssl                              3.0.2-0ubuntu1.9                         deb           
 passwd                               1:4.8.1-2ubuntu2.1                       deb           
 perl                                 5.34.0-3ubuntu1.1                        deb           
 perl-base                            5.34.0-3ubuntu1.1                        deb           
