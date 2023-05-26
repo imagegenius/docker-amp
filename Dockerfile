@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/imagegenius/baseimage-alpine:3.17
+FROM ghcr.io/imagegenius/baseimage-alpine-glibc:latest
 
 # set version label
 ARG BUILD_DATE
@@ -21,7 +21,6 @@ RUN \
   echo "**** install runtime packages ****" && \
   apk add --no-cache \
     ca-certificates-mono \
-    gcompat \
     git \
     iputils \
     jq \
