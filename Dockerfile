@@ -15,9 +15,12 @@ ENV AMP_VERSION=${AMP_VERSION} \
   USERNAME=admin \
   PASSWORD=password \
   MODULE=ADS \
+  AMP_SUPPORT_LEVEL=UNSUPPORTED \
+  AMP_SUPPORT_TAGS="nosupport docker community unofficial" \
+  AMP_SUPPORT_URL="https://github.com/imagegenius/docker-amp/" \
   S6_SERVICES_GRACETIME=60000
 
-RUN set -xe && \
+RUN \
   echo "**** add mono and cubecoders repos ****" && \
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
   echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" >/etc/apt/sources.list.d/mono.list && \
@@ -40,9 +43,6 @@ RUN set -xe && \
     libsdl2-2.0-0 \
     libsdl2-2.0-0:i386 \
     libtinfo5:i386 \
-    openjdk-11-jre-headless \
-    openjdk-17-jdk-headless \
-    openjdk-8-jre-headless \
     procps \
     socat \
     tmux \
@@ -53,23 +53,22 @@ RUN set -xe && \
   update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java && \
   echo "**** ensure abc has a shell ****" && \
   usermod -d /config -m -s /bin/bash abc && \
-  echo "**** install ampinstmgr ****" && \
-  apt-get install -y --no-install-recommends --download-only \
-    ampinstmgr && \
-  dpkg-deb -x /var/cache/apt/archives/ampinstmgr_*.deb /tmp/ampinstmgr && \
-  mv /tmp/ampinstmgr/opt/cubecoders/amp/ampinstmgr /usr/bin/ampinstmgr && \
-  if [ -z ${AMP_VERSION} ]; then \
-    AMP_VERSION=$(curl -sL "https://api.github.com/repos/hydazz/docker-amp/releases/latest" | \
-      jq -r '.tag_name'); \
-  fi && \
-  CACHE_AMP_VERSION=$(echo $AMP_VERSION | tr -d .) && \
-  echo "**** download AMPCache-${CACHE_AMP_VERSION}.zip ****" && \
+  echo "**** download ampinstmgr.zip ****" && \
+  curl -o \
+    /tmp/ampinstmgr.tgz -L \
+    "https://repo.cubecoders.com/ampinstmgr-latest.tgz" && \
+  echo "**** unzip ampinstmgr and make symlinks ****" && \
+  tar xf \
+    /tmp/ampinstmgr.tgz -C \
+    /tmp --strip-components=1 && \
+  mv /tmp/cubecoders/amp /app/ && \
+  ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
+  echo "**** download AMPCache.zip ****" && \
   mkdir -p /app/amp/ && \
   curl -o \
-    /app/amp/AMPCache-${CACHE_AMP_VERSION}.zip -L \
+    /app/amp/AMPCache-Mainline-${AMP_VERSION//./}.zip -L \
     "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
   echo "**** cleanup ****" && \
-  apt-get remove -y jq && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm -rf \
