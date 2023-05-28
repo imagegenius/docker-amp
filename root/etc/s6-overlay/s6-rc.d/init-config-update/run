@@ -1,12 +1,14 @@
 #!/usr/bin/with-contenv bash
 
 # upgrade instances
-OLD=$(cat /config/.ampdata/instances/Main/AMPVersion)
+if [ -f /config/.ampdata/instances/Main/AMPVersion ]; then
+    OLD=$(cat /config/.ampdata/instances/Main/AMPVersion)
 
-if [[ "${AMP_VERSION//./}" -gt "${OLD//./}" ]]; then
-    echo "Upgrading all instances from ${OLD} to ${AMP_VERSION//./}"
-    s6-setuidgid abc ampinstmgr UpgradeAll
+    if [[ "${AMP_VERSION//./}" -gt "${OLD//./}" ]]; then
+        echo "Upgrading all instances from ${OLD} to ${AMP_VERSION}"
+        s6-setuidgid abc ampinstmgr UpgradeAll
+    fi
+
+    # cleanup after ourselves
+    rm /config/.ampdata/instances/AMPCache-Mainline-${AMP_VERSION//./}.zip
 fi
-
-# cleanup after ourselves
-rm -f /config/.ampdata/instances/AMPCache-*.zip
