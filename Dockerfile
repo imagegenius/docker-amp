@@ -43,6 +43,7 @@ RUN \
     libsdl2-2.0-0 \
     libsdl2-2.0-0:i386 \
     libtinfo5:i386 \
+    openjdk-17-jdk-headless \
     procps \
     socat \
     tmux \
