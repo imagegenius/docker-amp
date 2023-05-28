@@ -48,8 +48,6 @@ RUN \
     unzip \
     wget \
     xz-utils && \
-  echo "**** configure default java version ****" && \
-  update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java && \
   echo "**** ensure abc has a shell ****" && \
   usermod -d /config -m -s /bin/bash abc && \
   echo "**** download ampinstmgr.zip ****" && \
