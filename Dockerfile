@@ -21,11 +21,9 @@ ENV AMP_VERSION=${AMP_VERSION} \
   S6_SERVICES_GRACETIME=60000
 
 RUN \
-  echo "**** add mono and cubecoders repos ****" && \
+  echo "**** add mono reps ****" && \
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
   echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" >/etc/apt/sources.list.d/mono.list && \
-  apt-key adv --fetch-keys http://repo.cubecoders.com/archive.key && \
-  echo "deb http://repo.cubecoders.com/ debian/" >/etc/apt/sources.list.d/cubecoders.list && \
   echo "**** install runtime packages ****" && \
   dpkg --add-architecture i386 && \
   apt-get update && \
@@ -43,7 +41,7 @@ RUN \
     libsdl2-2.0-0 \
     libsdl2-2.0-0:i386 \
     libtinfo5:i386 \
-    openjdk-17-jdk-headless \
+    openjdk-11-jdk-headless \
     procps \
     socat \
     tmux \
