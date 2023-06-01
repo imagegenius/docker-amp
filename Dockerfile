@@ -63,7 +63,7 @@ RUN \
   echo "**** download AMPCache.zip ****" && \
   mkdir -p /app/amp/ && \
   curl -o \
-    /app/amp/AMPCache-Mainline-${AMP_VERSION//./}.zip -L \
+    /app/amp/AMPCache-Mainline-${AMP_VERSION/./}.zip -L \
     "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
   echo "**** cleanup ****" && \
   apt-get autoremove -y && \
