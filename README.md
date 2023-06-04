@@ -42,11 +42,11 @@ As it takes more than 10 seconds (the default timeout for Docker) for AMP to do 
 
 **Will Work:**
 
-- Java applications such as Minecraft Java, Minecraft Bedrock + others
+- Java applications such as Minecraft Java, Minecraft Bedrock (nukkit) + others
 
 **Won't Work:**
 
-- [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
+- [Everything Else](https://discourse.cubecoders.com/t/supported-applications-compatibility/1828#list-of-applicationsgames-supported-by-amp-and-their-support-on-each-platform-3)
 
 ## MAC Address (Important)
 
@@ -133,11 +133,11 @@ services:
       - TZ=Etc/UTC
       - USERNAME=admin
       - PASSWORD=admin
-      - LICENCE=000-000-000-000
+      - LICENCE=00000000-0000-0000-0000-000000000000
       - JAVA_VERSIONS=7,9,13 #optional
       - MODULE=ADS #optional
     volumes:
-      - <path to data>:/config
+      - path_to_appdata:/config
     ports:
       - 8080:8080
       - 25565:25565 #optional
@@ -155,12 +155,12 @@ docker run -d \
   -e TZ=Etc/UTC \
   -e USERNAME=admin \
   -e PASSWORD=admin \
-  -e LICENCE=000-000-000-000 \
+  -e LICENCE=00000000-0000-0000-0000-000000000000 \
   -e JAVA_VERSIONS=7,9,13 `#optional` \
   -e MODULE=ADS `#optional` \
   -p 8080:8080 \
   -p 25565:25565 `#optional` \
-  -v <path to data>:/config \
+  -v path_to_appdata:/config \
   --restart unless-stopped \
   ghcr.io/imagegenius/amp:latest
 
@@ -174,14 +174,14 @@ To configure the container, pass variables at runtime using the format `<externa
 | :----: | --- |
 | `--mac-address=` | Set the mac_address for the license check. |
 | `-p 8080` | WebUI Port |
-| `-p 25565` | placeholder minecraft port (add more as required) |
+| `-p 25565` | Placeholder Minecraft Port (add more as required) |
 | `-e PUID=1000` | UID for permissions - see below for explanation |
 | `-e PGID=1000` | GID for permissions - see below for explanation |
 | `-e TZ=Etc/UTC` | Specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e USERNAME=admin` | Specify a username for the webUI |
 | `-e PASSWORD=admin` | Specify a password for the webUI |
-| `-e LICENCE=000-000-000-000` | Specify a valid license for AMP |
-| `-e JAVA_VERSIONS=7,9,13` | (Alpine only) you can have multiple versions specified seperated by a comma |
+| `-e LICENCE=00000000-0000-0000-0000-000000000000` | Specify a valid license for AMP |
+| `-e JAVA_VERSIONS=7,9,13` | (Alpine only) you can have multiple versions specified, seperated by a comma |
 | `-e MODULE=ADS` | Which Module to use for the main instance created by this image |
 | `-v /config` | Appdata Path |
 
@@ -224,5 +224,6 @@ Instructions for updating containers:
 
 ## Versions
 
+* **28.05.23:** - house keeping
 * **24.01.23:** - Fix services starting prematurely
 * **02.01.23:** - Initial Release.
