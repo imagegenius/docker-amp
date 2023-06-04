@@ -24,7 +24,7 @@ param_mac_address: "00:00:00:00:00:00"
 param_mac_address_desc: "Set the mac_address for the license check."
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Appdata Path" }
+  - { vol_path: "/config", vol_host_path: "path_to_appdata", desc: "Appdata Path" }
 
 param_usage_include_ports: true
 param_ports:
@@ -34,17 +34,17 @@ param_env_vars:
   - { env_var: "TZ", env_value: "Australia/Melbourne", desc: "Specify a timezone to use, eg. Australia/Melbourne" }
   - { env_var: "USERNAME", env_value: "admin", desc: "Specify a username for the webUI" }
   - { env_var: "PASSWORD", env_value: "admin", desc: "Specify a password for the webUI" }
-  - { env_var: "LICENCE", env_value: "000-000-000-000", desc: "Specify a valid license for AMP" }
+  - { env_var: "LICENCE", env_value: "00000000-0000-0000-0000-000000000000", desc: "Specify a valid license for AMP" }
 
 # optional env variables
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "(Alpine only) you can have multiple versions specified seperated by a comma" }
+  - { env_var: "JAVA_VERSIONS", env_value: "7,9,13", desc: "(Alpine only) you can have multiple versions specified, seperated by a comma" }
   - { env_var: "MODULE", env_value: "ADS", desc: "Which Module to use for the main instance created by this image" }
 
 opt_param_usage_include_ports: true
 opt_param_ports:
-  - { external_port: "25565", internal_port: "25565", port_desc: "placeholder minecraft port (add more as required)" }
+  - { external_port: "25565", internal_port: "25565", port_desc: "Placeholder Minecraft Port (add more as required)" }
 
 # application setup block
 app_setup_block_enabled: true
@@ -57,11 +57,11 @@ app_setup_block: |
 
   **Will Work:**
 
-  - Java applications such as Minecraft Java, Minecraft Bedrock + others
+  - Java applications such as Minecraft Java, Minecraft Bedrock (nukkit) + others
 
   **Won't Work:**
 
-  - [Everything Else](https://github.com/CubeCoders/AMP/wiki/Supported-Applications-Compatibility)
+  - [Everything Else](https://discourse.cubecoders.com/t/supported-applications-compatibility/1828#list-of-applicationsgames-supported-by-amp-and-their-support-on-each-platform-3)
 
   ## MAC Address (Important)
 
@@ -130,5 +130,6 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "28.05.23:", desc: "house keeping" }
   - { date: "24.01.23:", desc: "Fix services starting prematurely" }
   - { date: "02.01.23:", desc: "Initial Release." }
