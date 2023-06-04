@@ -1,7 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-# ensure a license was set
-if [ -z "${LICENCE}" ]; then
-    echo "Error: No licence specified. You need to have a valid AMP licence from cubecoders.com specified in the LICENCE environment variable"
-    sleep infinity
-fi

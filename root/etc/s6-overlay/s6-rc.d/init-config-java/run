@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# install java versions supplied in JAVA_VERSIONS variable
+if [ -n "${JAVA_VERSIONS}" ]; then
+    apt-get update -qq
+    for i in ${JAVA_VERSIONS//,/ }; do
+        if ! apt-get install -qq -y openjdk-${i}-jre-headless; then
+            echo "Could not install openjdk-${i}-jre-headless! Is it a supported java version?"
+        else
+            echo "Installed openjdk-${i}-jre-headless"
+        fi
+    done
+else
+    echo "No java versions are specified in the 'JAVA_VERSIONS' variable."
+fi

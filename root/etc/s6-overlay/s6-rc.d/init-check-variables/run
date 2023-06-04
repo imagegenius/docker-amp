@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+check_var() {
+    if [ -z "${!1}" ]; then
+        echo "Error: No ${2} has been specified in the '${1}' variable. ${3}"
+        echo "For more information, see the README: https://github.com/imagegenius/docker-amp#variables"
+        sleep infinity
+    fi
+}
+
+#         Variable   Variable Summary   Additional Message
+check_var "LICENCE"  "licence"          "You need to have a valid AMP licence from cubecoders.com."
