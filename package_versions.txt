@@ -9,7 +9,7 @@ binutils                             2.38-4ubuntu2.2                          de
 binutils-common                      2.38-4ubuntu2.2                          deb           
 binutils-x86-64-linux-gnu            2.38-4ubuntu2.2                          deb           
 bsdutils                             1:2.37.2-4ubuntu3                        deb           
-ca-certificates                      20211016ubuntu0.22.04.1                  deb           
+ca-certificates                      20230311ubuntu0.22.04.1                  deb           
 ca-certificates-java                                                          java-archive  
 ca-certificates-java                 20190909ubuntu1.2                        deb           
 ca-certificates-mono                 6.12.0.182-0xamarin1+ubuntu2004b1        deb           
@@ -151,7 +151,7 @@ libpam0g                             1.4.0-11ubuntu2.3                        de
 libpcre2-8-0                         10.39-3ubuntu0.1                         deb           
 libpcre3                             2:8.39-13ubuntu0.22.04.1                 deb           
 libpcsclite1                         1.9.5-3                                  deb           
-libperl5.34                          5.34.0-3ubuntu1.1                        deb           
+libperl5.34                          5.34.0-3ubuntu1.2                        deb           
 libpng16-16                          1.6.37-3build5                           deb           
 libprocps8                           2:3.3.17-6ubuntu2                        deb           
 libpsl5                              0.21.0-1.2build2                         deb           
@@ -171,7 +171,7 @@ libsmartcols1                        2.37.2-4ubuntu3                          de
 libsndfile1                          1.0.31-2build1                           deb           
 libsqlite3-0                         3.37.2-2ubuntu0.1                        deb           
 libss2                               1.46.5-2ubuntu1.1                        deb           
-libssh-4                             0.9.6-2build1                            deb           
+libssh-4                             0.9.6-2ubuntu0.22.04.1                   deb           
 libssl3                              3.0.2-0ubuntu1.10                        deb           
 libstdc++6                           12.1.0-2ubuntu1~22.04                    deb           
 libsystemd0                          249.11-0ubuntu3.9                        deb           
@@ -226,11 +226,11 @@ netcat                               1.218-4ubuntu1                           de
 netcat-openbsd                       1.218-4ubuntu1                           deb           
 openjdk-11-jdk-headless              11.0.19+7~us1-0ubuntu1~22.04.1           deb           
 openjdk-11-jre-headless              11.0.19+7~us1-0ubuntu1~22.04.1           deb           
-openssl                              3.0.2-0ubuntu1.9                         deb           
+openssl                              3.0.2-0ubuntu1.10                        deb           
 passwd                               1:4.8.1-2ubuntu2.1                       deb           
-perl                                 5.34.0-3ubuntu1.1                        deb           
-perl-base                            5.34.0-3ubuntu1.1                        deb           
-perl-modules-5.34                    5.34.0-3ubuntu1.1                        deb           
+perl                                 5.34.0-3ubuntu1.2                        deb           
+perl-base                            5.34.0-3ubuntu1.2                        deb           
+perl-modules-5.34                    5.34.0-3ubuntu1.2                        deb           
 pinentry-curses                      1.1.1-1build2                            deb           
 procps                               2:3.3.17-6ubuntu2                        deb           
 publicsuffix                         20211207.1025-1                          deb           
