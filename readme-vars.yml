@@ -10,6 +10,7 @@ project_github_repo_url: "https://github.com/imagegenius/docker-{{ project_name 
 # supported architectures
 available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest" }
 
 # development version
 development_versions: true
@@ -49,6 +50,8 @@ opt_param_ports:
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
+  Inspired from (MitchTalmadge/AMP-dockerized)[https://github.com/MitchTalmadge/AMP-dockerized]
+
   As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
 
   **Java is not installed by default, see [here](https://github.com/imagegenius/docker-amp#java-versions) for more information**
@@ -130,6 +133,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "28.06.23:", desc: "add aarch64 support" }
   - { date: "28.05.23:", desc: "house keeping" }
   - { date: "24.01.23:", desc: "Fix services starting prematurely" }
   - { date: "02.01.23:", desc: "Initial Release." }
