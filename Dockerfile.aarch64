@@ -36,7 +36,7 @@ RUN \
   echo "**** download ampinstmgr.zip ****" && \
   curl -o \
     /tmp/ampinstmgr.tgz -L \
-    "https://repo.cubecoders.com/ampinstmgr-latest.tgz" && \
+    "https://repo.cubecoders.com/aarch64/ampinstmgr-latest.tgz" && \
   echo "**** unzip ampinstmgr and make symlinks ****" && \
   tar xf \
     /tmp/ampinstmgr.tgz -C \
@@ -50,7 +50,7 @@ RUN \
   fi && \
   curl -o \
     /app/amp/AMPCache-Mainline-${AMP_VERSION//./}.zip -L \
-    "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
+    "http://cubecoders.com/Downloads/AMP_Latest_AArch64.zip" && \
   echo "**** cleanup ****" && \
   rm -rf \
     /tmp/*
