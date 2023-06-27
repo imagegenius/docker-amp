@@ -21,7 +21,7 @@ This image supports the following architectures:
 | Architecture | Available | Tag |
 | :----: | :----: | ---- |
 | x86-64 | ✅ | amd64-\<version tag\> |
-| arm64 | ❌ | |
+| arm64 | ✅ | arm64v8-\<version tag\> |
 | armhf | ❌ | |
 
 ## Version Tags
@@ -33,6 +33,8 @@ This image offers different versions via tags. Be cautious when using unstable o
 | latest | ✅ | Latest AMP Release with an Alpine base, tiny image but only java servers will work |
 | ubuntu | ✅ | Latest AMP release with an Ubuntu Base, limited to java servers at this time |
 ## Application Setup
+
+Inspired from (MitchTalmadge/AMP-dockerized)[https://github.com/MitchTalmadge/AMP-dockerized]
 
 As it takes more than 10 seconds (the default timeout for Docker) for AMP to do a graceful shutdown, make sure you have no running modules. Stopping your container via Docker while you have running modules may cause corruption as Docker will kill the container.
 
@@ -224,6 +226,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **28.06.23:** - add aarch64 support
 * **28.05.23:** - house keeping
 * **24.01.23:** - Fix services starting prematurely
 * **02.01.23:** - Initial Release.
