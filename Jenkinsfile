@@ -210,6 +210,7 @@ pipeline {
       }
       steps {
         sh '''#!/bin/bash
+              set -e
               TEMPDIR=$(mktemp -d)
               docker pull ghcr.io/imagegenius/jenkins-builder:latest
               # Stage 1 - Jenkinsfile update
