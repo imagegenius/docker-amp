@@ -111,7 +111,7 @@ libcom-err2                            1.46.5-2ubuntu1.1                        
 libcrypt1                              1:4.4.27-1                               deb           
 libctf-nobfd0                          2.38-4ubuntu2.3                          deb           
 libctf0                                2.38-4ubuntu2.3                          deb           
-libcups2                               2.4.1op1-1ubuntu4.6                      deb           
+libcups2                               2.4.1op1-1ubuntu4.7                      deb           
 libcurl3-gnutls                        7.81.0-1ubuntu1.13                       deb           
 libcurl4                               7.81.0-1ubuntu1.13                       deb           
 libdb5.3                               5.3.28+dfsg1-0.8ubuntu3                  deb           
@@ -243,7 +243,7 @@ libxss1                                1:1.2.3-1build2                          
 libxxf86vm1                            1:1.1.4-1build3                          deb           
 libxxhash0                             0.8.1-1                                  deb           
 libzstd1                               1.4.8+dfsg-3build1                       deb           
-locales                                2.35-0ubuntu3.1                          deb           
+locales                                2.35-0ubuntu3.3                          deb           
 login                                  1:4.8.1-2ubuntu2.1                       deb           
 logsave                                1.46.5-2ubuntu1.1                        deb           
 lsb-base                               11.1.0ubuntu4                            deb           
