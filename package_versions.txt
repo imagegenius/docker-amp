@@ -102,8 +102,8 @@ libbrotli1                             1.0.9-2build6                            
 libbsd0                                0.11.5-1                                 deb           
 libbz2-1.0                             1.0.8-5build1                            deb           
 libc-bin                               2.35-0ubuntu3.1                          deb           
-libc6                                  2.35-0ubuntu3.3                          deb           
-libc6-i386                             2.35-0ubuntu3.3                          deb           
+libc6                                  2.35-0ubuntu3.4                          deb           
+libc6-i386                             2.35-0ubuntu3.4                          deb           
 libcap-ng0                             0.7.9-2.2build3                          deb           
 libcap2                                1:2.44-1ubuntu0.22.04.1                  deb           
 libcap2-bin                            1:2.44-1ubuntu0.22.04.1                  deb           
@@ -225,9 +225,9 @@ libwayland-cursor0                     1.20.0-1ubuntu0.1                        
 libwayland-egl1                        1.20.0-1ubuntu0.1                        deb           
 libwayland-server0                     1.20.0-1ubuntu0.1                        deb           
 libwrap0                               7.6.q-31build2                           deb           
-libx11-6                               2:1.7.5-1ubuntu0.2                       deb           
-libx11-data                            2:1.7.5-1ubuntu0.2                       deb           
-libx11-xcb1                            2:1.7.5-1ubuntu0.2                       deb           
+libx11-6                               2:1.7.5-1ubuntu0.3                       deb           
+libx11-data                            2:1.7.5-1ubuntu0.3                       deb           
+libx11-xcb1                            2:1.7.5-1ubuntu0.3                       deb           
 libxau6                                1:1.0.9-1build5                          deb           
 libxcb1                                1.14-3ubuntu3                            deb           
 libxcursor1                            1:1.2.0-2build4                          deb           
