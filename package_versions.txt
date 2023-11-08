@@ -1,16 +1,11 @@
 NAME                                              VERSION                 TYPE   
-                                                  0.0.0.0                 dotnet  
-                                                  0.0.0.1                 dotnet  
-                                                  10.0.0.0                dotnet  
-                                                  4.0.0.0                 dotnet  
-                                                  4.6.57.0                dotnet  
 AMPModuleTemplate                                 1.0.0.1                 dotnet  
 ARKModule                                         1.0.0.0                 dotnet  
 Accessibility.dll                                 4.6.57.0                dotnet  
-Application Deployment Service Module             1.0.0.0                 dotnet  
+ApplicationDeploymentServiceModule                1.0.0.0                 dotnet  
 Arma3Module                                       1.0.0.0                 dotnet  
 BannerImagePlugin                                 1.0.0.0                 dotnet  
-C# LDAP                                           4.0.0.0                 dotnet  
+CLDAP                                             4.0.0.0                 dotnet  
 CommonCorePlugin                                  1.0.0.0                 dotnet  
 CustomMarshalers.dll                              4.6.57.0                dotnet  
 EmailSenderPlugin                                 1.0.0.0                 dotnet  
@@ -25,7 +20,6 @@ LocalFileBackupPlugin                             1.0.0.0                 dotnet
 Microsoft.CSharp.dll                              4.6.57.0                dotnet  
 Microsoft.Web.Infrastructure                      1.0.20105.407           dotnet  
 MinecraftModule                                   1.0.0.3                 dotnet  
-Mono Certificate Store Sync                       6.12.0.182              dotnet  
 Mono.Btls.Interface                               4.0.0.0                 dotnet  
 Mono.CSharp.dll                                   4.6.57.0                dotnet  
 Mono.Cecil                                        0.11.1.0                dotnet  
@@ -39,6 +33,8 @@ Mono.Posix.dll                                    4.0.0.0                 dotnet
 Mono.Security.dll                                 4.0.0.0                 dotnet  
 Mono.Simd.dll                                     4.0.0.0                 dotnet  
 Mono.WebBrowser                                   4.6.57.0                dotnet  
+MonoCertificateStoreSync                          6.12.0.182              dotnet  
+MonoCommonLanguageInfrastructure                  4.6.57.0                dotnet  
 RCONClient                                        1.0.0.1                 dotnet  
 RabbitMQ.Client.dll                               4.6.57.0                dotnet  
 RustModule                                        1.0.0.0                 dotnet  
