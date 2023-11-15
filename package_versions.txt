@@ -267,7 +267,7 @@ perl                                 5.34.0-3ubuntu1.2                        de
 perl-base                            5.34.0-3ubuntu1.2                        deb           
 perl-modules-5.34                    5.34.0-3ubuntu1.2                        deb           
 pinentry-curses                      1.1.1-1build2                            deb           
-procps                               2:3.3.17-6ubuntu2                        deb           
+procps                               2:3.3.17-6ubuntu2.1                      deb           
 publicsuffix                         20211207.1025-1                          deb           
 readline-common                      8.1.2-1                                  deb           
 sed                                  4.8-1ubuntu2                             deb           
