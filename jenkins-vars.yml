@@ -4,6 +4,7 @@
 project_name: docker-amp
 external_type: na
 custom_version_command: curl -sL "https://downloads.cubecoders.com/AMP/manifest.json" | jq -r '.streams.Mainline.versions | max_by(.latestBuildTimestamp) | .version'
+release_type: stable
 release_tag: ubuntu
 ig_branch: ubuntu
 repo_vars:
