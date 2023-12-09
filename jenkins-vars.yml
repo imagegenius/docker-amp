@@ -2,13 +2,11 @@
 
 # jenkins variables
 project_name: docker-amp
-external_type: custom_json
-release_type: stable
+external_type: na
+custom_version_command: curl -sL "https://downloads.cubecoders.com/AMP/manifest.json" | jq -r '.streams.Mainline.versions | max_by(.latestBuildTimestamp) | .version'
 release_tag: ubuntu
 ig_branch: ubuntu
 repo_vars:
-  - JSON_URL = 'https://cubecoders.com/AMPVersions.json'
-  - JSON_PATH = '.AMPCore'
   - BUILD_VERSION_ARG = 'AMP_VERSION'
   - IG_USER = 'imagegenius'
   - IG_REPO = 'docker-amp'
