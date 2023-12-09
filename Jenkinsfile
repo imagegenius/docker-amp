@@ -14,8 +14,6 @@ pipeline {
   environment {
     BUILDS_DISCORD=credentials('build_webhook_url')
     GITHUB_TOKEN=credentials('github_token')
-    JSON_URL = 'https://cubecoders.com/AMPVersions.json'
-    JSON_PATH = '.AMPCore'
     BUILD_VERSION_ARG = 'AMP_VERSION'
     IG_USER = 'imagegenius'
     IG_REPO = 'docker-amp'
@@ -101,16 +99,16 @@ pipeline {
     /* ########################
        External Release Tagging
        ######################## */
-    // If this is a custom json endpoint parse the return to get external tag
-    stage("Set ENV custom_json"){
-     steps{
-       script{
-         env.EXT_RELEASE = sh(
-           script: '''curl -s ${JSON_URL} | jq -r ". | ${JSON_PATH}" ''',
-           returnStdout: true).trim()
-         env.RELEASE_LINK = env.JSON_URL
-       }
-     }
+    // If this is a custom command to determine version use that command
+    stage("Set tag custom bash"){
+      steps{
+        script{
+          env.EXT_RELEASE = sh(
+            script: ''' curl -sL "https://downloads.cubecoders.com/AMP/manifest.json" | jq -r '.streams.Mainline.versions | max_by(.latestBuildTimestamp) | .version' ''',
+            returnStdout: true).trim()
+            env.RELEASE_LINK = 'custom_command'
+        }
+      }
     }
     // Sanitize the release tag and strip illegal docker or github characters
     stage("Sanitize tag"){
@@ -697,7 +695,7 @@ pipeline {
              "tagger": {"name": "ImageGenius Jenkins","email": "ci@imagegenius.io","date": "'${GITHUB_DATE}'"}}' '''
         echo "Pushing New release for Tag"
         sh '''#! /bin/bash
-              echo "Data change at JSON endpoint ${JSON_URL}" > releasebody.json
+              echo "Updating to ${EXT_RELEASE_CLEAN}" > releasebody.json
               echo '{"tag_name":"'${META_TAG}'",\
                      "target_commitish": "main",\
                      "name": "'${META_TAG}'",\
