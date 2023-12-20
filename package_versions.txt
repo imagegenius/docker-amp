@@ -142,7 +142,7 @@ WebRequestPlugin                                  1.0.0.0                 dotnet
 alpine-baselayout                                 3.4.3-r1                apk     
 alpine-baselayout-data                            3.4.3-r1                apk     
 alpine-keys                                       2.4-r1                  apk     
-alpine-release                                    3.18.4-r0               apk     
+alpine-release                                    3.18.5-r0               apk     
 apk-tools                                         2.14.0-r2               apk     
 bash                                              5.2.15-r5               apk     
 brotli-libs                                       1.0.9-r14               apk     
@@ -153,7 +153,7 @@ ca-certificates-bundle                            20230506-r0             apk
 ca-certificates-mono                              6.12.0.182-r0           apk     
 coreutils                                         9.3-r1                  apk     
 cscompmgd.dll                                     11.0.0.0                dotnet  
-curl                                              8.4.0-r0                apk     
+curl                                              8.5.0-r0                apk     
 git                                               2.40.1-r0               apk     
 glibc                                             2.37-r0                 apk     
 glibc-bin                                         2.37-r0                 apk     
@@ -170,7 +170,7 @@ libc-utils                                        0.7.2-r5                apk
 libc6-compat                                      1.2.4-r2                apk     
 libcap2                                           2.69-r0                 apk     
 libcrypto3                                        3.1.4-r1                apk     
-libcurl                                           8.4.0-r0                apk     
+libcurl                                           8.5.0-r0                apk     
 libevent                                          2.1.12-r6               apk     
 libexpat                                          2.5.0-r1                apk     
 libgcc                                            12.2.1_git20220924-r10  apk     
