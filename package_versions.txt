@@ -144,7 +144,7 @@ srcds                                   1.0.0.0                 dotnet
 srcdsModule                             1.0.0.1                 dotnet  
 ssl_client                              1.36.1-r5               apk     
 tmux                                    3.3a_git20230428-r0     apk     
-tzdata                                  2023c-r1                apk     
+tzdata                                  2023d-r0                apk     
 unzip                                   6.0-r14                 apk     
 utmps-libs                              0.1.2.1-r1              apk     
 zlib                                    1.2.13-r1               apk     
