@@ -148,7 +148,7 @@ libkrb5-3                            1.19.2-2ubuntu0.3                        de
 libkrb5support0                      1.19.2-2ubuntu0.3                        deb           
 libksba8                             1.6.0-2ubuntu0.2                         deb           
 liblcms2-2                           2.12~rc1-2build2                         deb           
-libldap-2.5-0                        2.5.16+dfsg-0ubuntu0.22.04.1             deb           
+libldap-2.5-0                        2.5.16+dfsg-0ubuntu0.22.04.2             deb           
 libldap-common                       2.5.16+dfsg-0ubuntu0.22.04.1             deb           
 liblz4-1                             1.9.3-2build2                            deb           
 liblzma5                             5.2.5-2ubuntu1                           deb           
@@ -203,7 +203,7 @@ libsndfile1                          1.0.31-2ubuntu0.1                        de
 libsqlite3-0                         3.37.2-2ubuntu0.3                        deb           
 libss2                               1.46.5-2ubuntu1.1                        deb           
 libssh-4                             0.9.6-2ubuntu0.22.04.3                   deb           
-libssl3                              3.0.2-0ubuntu1.12                        deb           
+libssl3                              3.0.2-0ubuntu1.13                        deb           
 libstdc++6                           12.3.0-1ubuntu1~22.04                    deb           
 libsystemd0                          249.11-0ubuntu3.12                       deb           
 libtasn1-6                           4.18.0-4build1                           deb           
@@ -240,7 +240,7 @@ libxss1                              1:1.2.3-1build2                          de
 libxxf86vm1                          1:1.1.4-1build3                          deb           
 libxxhash0                           0.8.1-1                                  deb           
 libzstd1                             1.4.8+dfsg-3build1                       deb           
-locales                              2.35-0ubuntu3.5                          deb           
+locales                              2.35-0ubuntu3.6                          deb           
 login                                1:4.8.1-2ubuntu2.1                       deb           
 logsave                              1.46.5-2ubuntu1.1                        deb           
 lsb-base                             11.1.0ubuntu4                            deb           
@@ -274,7 +274,7 @@ srcdsModule                          1.0.0.1                                  do
 sysvinit-utils                       3.01-1ubuntu1                            deb           
 tar                                  1.34+dfsg-1ubuntu0.1.22.04.1             deb           
 tmux                                 3.2a-4ubuntu0.2                          deb           
-tzdata                               2023c-0ubuntu0.22.04.2                   deb           
+tzdata                               2023d-0ubuntu0.22.04                     deb           
 ubuntu-keyring                       2021.03.26                               deb           
 ucf                                  3.0043                                   deb           
 unzip                                6.0-26ubuntu3.1                          deb           
