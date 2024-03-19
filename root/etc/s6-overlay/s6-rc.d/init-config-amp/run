@@ -1,8 +1,19 @@
 #!/usr/bin/with-contenv bash
 
-# make folders and create symbolic link
-mkdir -p /config/.ampdata/instances/
-ln -sf /app/amp/AMPCache-Mainline-${AMP_VERSION//./}.zip /config/.ampdata/instances/
+# find the latest cached zip
+LATEST_ZIP_FILE=$(find /app/amp/ -name 'AMP-*-*.zip' | sort | tail -n 1)
+
+# extract the build and architecture from the zip
+ARCHITECTURE=$(echo "${LATEST_ZIP_FILE}" | sed 's|.*/AMP-\(.*\)-.*\.zip|\1|')
+LATEST_BUILD=$(echo "${LATEST_ZIP_FILE}" | sed 's|.*/AMP-.*-\(.*\)\.zip|\1|')
+
+# make folders
+mkdir -p \
+    /config/.ampdata/instances/ \
+    /config/.ampdata/Versions/Mainline/${LATEST_BUILD}
+
+# symlink cached amp to where amp expects it to be
+ln -sf "${LATEST_ZIP_FILE}" "/config/.ampdata/Versions/Mainline/${LATEST_BUILD}/AMP_${ARCHITECTURE}.zip"
 
 # change owner of /config
 chown -R abc:abc /config
