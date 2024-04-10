@@ -28,8 +28,8 @@ TerrariaModule                       1.0.0.0                                  do
 TheForestModule                      1.0.0.0                                  dotnet                         
 WebRequestPlugin                     1.0.0.0                                  dotnet                         
 adduser                              3.118ubuntu5                             deb                            
-apt                                  2.4.11                                   deb                            
-apt-utils                            2.4.11                                   deb                            
+apt                                  2.4.12                                   deb                            
+apt-utils                            2.4.12                                   deb                            
 base-files                           12ubuntu4.6                              deb                            
 base-passwd                          3.5.52build1                             deb                            
 bash                                 5.1-6ubuntu1.1                           deb                            
@@ -37,12 +37,12 @@ bash                                 5.1.16                                   bi
 binutils                             2.38-4ubuntu2.6                          deb                            
 binutils-common                      2.38-4ubuntu2.6                          deb                            
 binutils-x86-64-linux-gnu            2.38-4ubuntu2.6                          deb                            
-bsdutils                             1:2.37.2-4ubuntu3                        deb                            
+bsdutils                             1:2.37.2-4ubuntu3.3                      deb                            
 ca-certificates                      20230311ubuntu0.22.04.1                  deb                            
 ca-certificates-java                                                          java-archive                   
 ca-certificates-java                 20190909ubuntu1.2                        deb                            
 ca-certificates-mono                 6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
-coreutils                            8.32-4.1ubuntu1.1                        deb                            
+coreutils                            8.32-4.1ubuntu1.2                        deb                            
 cron                                 3.0pl1-137ubuntu3                        deb                            
 curl                                 7.81.0-1ubuntu1.16                       deb                            
 dash                                 0.5.11+git20210903+057cd650a4ed-3build1  deb                            
@@ -82,7 +82,7 @@ lib32stdc++6                         12.3.0-1ubuntu1~22.04                    de
 lib32z1                              1:1.2.11.dfsg-2ubuntu9.2                 deb                            
 libacl1                              2.3.1-1                                  deb                            
 libapparmor1                         3.0.4-2ubuntu2.3                         deb           (+1 duplicate)   
-libapt-pkg6.0                        2.4.11                                   deb                            
+libapt-pkg6.0                        2.4.12                                   deb                            
 libasound2                           1.2.6.1-1ubuntu1                         deb           (+1 duplicate)   
 libasound2-data                      1.2.6.1-1ubuntu1                         deb                            
 libassuan0                           2.5.5-1build1                            deb                            
@@ -94,7 +94,7 @@ libavahi-client3                     0.8-5ubuntu5.2                           de
 libavahi-common-data                 0.8-5ubuntu5.2                           deb                            
 libavahi-common3                     0.8-5ubuntu5.2                           deb                            
 libbinutils                          2.38-4ubuntu2.6                          deb                            
-libblkid1                            2.37.2-4ubuntu3                          deb                            
+libblkid1                            2.37.2-4ubuntu3.3                        deb                            
 libbrotli1                           1.0.9-2build6                            deb           (+1 duplicate)   
 libbsd0                              0.11.5-1                                 deb           (+1 duplicate)   
 libbz2-1.0                           1.0.8-5build1                            deb           (+1 duplicate)   
@@ -161,7 +161,7 @@ libmono-system-numerics4.0-cil       6.12.0.200-0xamarin2+ubuntu2004b1        de
 libmono-system-security4.0-cil       6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
 libmono-system-xml4.0-cil            6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
 libmono-system4.0-cil                6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
-libmount1                            2.37.2-4ubuntu3                          deb                            
+libmount1                            2.37.2-4ubuntu3.3                        deb                            
 libncurses5                          6.3-2ubuntu0.1                           deb                            
 libncurses6                          6.3-2ubuntu0.1                           deb                            
 libncursesw6                         6.3-2ubuntu0.1                           deb                            
@@ -169,8 +169,8 @@ libnettle8                           3.7.3-1build2                            de
 libnghttp2-14                        1.43.0-1ubuntu0.1                        deb           (+1 duplicate)   
 libnpth0                             1.6-3build2                              deb                            
 libnsl2                              1.3.0-2build2                            deb                            
-libnspr4                             2:4.32-3build1                           deb                            
-libnss3                              2:3.68.2-0ubuntu1.2                      deb                            
+libnspr4                             2:4.35-0ubuntu0.22.04.1                  deb                            
+libnss3                              2:3.98-0ubuntu0.22.04.1                  deb                            
 libogg0                              1.3.5-0ubuntu3                           deb           (+1 duplicate)   
 libonig5                             6.9.7.1-2build1                          deb                            
 libopus0                             1.3.1-0.1build2                          deb           (+1 duplicate)   
@@ -198,7 +198,7 @@ libselinux1                          3.3-1build2                              de
 libsemanage-common                   3.3-1build2                              deb                            
 libsemanage2                         3.3-1build2                              deb                            
 libsepol2                            3.3-1build1                              deb                            
-libsmartcols1                        2.37.2-4ubuntu3                          deb                            
+libsmartcols1                        2.37.2-4ubuntu3.3                        deb                            
 libsndfile1                          1.0.31-2ubuntu0.1                        deb           (+1 duplicate)   
 libsqlite3-0                         3.37.2-2ubuntu0.3                        deb                            
 libss2                               1.46.5-2ubuntu1.1                        deb                            
@@ -214,7 +214,7 @@ libtirpc3                            1.3.2-2ubuntu0.1                         de
 libudev1                             249.11-0ubuntu3.12                       deb                            
 libunistring2                        1.0-1                                    deb           (+1 duplicate)   
 libutempter0                         1.2.1-2build2                            deb                            
-libuuid1                             2.37.2-4ubuntu3                          deb                            
+libuuid1                             2.37.2-4ubuntu3.3                        deb                            
 libvorbis0a                          1.3.7-1build2                            deb           (+1 duplicate)   
 libvorbisenc2                        1.3.7-1build2                            deb           (+1 duplicate)   
 libwayland-client0                   1.20.0-1ubuntu0.1                        deb           (+1 duplicate)   
@@ -251,7 +251,7 @@ mono-gac                             6.12.0.200-0xamarin2+ubuntu2004b1        de
 mono-runtime                         6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
 mono-runtime-common                  6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
 mono-runtime-sgen                    6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
-mount                                2.37.2-4ubuntu3                          deb                            
+mount                                2.37.2-4ubuntu3.3                        deb                            
 ncurses-base                         6.3-2ubuntu0.1                           deb                            
 ncurses-bin                          6.3-2ubuntu0.1                           deb                            
 netcat                               1.218-4ubuntu1                           deb                            
@@ -280,7 +280,7 @@ ubuntu-keyring                       2021.03.26                               de
 ucf                                  3.0043                                   deb                            
 unzip                                6.0-26ubuntu3.2                          deb                            
 usrmerge                             25ubuntu2                                deb                            
-util-linux                           2.37.2-4ubuntu3                          deb                            
+util-linux                           2.37.2-4ubuntu3.3                        deb                            
 wget                                 1.21.2-2ubuntu1                          deb                            
 x11-common                           1:7.7+23ubuntu2                          deb                            
 xkb-data                             2.33-1                                   deb                            
