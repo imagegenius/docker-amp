@@ -132,7 +132,7 @@ libgdbm-compat4                      1.23-1                                   de
 libgdbm6                             1.23-1                                   deb                            
 libglib2.0-0                         2.72.4-0ubuntu2.2                        deb                            
 libgmp10                             2:6.2.1+dfsg-3ubuntu1                    deb           (+1 duplicate)   
-libgnutls30                          3.7.3-4ubuntu1.4                         deb           (+1 duplicate)   
+libgnutls30                          3.7.3-4ubuntu1.5                         deb           (+1 duplicate)   
 libgpg-error0                        1.43-3                                   deb           (+1 duplicate)   
 libgraphite2-3                       1.3.14-1build2                           deb                            
 libgssapi-krb5-2                     1.19.2-2ubuntu0.3                        deb           (+1 duplicate)   
@@ -170,7 +170,7 @@ libnghttp2-14                        1.43.0-1ubuntu0.1                        de
 libnpth0                             1.6-3build2                              deb                            
 libnsl2                              1.3.0-2build2                            deb                            
 libnspr4                             2:4.35-0ubuntu0.22.04.1                  deb                            
-libnss3                              2:3.98-0ubuntu0.22.04.1                  deb                            
+libnss3                              2:3.98-0ubuntu0.22.04.2                  deb                            
 libogg0                              1.3.5-0ubuntu3                           deb           (+1 duplicate)   
 libonig5                             6.9.7.1-2build1                          deb                            
 libopus0                             1.3.1-0.1build2                          deb           (+1 duplicate)   
