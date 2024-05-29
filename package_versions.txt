@@ -102,7 +102,7 @@ curl                                    8.5.0-r0               apk
 findutils                               4.9.0-r5               apk                       
 gacutil.exe                             0.0.0.0                dotnet                    
 gcompat                                 1.1.0-r4               apk                       
-git                                     2.43.0-r0              apk                       
+git                                     2.43.4-r0              apk                       
 glibc                                   2.37-r0                apk                       
 glibc-bin                               2.37-r0                apk                       
 iputils                                 20221126-r2            apk                       
