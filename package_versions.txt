@@ -57,8 +57,8 @@ fontconfig-config                    2.13.1-4.2ubuntu5                        de
 fonts-dejavu-core                    2.37-2build1                             deb                            
 gacutil.exe                          0.0.0.0                                  dotnet                         
 gcc-12-base                          12.3.0-1ubuntu1~22.04                    deb           (+1 duplicate)   
-git                                  1:2.34.1-1ubuntu1.10                     deb                            
-git-man                              1:2.34.1-1ubuntu1.10                     deb                            
+git                                  1:2.34.1-1ubuntu1.11                     deb                            
+git-man                              1:2.34.1-1ubuntu1.11                     deb                            
 gnupg                                2.2.27-3ubuntu2.1                        deb                            
 gnupg-l10n                           2.2.27-3ubuntu2.1                        deb                            
 gnupg-utils                          2.2.27-3ubuntu2.1                        deb                            
@@ -99,8 +99,8 @@ libbrotli1                           1.0.9-2build6                            de
 libbsd0                              0.11.5-1                                 deb           (+1 duplicate)   
 libbz2-1.0                           1.0.8-5build1                            deb           (+1 duplicate)   
 libc-bin                             2.35-0ubuntu3.7                          deb                            
-libc6                                2.35-0ubuntu3.7                          deb           (+1 duplicate)   
-libc6-i386                           2.35-0ubuntu3.7                          deb                            
+libc6                                2.35-0ubuntu3.8                          deb           (+1 duplicate)   
+libc6-i386                           2.35-0ubuntu3.8                          deb                            
 libcap-ng0                           0.7.9-2.2build3                          deb                            
 libcap2                              1:2.44-1ubuntu0.22.04.1                  deb           (+1 duplicate)   
 libcap2-bin                          1:2.44-1ubuntu0.22.04.1                  deb                            
