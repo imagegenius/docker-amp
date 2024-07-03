@@ -108,7 +108,7 @@ libcom-err2                          1.46.5-2ubuntu1.1                        de
 libcrypt1                            1:4.4.27-1                               deb           (+1 duplicate)   
 libctf-nobfd0                        2.38-4ubuntu2.6                          deb                            
 libctf0                              2.38-4ubuntu2.6                          deb                            
-libcups2                             2.4.1op1-1ubuntu4.9                      deb                            
+libcups2                             2.4.1op1-1ubuntu4.10                     deb                            
 libcurl3-gnutls                      7.81.0-1ubuntu1.16                       deb           (+1 duplicate)   
 libcurl4                             7.81.0-1ubuntu1.16                       deb                            
 libdb5.3                             5.3.28+dfsg1-0.8ubuntu3                  deb           (+1 duplicate)   
@@ -203,7 +203,7 @@ libsndfile1                          1.0.31-2ubuntu0.1                        de
 libsqlite3-0                         3.37.2-2ubuntu0.3                        deb                            
 libss2                               1.46.5-2ubuntu1.1                        deb                            
 libssh-4                             0.9.6-2ubuntu0.22.04.3                   deb           (+1 duplicate)   
-libssl3                              3.0.2-0ubuntu1.15                        deb           (+1 duplicate)   
+libssl3                              3.0.2-0ubuntu1.16                        deb           (+1 duplicate)   
 libstdc++6                           12.3.0-1ubuntu1~22.04                    deb                            
 libsystemd0                          249.11-0ubuntu3.12                       deb           (+1 duplicate)   
 libtasn1-6                           4.18.0-4build1                           deb           (+1 duplicate)   
