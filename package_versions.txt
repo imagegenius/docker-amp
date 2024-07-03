@@ -4,6 +4,7 @@ ADSModule                               1.0.0.0                dotnet
 AMPModuleTemplate                       1.0.0.1                dotnet                    
 ARKModule                               1.0.0.0                dotnet                    
 ASP.Net WebPages                        1.0.20105.407          dotnet                    
+AnalyticsPlugin                         1.0.0.0                dotnet                    
 Arma3Module                             1.0.0.0                dotnet                    
 BannerImagePlugin                       1.0.0.0                dotnet                    
 C# LDAP                                 4.0.0.0                dotnet                    
