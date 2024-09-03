@@ -12,7 +12,6 @@ FileManagerPlugin                    1.0.0.0                                  do
 FiveMModule                          1.0.0.0                                  dotnet                         
 GenericModule                        1.0.0.0                                  dotnet                         
 InstanceManagerPlugin                1.0.0.0                                  dotnet                         
-JC2MPModule                          1.0.0.0                                  dotnet                         
 LocalFileBackupPlugin                1.0.0.0                                  dotnet                         
 MONO CLI                             4.0.0.0                                  dotnet                         
 MinecraftModule                      1.0.0.3                                  dotnet                         
