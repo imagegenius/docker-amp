@@ -23,7 +23,6 @@ I18N.West.dll                           4.0.0.0                dotnet
 I18N.dll                                4.0.0.0                dotnet                    
 IBM.Data.DB2.dll                        1.0.0.0                dotnet                    
 InstanceManagerPlugin                   1.0.0.0                dotnet                    
-JC2MPModule                             1.0.0.0                dotnet                    
 LocalFileBackupPlugin                   1.0.0.0                dotnet                    
 MONO CLI                                4.0.0.0                dotnet  (+4 duplicates)   
 MONO CLI                                4.6.57.0               dotnet  (+1 duplicate)    
