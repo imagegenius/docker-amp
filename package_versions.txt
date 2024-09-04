@@ -51,7 +51,7 @@ debianutils                          5.5-1ubuntu2                             de
 diffutils                            1:3.8-0ubuntu2                           deb                            
 dirmngr                              2.2.27-3ubuntu2.1                        deb                            
 dpkg                                 1.21.1ubuntu2.3                          deb                            
-e2fsprogs                            1.46.5-2ubuntu1.1                        deb                            
+e2fsprogs                            1.46.5-2ubuntu1.2                        deb                            
 findutils                            4.8.0-1ubuntu3                           deb                            
 fontconfig-config                    2.13.1-4.2ubuntu5                        deb                            
 fonts-dejavu-core                    2.37-2build1                             deb                            
@@ -81,7 +81,7 @@ lib32gcc-s1                          12.3.0-1ubuntu1~22.04                    de
 lib32stdc++6                         12.3.0-1ubuntu1~22.04                    deb                            
 lib32z1                              1:1.2.11.dfsg-2ubuntu9.2                 deb                            
 libacl1                              2.3.1-1                                  deb                            
-libapparmor1                         3.0.4-2ubuntu2.3                         deb           (+1 duplicate)   
+libapparmor1                         3.0.4-2ubuntu2.3build2                   deb           (+1 duplicate)   
 libapt-pkg6.0                        2.4.12                                   deb                            
 libasound2                           1.2.6.1-1ubuntu1                         deb           (+1 duplicate)   
 libasound2-data                      1.2.6.1-1ubuntu1                         deb                            
@@ -120,7 +120,7 @@ libdrm2                              2.4.113-2~ubuntu0.22.04.1                de
 liberror-perl                        0.17029-1                                deb                            
 libevent-core-2.1-7                  2.1.12-stable-1build3                    deb                            
 libexpat1                            2.4.7-1ubuntu0.3                         deb           (+1 duplicate)   
-libext2fs2                           1.46.5-2ubuntu1.1                        deb                            
+libext2fs2                           1.46.5-2ubuntu1.2                        deb                            
 libffi8                              3.4.2-4                                  deb           (+1 duplicate)   
 libflac8                             1.3.3-2ubuntu0.2                         deb           (+1 duplicate)   
 libfontconfig1                       2.13.1-4.2ubuntu5                        deb                            
@@ -201,9 +201,9 @@ libsepol2                            3.3-1build1                              de
 libsmartcols1                        2.37.2-4ubuntu3.4                        deb                            
 libsndfile1                          1.0.31-2ubuntu0.1                        deb           (+1 duplicate)   
 libsqlite3-0                         3.37.2-2ubuntu0.3                        deb                            
-libss2                               1.46.5-2ubuntu1.1                        deb                            
+libss2                               1.46.5-2ubuntu1.2                        deb                            
 libssh-4                             0.9.6-2ubuntu0.22.04.3                   deb           (+1 duplicate)   
-libssl3                              3.0.2-0ubuntu1.17                        deb           (+1 duplicate)   
+libssl3                              3.0.2-0ubuntu1.18                        deb           (+1 duplicate)   
 libstdc++6                           12.3.0-1ubuntu1~22.04                    deb                            
 libsystemd0                          249.11-0ubuntu3.12                       deb           (+1 duplicate)   
 libtasn1-6                           4.18.0-4build1                           deb           (+1 duplicate)   
@@ -243,7 +243,7 @@ libxxhash0                           0.8.1-1                                  de
 libzstd1                             1.4.8+dfsg-3build1                       deb           (+1 duplicate)   
 locales                              2.35-0ubuntu3.8                          deb                            
 login                                1:4.8.1-2ubuntu2.2                       deb                            
-logsave                              1.46.5-2ubuntu1.1                        deb                            
+logsave                              1.46.5-2ubuntu1.2                        deb                            
 lsb-base                             11.1.0ubuntu4                            deb                            
 mawk                                 1.3.4.20200120-3                         deb                            
 mono-4.0-gac                         6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
