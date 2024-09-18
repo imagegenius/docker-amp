@@ -28,9 +28,9 @@ TerrariaModule                       1.0.0.0                                  do
 TheForestModule                      1.0.0.0                                  dotnet                         
 WebRequestPlugin                     1.0.0.0                                  dotnet                         
 adduser                              3.118ubuntu5                             deb                            
-apt                                  2.4.12                                   deb                            
-apt-utils                            2.4.12                                   deb                            
-base-files                           12ubuntu4.6                              deb                            
+apt                                  2.4.13                                   deb                            
+apt-utils                            2.4.13                                   deb                            
+base-files                           12ubuntu4.7                              deb                            
 base-passwd                          3.5.52build1                             deb                            
 bash                                 5.1-6ubuntu1.1                           deb                            
 binutils                             2.38-4ubuntu2.6                          deb                            
@@ -44,7 +44,7 @@ ca-certificates-mono                 6.12.0.200-0xamarin2+ubuntu2004b1        de
 catatonit                            0.1.7-1                                  deb                            
 coreutils                            8.32-4.1ubuntu1.2                        deb                            
 cron                                 3.0pl1-137ubuntu3                        deb                            
-curl                                 7.81.0-1ubuntu1.17                       deb                            
+curl                                 7.81.0-1ubuntu1.18                       deb                            
 dash                                 0.5.11+git20210903+057cd650a4ed-3build1  deb                            
 debconf                              1.5.79ubuntu1                            deb                            
 debianutils                          5.5-1ubuntu2                             deb                            
@@ -81,8 +81,8 @@ lib32gcc-s1                          12.3.0-1ubuntu1~22.04                    de
 lib32stdc++6                         12.3.0-1ubuntu1~22.04                    deb                            
 lib32z1                              1:1.2.11.dfsg-2ubuntu9.2                 deb                            
 libacl1                              2.3.1-1                                  deb                            
-libapparmor1                         3.0.4-2ubuntu2.3build2                   deb           (+1 duplicate)   
-libapt-pkg6.0                        2.4.12                                   deb                            
+libapparmor1                         3.0.4-2ubuntu2.4                         deb           (+1 duplicate)   
+libapt-pkg6.0                        2.4.13                                   deb                            
 libasound2                           1.2.6.1-1ubuntu1                         deb           (+1 duplicate)   
 libasound2-data                      1.2.6.1-1ubuntu1                         deb                            
 libassuan0                           2.5.5-1build1                            deb                            
@@ -109,8 +109,8 @@ libcrypt1                            1:4.4.27-1                               de
 libctf-nobfd0                        2.38-4ubuntu2.6                          deb                            
 libctf0                              2.38-4ubuntu2.6                          deb                            
 libcups2                             2.4.1op1-1ubuntu4.10                     deb                            
-libcurl3-gnutls                      7.81.0-1ubuntu1.17                       deb           (+1 duplicate)   
-libcurl4                             7.81.0-1ubuntu1.17                       deb                            
+libcurl3-gnutls                      7.81.0-1ubuntu1.18                       deb           (+1 duplicate)   
+libcurl4                             7.81.0-1ubuntu1.18                       deb                            
 libdb5.3                             5.3.28+dfsg1-0.8ubuntu3                  deb           (+1 duplicate)   
 libdbus-1-3                          1.12.20-2ubuntu4.1                       deb           (+1 duplicate)   
 libdebconfclient0                    0.261ubuntu1                             deb                            
@@ -119,7 +119,7 @@ libdrm-common                        2.4.113-2~ubuntu0.22.04.1                de
 libdrm2                              2.4.113-2~ubuntu0.22.04.1                deb           (+1 duplicate)   
 liberror-perl                        0.17029-1                                deb                            
 libevent-core-2.1-7                  2.1.12-stable-1build3                    deb                            
-libexpat1                            2.4.7-1ubuntu0.3                         deb           (+1 duplicate)   
+libexpat1                            2.4.7-1ubuntu0.4                         deb           (+1 duplicate)   
 libext2fs2                           1.46.5-2ubuntu1.2                        deb                            
 libffi8                              3.4.2-4                                  deb           (+1 duplicate)   
 libflac8                             1.3.3-2ubuntu0.2                         deb           (+1 duplicate)   
