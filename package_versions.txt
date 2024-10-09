@@ -37,7 +37,7 @@ binutils                             2.38-4ubuntu2.6                          de
 binutils-common                      2.38-4ubuntu2.6                          deb                            
 binutils-x86-64-linux-gnu            2.38-4ubuntu2.6                          deb                            
 bsdutils                             1:2.37.2-4ubuntu3.4                      deb                            
-ca-certificates                      20230311ubuntu0.22.04.1                  deb                            
+ca-certificates                      20240203~22.04.1                         deb                            
 ca-certificates-java                 20190909ubuntu1.2                        deb                            
 ca-certificates-java                 UNKNOWN                                  java-archive                   
 ca-certificates-mono                 6.12.0.200-0xamarin2+ubuntu2004b1        deb                            
@@ -108,7 +108,7 @@ libcom-err2                          1.46.5-2ubuntu1.2                        de
 libcrypt1                            1:4.4.27-1                               deb           (+1 duplicate)   
 libctf-nobfd0                        2.38-4ubuntu2.6                          deb                            
 libctf0                              2.38-4ubuntu2.6                          deb                            
-libcups2                             2.4.1op1-1ubuntu4.10                     deb                            
+libcups2                             2.4.1op1-1ubuntu4.11                     deb                            
 libcurl3-gnutls                      7.81.0-1ubuntu1.18                       deb           (+1 duplicate)   
 libcurl4                             7.81.0-1ubuntu1.18                       deb                            
 libdb5.3                             5.3.28+dfsg1-0.8ubuntu3                  deb           (+1 duplicate)   
