@@ -133,6 +133,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "31.10.24:", desc: "add icu libs" }
   - { date: "28.06.23:", desc: "add aarch64 support" }
   - { date: "28.05.23:", desc: "house keeping" }
   - { date: "24.01.23:", desc: "Fix services starting prematurely" }
