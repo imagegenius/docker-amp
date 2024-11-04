@@ -25,8 +25,10 @@ RUN \
   apk add --no-cache \
     ca-certificates-mono \
     git \
+    icu-libs \
     iputils \
     jq \
+    libstdc++ \
     procps \
     socat \
     tmux \
