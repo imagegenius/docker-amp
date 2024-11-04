@@ -107,6 +107,8 @@ gcompat                                 1.1.0-r4               apk
 git                                     2.43.5-r0              apk                       
 glibc                                   2.37-r0                apk                       
 glibc-bin                               2.37-r0                apk                       
+icu-data-en                             74.1-r0                apk                       
+icu-libs                                74.1-r0                apk                       
 iputils                                 20221126-r2            apk                       
 iputils-arping                          20221126-r2            apk                       
 iputils-clockdiff                       20221126-r2            apk                       
@@ -129,6 +131,7 @@ libmd                                   1.1.0-r0               apk
 libncursesw                             6.4_p20231125-r0       apk                       
 libproc2                                4.0.4-r0               apk                       
 libssl3                                 3.1.6-r0               apk                       
+libstdc++                               13.2.1_git20231014-r0  apk                       
 libucontext                             1.2-r2                 apk                       
 libunistring                            1.1-r2                 apk                       
 linux-pam                               1.5.3-r7               apk                       
