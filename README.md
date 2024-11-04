@@ -227,6 +227,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **31.10.24:** - add icu libs
 * **28.06.23:** - add aarch64 support
 * **28.05.23:** - house keeping
 * **24.01.23:** - Fix services starting prematurely
