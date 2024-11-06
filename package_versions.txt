@@ -1,20 +1,20 @@
 NAME                                    VERSION                TYPE                     
 #ZipLibrary                             4.84.0.0               dotnet                    
-ADSModule.dll                           2.6.0.2                dotnet                    
-ARKModule.dll                           2.6.0.2                dotnet                    
+ADSModule.dll                           2.6.0.4                dotnet                    
+ARKModule.dll                           2.6.0.4                dotnet                    
 ASP.Net WebPages                        1.0.20105.407          dotnet                    
-AnalyticsPlugin.dll                     2.6.0.2                dotnet                    
-Arma3Module.dll                         2.6.0.2                dotnet                    
-BannerImagePlugin.dll                   2.6.0.2                dotnet                    
+AnalyticsPlugin.dll                     2.6.0.4                dotnet                    
+Arma3Module.dll                         2.6.0.4                dotnet                    
+BannerImagePlugin.dll                   2.6.0.4                dotnet                    
 C# LDAP                                 4.0.0.0                dotnet                    
-CommonCorePlugin.dll                    2.6.0.2                dotnet                    
+CommonCorePlugin.dll                    2.6.0.4                dotnet                    
 Commons.Xml.Relaxng.dll                 0.0.0.1                dotnet                    
-EmailSenderPlugin.dll                   2.6.0.2                dotnet                    
-FactorioModule.dll                      2.6.0.2                dotnet                    
-FileManagerPlugin.dll                   2.6.0.2                dotnet                    
-FirewallManagerPlugin.dll               2.6.0.2                dotnet                    
-FiveMModule.dll                         2.6.0.2                dotnet                    
-GenericModule.dll                       2.6.0.2                dotnet                    
+EmailSenderPlugin.dll                   2.6.0.4                dotnet                    
+FactorioModule.dll                      2.6.0.4                dotnet                    
+FileManagerPlugin.dll                   2.6.0.4                dotnet                    
+FirewallManagerPlugin.dll               2.6.0.4                dotnet                    
+FiveMModule.dll                         2.6.0.4                dotnet                    
+GenericModule.dll                       2.6.0.4                dotnet                    
 I18N.CJK.dll                            4.0.0.0                dotnet                    
 I18N.MidEast.dll                        4.0.0.0                dotnet                    
 I18N.Other.dll                          4.0.0.0                dotnet                    
@@ -22,12 +22,12 @@ I18N.Rare.dll                           4.0.0.0                dotnet
 I18N.West.dll                           4.0.0.0                dotnet                    
 I18N.dll                                4.0.0.0                dotnet                    
 IBM.Data.DB2.dll                        1.0.0.0                dotnet                    
-InstanceManagerPlugin.dll               2.6.0.2                dotnet                    
-LocalFileBackupPlugin.dll               2.6.0.2                dotnet                    
+InstanceManagerPlugin.dll               2.6.0.4                dotnet                    
+LocalFileBackupPlugin.dll               2.6.0.4                dotnet                    
 MONO CLI                                4.0.0.0                dotnet  (+4 duplicates)   
 MONO CLI                                4.6.57.0               dotnet  (+1 duplicate)    
 Microsoft.VisualC.dll                   10.0.0.0               dotnet                    
-MinecraftModule.dll                     2.6.0.2                dotnet                    
+MinecraftModule.dll                     2.6.0.4                dotnet                    
 Mono Common Language Infrastructure     11.0.0.0               dotnet                    
 Mono Common Language Infrastructure     4.0.0.0                dotnet                    
 Mono Common Language Infrastructure     4.6.57.0               dotnet  (+73 duplicates)  
@@ -44,13 +44,13 @@ Mono.Posix.dll                          4.0.0.0                dotnet
 Mono.Tasklets.dll                       4.0.0.0                dotnet                    
 Mono.WebBrowser                         4.6.57.0               dotnet                    
 PEAPI.dll                               4.0.0.0                dotnet                    
-ProductStockCheckerModule.dll           2.6.0.2                dotnet                    
-RCONPlugin.dll                          2.6.0.2                dotnet                    
-RustModule.dll                          2.6.0.2                dotnet                    
+ProductStockCheckerModule.dll           2.6.0.4                dotnet                    
+RCONPlugin.dll                          2.6.0.4                dotnet                    
+RustModule.dll                          2.6.0.4                dotnet                    
 SMDiagnostics.dll                       4.6.57.0               dotnet                    
-SevenDaysModule.dll                     2.6.0.2                dotnet                    
-SpaceEngineersModule.dll                2.6.0.2                dotnet                    
-StarBoundModule.dll                     2.6.0.2                dotnet                    
+SevenDaysModule.dll                     2.6.0.4                dotnet                    
+SpaceEngineersModule.dll                2.6.0.4                dotnet                    
+StarBoundModule.dll                     2.6.0.4                dotnet                    
 System.Data.SQLite                      1.0.61.0               dotnet                    
 System.Json                             4.6.57.0               dotnet                    
 System.Memory                           4.6.28619.01           dotnet                    
@@ -77,11 +77,11 @@ System.Web.Razor                        4.6.57.0               dotnet
 System.Web.WebPages                     4.6.57.0               dotnet                    
 System.Web.WebPages.Deployment          4.6.57.0               dotnet                    
 System.Web.WebPages.Razor               4.6.57.0               dotnet                    
-SystemUserManagerPlugin.dll             2.6.0.2                dotnet                    
-TerrariaModule.dll                      2.6.0.2                dotnet                    
-TheForestModule.dll                     2.6.0.2                dotnet                    
+SystemUserManagerPlugin.dll             2.6.0.4                dotnet                    
+TerrariaModule.dll                      2.6.0.4                dotnet                    
+TheForestModule.dll                     2.6.0.4                dotnet                    
 WebMatrix.Data.dll                      4.0.0.0                dotnet                    
-WebRequestPlugin.dll                    2.6.0.2                dotnet                    
+WebRequestPlugin.dll                    2.6.0.4                dotnet                    
 alpine-baselayout                       3.4.3-r2               apk                       
 alpine-baselayout-data                  3.4.3-r2               apk                       
 alpine-keys                             2.4-r1                 apk                       
@@ -151,9 +151,9 @@ scanelf                                 1.3.7-r2               apk
 shadow                                  4.14.2-r0              apk                       
 skalibs                                 2.14.0.1-r0            apk                       
 socat                                   1.8.0.0-r0             apk                       
-srcdsModule.dll                         2.6.0.2                dotnet                    
+srcdsModule.dll                         2.6.0.4                dotnet                    
 ssl_client                              1.36.1-r19             apk                       
-steamcmdplugin.dll                      2.6.0.2                dotnet                    
+steamcmdplugin.dll                      2.6.0.4                dotnet                    
 tmux                                    3.3a_git20230428-r0    apk                       
 tzdata                                  2024a-r0               apk                       
 unzip                                   6.0-r14                apk                       
