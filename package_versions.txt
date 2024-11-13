@@ -77,7 +77,7 @@ init-system-helpers                  1.62                                     de
 iputils-ping                         3:20211215-1                             deb                            
 java-common                          0.72build2                               deb                            
 jq                                   1.6-2.1ubuntu3                           deb                            
-jrt-fs                               11.0.24                                  java-archive                   
+jrt-fs                               11.0.25                                  java-archive                   
 lib32gcc-s1                          12.3.0-1ubuntu1~22.04                    deb                            
 lib32stdc++6                         12.3.0-1ubuntu1~22.04                    deb                            
 lib32z1                              1:1.2.11.dfsg-2ubuntu9.2                 deb                            
@@ -257,8 +257,8 @@ ncurses-base                         6.3-2ubuntu0.1                           de
 ncurses-bin                          6.3-2ubuntu0.1                           deb                            
 netcat                               1.218-4ubuntu1                           deb                            
 netcat-openbsd                       1.218-4ubuntu1                           deb                            
-openjdk-11-jdk-headless              11.0.24+8-1ubuntu3~22.04                 deb                            
-openjdk-11-jre-headless              11.0.24+8-1ubuntu3~22.04                 deb                            
+openjdk-11-jdk-headless              11.0.25+9-1ubuntu1~22.04                 deb                            
+openjdk-11-jre-headless              11.0.25+9-1ubuntu1~22.04                 deb                            
 openssl                              3.0.2-0ubuntu1.18                        deb                            
 passwd                               1:4.8.1-2ubuntu2.2                       deb                            
 perl                                 5.34.0-3ubuntu1.3                        deb                            
