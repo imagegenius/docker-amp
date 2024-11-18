@@ -73,6 +73,7 @@ gpgv                                 2.2.27-3ubuntu2.1                        de
 grep                                 3.7-1build1                              deb                            
 gzip                                 1.10-4ubuntu4.1                          deb                            
 hostname                             3.23ubuntu2                              deb                            
+icu-devtools                         70.1-2                                   deb                            
 init-system-helpers                  1.62                                     deb                            
 iputils-ping                         3:20211215-1                             deb                            
 java-common                          0.72build2                               deb                            
@@ -100,12 +101,15 @@ libbrotli1                           1.0.9-2build6                            de
 libbsd0                              0.11.5-1                                 deb           (+1 duplicate)   
 libbz2-1.0                           1.0.8-5build1                            deb           (+1 duplicate)   
 libc-bin                             2.35-0ubuntu3.8                          deb                            
+libc-dev-bin                         2.35-0ubuntu3.8                          deb                            
 libc6                                2.35-0ubuntu3.8                          deb           (+1 duplicate)   
+libc6-dev                            2.35-0ubuntu3.8                          deb                            
 libc6-i386                           2.35-0ubuntu3.8                          deb                            
 libcap-ng0                           0.7.9-2.2build3                          deb                            
 libcap2                              1:2.44-1ubuntu0.22.04.1                  deb           (+1 duplicate)   
 libcap2-bin                          1:2.44-1ubuntu0.22.04.1                  deb                            
 libcom-err2                          1.46.5-2ubuntu1.2                        deb           (+1 duplicate)   
+libcrypt-dev                         1:4.4.27-1                               deb                            
 libcrypt1                            1:4.4.27-1                               deb           (+1 duplicate)   
 libctf-nobfd0                        2.38-4ubuntu2.6                          deb                            
 libctf0                              2.38-4ubuntu2.6                          deb                            
@@ -139,6 +143,8 @@ libgraphite2-3                       1.3.14-1build2                           de
 libgssapi-krb5-2                     1.19.2-2ubuntu0.4                        deb           (+1 duplicate)   
 libharfbuzz0b                        2.7.4-1ubuntu3.1                         deb                            
 libhogweed6                          3.7.3-1build2                            deb           (+1 duplicate)   
+libicu-dev                           70.1-2                                   deb                            
+libicu70                             70.1-2                                   deb                            
 libidn2-0                            2.3.2-2build1                            deb           (+1 duplicate)   
 libjpeg-turbo8                       2.1.2-0ubuntu1                           deb                            
 libjpeg8                             8c-2ubuntu10                             deb                            
@@ -169,6 +175,7 @@ libncursesw6                         6.3-2ubuntu0.1                           de
 libnettle8                           3.7.3-1build2                            deb           (+1 duplicate)   
 libnghttp2-14                        1.43.0-1ubuntu0.2                        deb           (+1 duplicate)   
 libnpth0                             1.6-3build2                              deb                            
+libnsl-dev                           1.3.0-2build2                            deb                            
 libnsl2                              1.3.0-2build2                            deb                            
 libnspr4                             2:4.35-0ubuntu0.22.04.1                  deb                            
 libnss3                              2:3.98-0ubuntu0.22.04.2                  deb                            
@@ -211,6 +218,7 @@ libtasn1-6                           4.18.0-4build1                           de
 libtinfo5                            6.3-2ubuntu0.1                           deb                            
 libtinfo6                            6.3-2ubuntu0.1                           deb                            
 libtirpc-common                      1.3.2-2ubuntu0.1                         deb                            
+libtirpc-dev                         1.3.2-2ubuntu0.1                         deb                            
 libtirpc3                            1.3.2-2ubuntu0.1                         deb                            
 libudev1                             249.11-0ubuntu3.12                       deb                            
 libunistring2                        1.0-1                                    deb           (+1 duplicate)   
@@ -242,6 +250,7 @@ libxss1                              1:1.2.3-1build2                          de
 libxxf86vm1                          1:1.1.4-1build3                          deb           (+1 duplicate)   
 libxxhash0                           0.8.1-1                                  deb                            
 libzstd1                             1.4.8+dfsg-3build1                       deb           (+1 duplicate)   
+linux-libc-dev                       5.15.0-125.135                           deb                            
 locales                              2.35-0ubuntu3.8                          deb                            
 login                                1:4.8.1-2ubuntu2.2                       deb                            
 logsave                              1.46.5-2ubuntu1.2                        deb                            
@@ -268,6 +277,7 @@ pinentry-curses                      1.1.1-1build2                            de
 procps                               2:3.3.17-6ubuntu2.1                      deb                            
 publicsuffix                         20211207.1025-1                          deb                            
 readline-common                      8.1.2-1                                  deb                            
+rpcsvc-proto                         1.4.2-0ubuntu6                           deb                            
 sed                                  4.8-1ubuntu2                             deb                            
 sensible-utils                       0.0.17                                   deb                            
 socat                                1.7.4.1-3ubuntu4                         deb                            
