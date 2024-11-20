@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+# can't yet determine installed build version, just main version
+
 # upgrade instances
 if [ -f /config/.ampdata/instances/Main/AMPVersion ]; then
     OLD=$(cat /config/.ampdata/instances/Main/AMPVersion)
@@ -8,7 +10,4 @@ if [ -f /config/.ampdata/instances/Main/AMPVersion ]; then
         echo "Upgrading all instances from ${OLD} to ${AMP_VERSION}"
         s6-setuidgid abc ampinstmgr UpgradeAll
     fi
-
-    # cleanup after ourselves
-    rm /config/.ampdata/instances/AMPCache-Mainline-${AMP_VERSION//./}.zip
 fi
