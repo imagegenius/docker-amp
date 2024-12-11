@@ -124,13 +124,13 @@ libdrm-common                        2.4.113-2~ubuntu0.22.04.1                de
 libdrm2                              2.4.113-2~ubuntu0.22.04.1                deb           (+1 duplicate)   
 liberror-perl                        0.17029-1                                deb                            
 libevent-core-2.1-7                  2.1.12-stable-1build3                    deb                            
-libexpat1                            2.4.7-1ubuntu0.4                         deb           (+1 duplicate)   
+libexpat1                            2.4.7-1ubuntu0.5                         deb           (+1 duplicate)   
 libext2fs2                           1.46.5-2ubuntu1.2                        deb                            
 libffi8                              3.4.2-4                                  deb           (+1 duplicate)   
 libflac8                             1.3.3-2ubuntu0.2                         deb           (+1 duplicate)   
 libfontconfig1                       2.13.1-4.2ubuntu5                        deb                            
 libfreetype6                         2.11.1+dfsg-1ubuntu0.2                   deb                            
-libgbm1                              23.2.1-1ubuntu3.1~22.04.2                deb           (+1 duplicate)   
+libgbm1                              23.2.1-1ubuntu3.1~22.04.3                deb           (+1 duplicate)   
 libgcc-s1                            12.3.0-1ubuntu1~22.04                    deb           (+1 duplicate)   
 libgcrypt20                          1.9.4-3ubuntu3                           deb           (+1 duplicate)   
 libgdbm-compat4                      1.23-1                                   deb                            
