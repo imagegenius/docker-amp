@@ -250,7 +250,7 @@ libxss1                              1:1.2.3-1build2                          de
 libxxf86vm1                          1:1.1.4-1build3                          deb           (+1 duplicate)   
 libxxhash0                           0.8.1-1                                  deb                            
 libzstd1                             1.4.8+dfsg-3build1                       deb           (+1 duplicate)   
-linux-libc-dev                       5.15.0-128.138                           deb                            
+linux-libc-dev                       5.15.0-130.140                           deb                            
 locales                              2.35-0ubuntu3.8                          deb                            
 login                                1:4.8.1-2ubuntu2.2                       deb                            
 logsave                              1.46.5-2ubuntu1.2                        deb                            
