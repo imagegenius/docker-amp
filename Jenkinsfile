@@ -58,7 +58,7 @@ pipeline {
             returnStdout: true).trim()
           env.CODE_URL = 'https://github.com/' + env.IG_USER + '/' + env.IG_REPO + '/commit/' + env.GIT_COMMIT
           env.PULL_REQUEST = env.CHANGE_ID
-          env.TEMPLATED_FILES = 'Jenkinsfile README.md LICENSE .editorconfig  ./.github/workflows/external_trigger_scheduler.yml ./.github/workflows/package_trigger_scheduler.yml ./.github/workflows/permissions.yml ./.github/workflows/external_trigger.yml ./.github/workflows/package_trigger.yml'
+          env.TEMPLATED_FILES = 'Jenkinsfile README.md LICENSE .editorconfig  ./root/etc/s6-overlay/s6-rc.d/init-deprecate/run ./root/etc/s6-overlay/s6-rc.d/init-deprecate/up ./root/etc/s6-overlay/s6-rc.d/init-deprecate/type ./root/etc/s6-overlay/s6-rc.d/init-deprecate/dependencies.d/init-config-end ./root/etc/s6-overlay/s6-rc.d/init-services/dependencies.d/init-deprecate ./root/etc/s6-overlay/s6-rc.d/user/contents.d/init-deprecate'
         }
         sh '''#! /bin/bash
               echo "The default github branch detected as ${GH_DEFAULT_BRANCH}" '''
@@ -279,6 +279,7 @@ pipeline {
               fi
               echo "Starting Stage 2 - Delete old templates"
               OLD_TEMPLATES=".github/ISSUE_TEMPLATE.md .github/ISSUE_TEMPLATE/issue.bug.md .github/ISSUE_TEMPLATE/issue.feature.md .github/workflows/call_invalid_helper.yml .github/workflows/stale.yml"
+              OLD_TEMPLATES="${OLD_TEMPLATES} $(echo .github/workflows/{external_trigger,external_trigger_scheduler,package_trigger,package_trigger_scheduler,call_issue_pr_tracker,call_issues_cron}.yml)"
               for i in ${OLD_TEMPLATES}; do
                 if [[ -f "${i}" ]]; then
                   TEMPLATES_TO_DELETE="${i} ${TEMPLATES_TO_DELETE}"
@@ -314,6 +315,10 @@ pipeline {
                 cd ${TEMPDIR}/docker-${CONTAINER_NAME}
                 mkdir -p ${TEMPDIR}/repo/${IG_REPO}/.github/workflows
                 mkdir -p ${TEMPDIR}/repo/${IG_REPO}/.github/ISSUE_TEMPLATE
+                mkdir -p \
+                  ${TEMPDIR}/repo/${IG_REPO}/root/etc/s6-overlay/s6-rc.d/init-deprecate/dependencies.d \
+                  ${TEMPDIR}/repo/${IG_REPO}/root/etc/s6-overlay/s6-rc.d/init-services/dependencies.d \
+                  ${TEMPDIR}/repo/${IG_REPO}/root/etc/s6-overlay/s6-rc.d/user/contents.d
                 cp --parents ${TEMPLATED_FILES} ${TEMPDIR}/repo/${IG_REPO}/ || :
                 cp --parents readme-vars.yml ${TEMPDIR}/repo/${IG_REPO}/ || :
                 cd ${TEMPDIR}/repo/${IG_REPO}/
@@ -343,6 +348,10 @@ pipeline {
                 echo "Updating Unraid template"
                 cd ${TEMPDIR}/unraid/templates/
                 GH_TEMPLATES_DEFAULT_BRANCH=$(git remote show origin | grep "HEAD branch:" | sed 's|.*HEAD branch: ||')
+                if ! grep -wq "${CONTAINER_NAME}" ${TEMPDIR}/unraid/templates/unraid/ignore.list; then
+                  echo "${CONTAINER_NAME}" >> ${TEMPDIR}/unraid/templates/unraid/ignore.list
+                  git add unraid/ignore.list
+                fi
                 if grep -wq "${CONTAINER_NAME}" ${TEMPDIR}/unraid/templates/unraid/ignore.list && [[ -f ${TEMPDIR}/unraid/templates/unraid/deprecated/${CONTAINER_NAME}.xml ]]; then
                   echo "Image is on the ignore list, and already in the deprecation folder."
                 elif grep -wq "${CONTAINER_NAME}" ${TEMPDIR}/unraid/templates/unraid/ignore.list; then
@@ -849,6 +858,26 @@ EOF
             fi
             '''
 
+      }
+    }
+    stage('Deprecate/Disable Future Builds') {
+      when {
+        branch "main"
+        environment name: 'CHANGE_ID', value: ''
+        environment name: 'EXIT_STATUS', value: ''
+      }
+      steps {
+        sh '''#! /bin/bash
+          TEMPDIR=$(mktemp -d)
+          mkdir -p ${TEMPDIR}/repo
+          git clone https://ImageGeniusCI:${GITHUB_TOKEN}@github.com/${IG_USER}/${IG_REPO}.git ${TEMPDIR}/repo/${IG_REPO}
+          cd ${TEMPDIR}/repo/${IG_REPO}
+          git checkout -f main
+          git rm Jenkinsfile
+          git commit -m 'Disabling future builds'
+          git pull https://ImageGeniusCI:${GITHUB_TOKEN}@github.com/${IG_USER}/${IG_REPO}.git main
+          git push https://ImageGeniusCI:${GITHUB_TOKEN}@github.com/${IG_USER}/${IG_REPO}.git main
+          rm -Rf ${TEMPDIR}'''
       }
     }
   }
