@@ -45,14 +45,17 @@ RUN \
     /tmp --strip-components=1 && \
   mv /tmp/cubecoders/amp /app/ && \
   ln -s /app/amp/ampinstmgr /usr/bin/ampinstmgr && \
-  echo "**** download AMPCache.zip ****" && \
+  echo "**** download AMP ****" && \
   if [ -z ${AMP_VERSION} ]; then \
-    AMP_VERSION=$(curl -sL https://cubecoders.com/AMPVersions.json | \
-      jq -r '.AMPCore'); \
+    AMP_VERSION=$(curl -sL "https://downloads.cubecoders.com/AMP/manifest.json" | \
+      jq -r '.streams.Mainline.versions | max_by(.latestBuildTimestamp) | .version'); \
   fi && \
+  LATEST_BUILD=$(curl -sL "https://downloads.cubecoders.com/AMP/manifest.json" | \
+    jq -r --arg version "${AMP_VERSION}" --arg platform "x86_64" \
+    '.streams.Mainline.versions[] | select(.version == $version and .platform == $platform) | .latestBuild') && \
   curl -o \
-    /app/amp/AMPCache-Mainline-${AMP_VERSION//./}.zip -L \
-    "http://cubecoders.com/Downloads/AMP_Latest.zip" && \
+    /app/amp/AMP-x86_64-${LATEST_BUILD}.zip -L \
+    "https://downloads.cubecoders.com/AMP/Mainline/${LATEST_BUILD}/AMP_x86_64.zip" && \
   echo "**** cleanup ****" && \
   rm -rf \
     /tmp/*

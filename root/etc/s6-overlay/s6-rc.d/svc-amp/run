@@ -1,18 +1,18 @@
 #!/usr/bin/with-contenv bash
 
-_term() {
+# attempt gracefull shutdown
+stopamp() {
     echo "Caught SIGTERM signal!"
     s6-setuidgid abc \
         ampinstmgr StopAll
 }
-
-trap _term SIGTERM
+trap stopamp SIGTERM
 
 s6-setuidgid abc \
     ampinstmgr StartBoot
 
+# ampinstmgr creates another process then exits, prevents s6 restarting process
 PID=$(pgrep tmux)
-
-while kill -0 "$PID" 2>/dev/null; do
+while kill -0 "${PID}" 2>/dev/null; do
     sleep 1
 done
