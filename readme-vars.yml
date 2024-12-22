@@ -7,6 +7,10 @@ project_logo: "https://cubecoders.com/Content/images/LogoColor.png"
 project_blurb: "AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers. It runs on both Windows and Linux and requires no command line knowledge to get started. Everything is taken care of by its clear and intuitive web interface, making it a breeze to use."
 project_github_repo_url: "https://github.com/imagegenius/docker-{{ project_name }}"
 
+project_deprecation_status: true
+project_deprecation_message: |
+  No longer use this image, alternative images exist
+
 # supported architectures
 available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest" }
